@@ -226,7 +226,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/qmcgaw/gluetun:v3
+Image=docker.io/qmcgaw/gluetun:$gluetun_version
 ContainerName=gluetun
 HostName=gluetun
 AutoUpdate=registry
@@ -322,7 +322,9 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/mjmeli/qbittorrent-port-forward-gluetun-server
+# TODO: Replace this with one that has tags
+# Probably have to repack my own
+Image=docker.io/mjmeli/qbittorrent-port-forward-gluetun-server:latest
 ContainerName=qbittorrent-port-forward
 HostName=qbittorrent-port-forward
 AutoUpdate=registry
@@ -357,7 +359,8 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/myanonamouse/seedboxapi
+# TODO: Is `latest` safe for this container?
+Image=docker.io/myanonamouse/seedboxapi:latest
 ContainerName=seedboxapi
 HostName=seedboxapi
 AutoUpdate=registry
@@ -371,12 +374,47 @@ Environment=mam_id=$mam_id
 Environment=interval=1
 ```
 
+### ~/.config/containers/systemd/pointspend.container
+
+> [!TIP] Optional bonus points spender
+> Useful to maintain VIP and not hit max 99999
+
+```ini
+[Unit]
+Description=Bonus points spender
+After=qbittorrent.service
+After=gluetun.service
+BindsTo=gluetun.service
+BindsTo=qbittorrent.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+# TODO: Is `latest` safe for this container?
+Image=docker.io/myanonamouse/pointspend:latest
+ContainerName=pointspend
+HostName=pointspend
+AutoUpdate=registry
+
+Network=container:gluetun
+
+Environment=MAMID=$mam_id
+Environment=BUFFER=10000
+Environment=WEDGEHOURS=0
+Environment=VIP=1
+```
+
 ### ~/.config/containers/systemd/caddy.container
 
 This is an optional container to add a reverse proxy (and more).
 
-> [!TODO] Needs to be filled out. Works as is but doesn't do anything with a
-> default config.
+> [!TODO] Needs to be filled out.
+> Works as is but doesn't do anything with a default config.
 
 ```ini
 [Unit]
