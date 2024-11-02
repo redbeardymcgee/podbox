@@ -6,6 +6,9 @@
 
 ### [Repositories](https://wiki.almalinux.org/repos/)
 
+These may not really be necessary to set up, but you should absolutely review
+them and decide for yourself.
+
 - [AlmaLinux](https://wiki.almalinux.org/repos/AlmaLinux.html)
 - [CentOS SIGs](https://wiki.almalinux.org/repos/CentOS.html)
 - [Extra](https://wiki.almalinux.org/repos/Extras.html)
@@ -18,6 +21,10 @@
 
 ## SSH
 
+SSH is optional, but highly encouraged. Cockpit gives you a terminal too, but
+that's nowhere near as good as what you can do with a real terminal emulator
+and ssh clients.
+
 ```bash
 dnf install openssh-server
 
@@ -25,10 +32,13 @@ dnf install openssh-server
 ssh-keygen -t ed25519 -a 32 -f "~/.ssh/$localhost-to-$remotehost"
 
 ## Copy key to AlmaLinux
-ssh-copy-id -i "~/.ssh/$localhost-to-$remotehost" "[user@]$remotehost"
+ssh-copy-id -i "~/.ssh/$localhost-to-$remotehost" "[${user}@]$remotehost"
 ```
 
 ### Override `sshd` config
+
+We don't want to allow anyone to login as root remotely ever. You must be a
+`sudoer` with public key auth to elevate to root.
 
 ```bash
 printf '%s\n' 'PermitRootLogin no' > /etc/ssh/sshd_config.d/01-root.conf
@@ -40,7 +50,9 @@ printf '%s\n' \
 ## Cockpit -> https://ip-addr:9090
 
 > [!WARNING] Disable the firewall if you are lazy
-> Exposing ports for other services can be exhausting
+> Exposing ports for other services can be exhausting and I have not learned
+> how to do this for containers properly. Each container may need a new rule
+> for something, not sure.
 > ```bash
 > systemctl disable --now firewalld
 > ```
@@ -57,7 +69,7 @@ firewall-cmd --reload
 
 ### Add SSH keys
 
-Skip if you copied your keys with `ssh-copy-id` above.
+> [!TIP] Skip if you copied your keys with `ssh-copy-id` above.
 
 `Accounts` -> `Your account` -> `Authorized public SSH keys` -> `Add Key`
 
@@ -71,6 +83,9 @@ dnf install setroubleshoot-server
 
 ## Podman
 
+Podman is a daemonless container hypervisor. This document prepares a fully
+rootless environment for our containers to run in.
+
 ### Install
 
 ```bash
@@ -78,11 +93,13 @@ dnf install podman
 systemctl enable --now podman
 ```
 
-> [!NOTE] Read the full `quadlet` docs: `man podman-systemd.unit`
+> [!NOTE] Read the docs
+> `man podman-systemd.unit`
 
 ### slirp4netns
 
-> [!TODO] This may not be necessary but my system is currently using it
+> [!TODO]
+> This may not be necessary but my system is currently using it
 
 ```bash
 dnf install slirp4netns
@@ -90,7 +107,9 @@ dnf install slirp4netns
 
 ### Install DNS server for `podman`
 
-> [!TODO] Not sure how to resolve these correctly yet
+> [!TODO]
+> Not sure how to resolve these correctly yet but the journal logs it
+> so it's running for something
 
 ```bash
 dnf install aardvark-dns
@@ -98,12 +117,17 @@ dnf install aardvark-dns
 
 ### Enable unprivileged port binding
 
+> [!NOTE] This is only necessary if you are setting up the reverse proxy
+
 ```bash
 printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' > /etc/sysctl.d/99-unprivileged-port-binding.conf
 sysctl 'net.ipv4.ip_unprivileged_port_start=80'
 ```
 
 ### Prepare container user
+
+This user will be the owner of all containers with no login shell or root
+privileges.
 
 ```bash
 # Prepare a group id outside of the normal range
@@ -125,8 +149,11 @@ usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $ctuser
 loginctl enable-linger $ctuser
 ```
 
-[!TIP] Optionally setup ssh keys to directly login to $ctuser
-> Remember the login shell is `/usr/bin/false` so launch `bash -l` manually
+> [!TIP] Optionally setup ssh keys to directly login to $ctuser
+
+> [!NOTE] The login shell doesn't exist
+> Launch `bash -l` manually to get a shell or else your `ssh` will exit with a
+> status of 1.
 
 ### Setup $ctuser env
 
@@ -146,6 +173,8 @@ exit
 
 ### ~/.config/containers/systemd/protonvpn.network
 
+This is a small internal network for this stack of containers to share.
+
 ```ini
 [Unit]
 Description=ProtonVPN
@@ -163,6 +192,8 @@ DNS=1.1.1.1
 
 ### ~/.config/containers/systemd/gluetun.container
 
+This is our VPN container. This example uses ProtonVPN.
+
 > [!WARNING] I disabled SELinux to not deal with this for every other issue
 > /etc/selinux/config -> `SELINUX=disabled`
 
@@ -172,8 +203,8 @@ Temporarily set SELinux policy to allow containers to use devices.
 setsebool -P container_use_devices 1
 ```
 
-> [!TIP]
-> Get protonvpn user/pass [here](https://account.proton.me/u/0/vpn/OpenVpnIKEv2)
+> [!TIP] Get protonvpn user/pass
+> [OpenVpnIKEv2](https://account.proton.me/u/0/vpn/OpenVpnIKEv2)
 
 ```ini
 [Unit]
@@ -215,6 +246,9 @@ Environment=FIREWALL_DEBUG=on
 
 ### /volumes/gluetun/auth/config.toml
 
+This allows us to query the `gluetun` API for the forwarded port without
+needing an API user and password.
+
 > [!WARNING] Do not expose the API to the internet
 
 ```toml
@@ -225,6 +259,9 @@ auth = "none"
 ```
 
 ### ~/.config/containers/systemd/qbittorrent.container
+
+> [!NOTE] Check $qbt_version from tags on dockerhub 
+> [qbittorrentofficial](https://docker.io/qbittorrentofficial/qbittorrent-nox)
 
 ```ini
 [Unit]
@@ -256,6 +293,9 @@ Environment=TZ=$timezone
 ```
 
 ### ~/.config/containers/systemd/qbittorrent-port-forward.container
+
+This updates the `qbittorrent` configuration to match the forwarded port from
+`gluetun`.
 
 > [!TIP] Check the ip address of most containers
 > `podman exec -it $container_name ip addr show`
@@ -291,6 +331,10 @@ Environment=GTN_ADDR=http://localhost:8000
 
 ### ~/.config/containers/systemd/seedboxapi.container
 
+This ensures that your torrent session stays in sync with your MAM session.
+
+> [!NOTE] Set your dynamic session with ASN lock now to view the $mam_id
+
 ```ini
 [Unit]
 Description=Update qbittorrent session IP for tracker
@@ -322,6 +366,11 @@ Environment=interval=1
 ```
 
 ### ~/.config/containers/systemd/caddy.container
+
+This is an optional container to add a reverse proxy (and more).
+
+> [!TODO] Needs to be filled out. Works as is but doesn't do anything with a
+> default config.
 
 ```ini
 [Unit]
