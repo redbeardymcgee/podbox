@@ -246,8 +246,6 @@ HostName=qbittorrent
 AutoUpdate=registry
 
 Network=container:gluetun
-# qbittorrent
-PublishPort=8080:8080
 
 Volume=/volumes/qbittorrent/config:/config
 Volume=/volumes/qbittorrent/downloads:/downloads
@@ -289,6 +287,38 @@ Environment=QBT_USERNAME=$qbt_user
 Environment=QBT_PASSWORD=$qbt_password
 Environment=QBT_ADDR=http://localhost:8080
 Environment=GTN_ADDR=http://localhost:8000
+```
+
+### ~/.config/containers/systemd/seedboxapi.container
+
+```ini
+[Unit]
+Description=Update qbittorrent session IP for tracker
+After=qbittorrent.service
+After=gluetun.service
+BindsTo=gluetun.service
+BindsTo=qbittorrent.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/myanonamouse/seedboxapi
+ContainerName=seedboxapi
+HostName=seedboxapi
+AutoUpdate=registry
+
+Network=container:gluetun
+
+Volume=/volumes/seedboxapi/config:/config
+
+Environment=DEBUG=1
+Environment=mam_id=$mam_id
+Environment=interval=1
 ```
 
 ### ~/.config/containers/systemd/caddy.container
