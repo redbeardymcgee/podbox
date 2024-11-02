@@ -409,6 +409,64 @@ Environment=WEDGEHOURS=0
 Environment=VIP=1
 ```
 
+### ~/.config/containers/systemd/weechat.container
+
+Optional container to add an always on IRC client.
+
+
+```ini
+[Unit]
+Description=IRC client
+After=gluetun.service
+BindsTo=gluetun.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/weechat/weechat:latest-alpine-slim
+ContainerName=weechat
+HostName=weechat
+AutoUpdate=registry
+
+Network=container:gluetun
+
+Volume=/volumes/weechat/dot-config:/home/user/.config
+Volume=/volumes/weechat/dot-cache:/home/user/.cache
+Volume=/volumes/weechat/dot-local/share:/home/user/.local/share
+
+# FIXME: Better way to attach stdin and tty
+PodmanArgs=-a stdin --tty=true
+```
+#### Attach and connect
+
+```bash
+podman attach weechat
+/set irc.look.smart_filter on
+/set irc.server_default.msg_part ""
+/set irc.server_default.msg_quit ""
+/set irc.ctcp.clientinfo ""
+/set irc.ctcp.finger ""
+/set irc.ctcp.source ""
+/set irc.ctcp.time ""
+/set irc.ctcp.userinfo ""
+/set irc.ctcp.version ""
+/set irc.ctcp.ping ""
+/plugin unload xfer
+/set weechat.plugin.autoload "*,!xfer"
+/filter add irc_smart * irc_smart_filter *
+/server add mam irc.myanonamouse.net/6697
+/set irc.server.mam.username $irc_username
+/set irc.server_default.autojoin_dynamic on
+/set irc.server.mam.autojoin "#anonamouse.net"
+/set irc.server.mam.nicks "$irc_nick1,$irc_nick2"
+/connect mam
+```
+
 ### ~/.config/containers/systemd/caddy.container
 
 This is an optional container to add a reverse proxy (and more).
@@ -473,3 +531,4 @@ Volume=/volumes/caddy/data:/data
 # Refer to the Caddy docs for more information:
 # https://caddyserver.com/docs/caddyfile
 ```
+
