@@ -4,6 +4,10 @@
 
 ## Installation
 
+My proof of concept server running this container stack is built on AlmaLinux
+9.4. `podman` and `systemd` with `quadlet` support is required if you are using another
+distro.
+
 - Perform `dnf update` immediately
 
 ### [Repositories](https://wiki.almalinux.org/repos/)
@@ -34,7 +38,7 @@ dnf install openssh-server
 ssh-keygen -t ed25519 -a 32 -f "~/.ssh/$localhost-to-$remotehost"
 
 ## Copy key to AlmaLinux
-ssh-copy-id -i "~/.ssh/$localhost-to-$remotehost" "[${user}@]$remotehost"
+ssh-copy-id -i ~/.ssh/"$localhost-to-$remotehost" "$user@$remotehost"
 ```
 
 ### Override `sshd` config
