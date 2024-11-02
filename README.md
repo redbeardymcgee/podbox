@@ -1,5 +1,7 @@
 # Perseus
 
+![Connectable!](./resource/image/connectable-status.png)
+
 ## Installation
 
 - Perform `dnf update` immediately
