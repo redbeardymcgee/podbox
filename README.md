@@ -8,7 +8,7 @@ My proof of concept server running this container stack is built on AlmaLinux
 9.4. `podman` and `systemd` with `quadlet` support is required if you are using another
 distro.
 
-- Perform `dnf update` immediately
+> [!WARNING] Perform `dnf update` immediately
 
 ### [Repositories](https://wiki.almalinux.org/repos/)
 
@@ -99,13 +99,13 @@ dnf install podman
 systemctl enable --now podman
 ```
 
-> [!NOTE] Read the docs
+> [!NOTE] Read the docs.
 > `man podman-systemd.unit`
 
 ### slirp4netns
 
 > [!TODO]
-> This may not be necessary but my system is currently using it
+> This may not be necessary but my system is currently using it.
 
 ```bash
 dnf install slirp4netns
@@ -115,7 +115,7 @@ dnf install slirp4netns
 
 > [!TODO]
 > Not sure how to resolve these correctly yet but the journal logs it
-> so it's running for something
+> so it's running for something.
 
 ```bash
 dnf install aardvark-dns
@@ -123,7 +123,7 @@ dnf install aardvark-dns
 
 ### Enable unprivileged port binding
 
-> [!NOTE] This is only necessary if you are setting up the reverse proxy
+> [!NOTE] This is only necessary if you are setting up the reverse proxy.
 
 ```bash
 printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' > /etc/sysctl.d/99-unprivileged-port-binding.conf
@@ -155,9 +155,9 @@ usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $ctuser
 loginctl enable-linger $ctuser
 ```
 
-> [!TIP] Optionally setup ssh keys to directly login to $ctuser
+> [!TIP] Optionally setup ssh keys to directly login to $ctuser.
 
-> [!NOTE] The login shell doesn't exist
+> [!NOTE] The login shell doesn't exist.
 > Launch `bash -l` manually to get a shell or else your `ssh` will exit with a
 > status of 1.
 
@@ -200,7 +200,7 @@ DNS=1.1.1.1
 
 This is our VPN container. This example uses ProtonVPN.
 
-> [!WARNING] I disabled SELinux to not deal with this for every other issue
+> [!WARNING] I disabled SELinux to not deal with this for every other issue.
 > /etc/selinux/config -> `SELINUX=disabled`
 
 Temporarily set SELinux policy to allow containers to use devices.
@@ -255,7 +255,7 @@ Environment=FIREWALL_DEBUG=on
 This allows us to query the `gluetun` API for the forwarded port without
 needing an API user and password.
 
-> [!WARNING] Do not expose the API to the internet
+> [!WARNING] Do not expose the API to the internet.
 
 ```toml
 [[roles]]
@@ -266,7 +266,7 @@ auth = "none"
 
 ### ~/.config/containers/systemd/qbittorrent.container
 
-> [!NOTE] Check $qbt_version from tags on dockerhub 
+> [!NOTE] Check $qbt_version from tags on dockerhub.
 > [qbittorrentofficial](https://docker.io/qbittorrentofficial/qbittorrent-nox)
 
 ```ini
@@ -303,7 +303,7 @@ Environment=TZ=$timezone
 This updates the `qbittorrent` configuration to match the forwarded port from
 `gluetun`.
 
-> [!TIP] Check the ip address of most containers
+> [!TIP] Check the ip address of most containers.
 > `podman exec -it $container_name ip addr show`
 
 ```ini
@@ -341,7 +341,7 @@ Environment=GTN_ADDR=http://localhost:8000
 
 This ensures that your torrent session stays in sync with your MAM session.
 
-> [!NOTE] Set your dynamic session with ASN lock now to view the $mam_id
+> [!NOTE] Set your dynamic session with ASN lock now to view the $mam_id.
 
 ```ini
 [Unit]
@@ -376,8 +376,8 @@ Environment=interval=1
 
 ### ~/.config/containers/systemd/pointspend.container
 
-> [!TIP] Optional bonus points spender
-> Useful to maintain VIP and not hit max 99999
+> [!TIP] Optional bonus points spender.
+> Useful to maintain VIP and not hit max 99999.
 
 ```ini
 [Unit]
