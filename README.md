@@ -56,9 +56,9 @@ them and decide for yourself.
         - `dnf install elrepo-release`
     - [RPM Fusion](https://wiki.almalinux.org/documentation/epel-and-rpmfusion.html)
 
-## Disks
+### Disks
 
-### Partitions
+#### Partitions
 
 Repeat the following steps for all disks that you want to join together into
 one single logical volume.
@@ -76,7 +76,7 @@ parted --fix --align optimal --script /dev/sdX \
     set 1 lvm on
 ```
 
-### LVM
+#### LVM
 
 ```bash
 # Create physical volume
@@ -93,7 +93,7 @@ mke2fs -t ext4 /dev/library/books
 e2fsck -f /dev/library/books
 ```
 
-### /etc/systemd/system/volumes-books.mount
+#### /etc/systemd/system/volumes-books.mount
 
 ```ini
 [Mount]
@@ -110,7 +110,7 @@ mkdir -p /volumes/books
 chown -R $ctuser:$ctuser /volumes
 ```
 
-## SSH
+### SSH
 
 SSH is optional, but highly encouraged. Cockpit gives you a terminal too, but
 that's nowhere near as good as what you can do with a real terminal emulator
@@ -126,7 +126,7 @@ ssh-keygen -t ed25519 -a 32 -f ~/.ssh/"$localhost-to-$remotehost"
 ssh-copy-id -i ~/.ssh/"$localhost-to-$remotehost" "$user@$remotehost"
 ```
 
-### Override `sshd` config
+#### Override `sshd` config
 
 We don't want to allow anyone to login as root remotely ever. You must be a
 `sudoer` with public key auth to elevate to root.
@@ -257,7 +257,7 @@ sudo -u $ctuser bash -l
 # Create dirs
 mkdir -p ~/.config/{containers/systemd,environment.d} ~/containers/storage
 # Prepare `systemd --user` env
-echo 'XDG_RUNTIME_DIR=/run/user/$UID' >> ~/.config/environment.d/10-xdg.conf
+echo 'XDG_RUNTIME_DIR=/run/user/2000' >> ~/.config/environment.d/10-xdg.conf
 # Enable container auto-update
 podman system migrate
 # WARNING: Set strict versions for all containers or risk catastrophe
