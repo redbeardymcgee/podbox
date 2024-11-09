@@ -120,10 +120,10 @@ and ssh clients.
 dnf install openssh-server
 
 ## Generate strong key on your laptop or workstation/desktop
-ssh-keygen -t ed25519 -a 32 -f ~/.ssh/"$localhost-to-$remotehost"
+ssh-keygen -t ed25519 -a 32 -f ~/.ssh/$localhost-to-$remotehost
 
 ## Copy key to AlmaLinux
-ssh-copy-id -i ~/.ssh/"$localhost-to-$remotehost" "$user@$remotehost"
+ssh-copy-id -i ~/.ssh/$localhost-to-$remotehost $user@$remotehost
 ```
 
 #### Override `sshd` config
