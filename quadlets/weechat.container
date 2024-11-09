@@ -15,8 +15,7 @@ HostName=weechat
 AutoUpdate=registry
 
 # Persist the full home dir
-# FIXME: weechat throws tons of permission errors. Could be related to me
-# destroying and rebuilding the volumes and disks and $ctuser on my end
+# FIXME: requires `chmod 777 /volumes/books/weechat/home/user` on host
 Volume=/volumes/books/weechat/home/user:/home/user
 
 # FIXME: Better way to attach stdin and tty
