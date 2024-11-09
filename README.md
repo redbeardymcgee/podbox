@@ -1,6 +1,6 @@
 # podbox
 
-![Connectable!](./resource/image/connectable-status.png)
+![Connectable status](./resource/image/connectable-status.png)
 
 ## Installation
 
@@ -24,6 +24,60 @@ them and decide for yourself.
     - ELRepo
         - `dnf install elrepo-release`
     - [RPM Fusion](https://wiki.almalinux.org/documentation/epel-and-rpmfusion.html)
+
+## Disks
+
+### Partitions
+
+Repeat the following steps for all disks that you want to join together into
+one single logical volume.
+
+```bash
+# Find /dev/sdX paths for disks
+# WARNING: Make sure you confirm the disk is correct
+lsblk -f
+# Clear the partition table
+dd if=/dev/zero of=/dev/sdX bs=512 count=1 conv=notrunc
+# Create LVM partition
+parted --fix --align optimal --script /dev/sdX \
+    mklabel gpt \
+    mkpart primary ext4 1MiB -2048s \
+    set 1 lvm on
+```
+
+### LVM
+
+```bash
+# Create physical volume
+pvcreate /dev/sdX1
+# Create volume group for disks
+vgcreate library /dev/sdX1
+# Add more disks to volume group
+vgextend library /dev/sdY1
+# Create logical volume across all disks in volume group
+lvcreate -l100%FREE -n books library
+# Add filesystem to logical volume
+mke2fs -t ext4 /dev/library/books
+# Check it
+e2fsck -f /dev/library/books
+```
+
+### /etc/systemd/system/volumes-books.mount
+
+```ini
+[Mount]
+What=/dev/library/books
+Where=/volumes/books
+Type=ext4
+
+[Install]
+WantedBy=default.target
+```
+
+```bash
+mkdir -p /volumes/books
+chown -R $ctuser:$ctuser /volumes
+```
 
 ## SSH
 
@@ -62,6 +116,8 @@ printf '%s\n' \
 > ```bash
 > systemctl disable --now firewalld
 > ```
+
+> [!TODO] Should be able to set up good firewall with only 80/443 open.
 
 Enable the socket-activated cockpit service and allow it through the firewall.
 
@@ -148,7 +204,8 @@ useradd --create-home \
     --groups systemd-journal \
     --uid 2000 \
     $ctuser
-usermod --lock $ctuser # Lock user from password login
+# Lock user from password login
+usermod --lock $ctuser
 # Add container sub-ids
 usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $ctuser
 # Start $ctuser session at boot without login
@@ -177,358 +234,14 @@ systemctl --user enable --now podman-auto-update
 exit
 ```
 
-### ~/.config/containers/systemd/protonvpn.network
-
-This is a small internal network for this stack of containers to share.
-
-```ini
-[Unit]
-Description=ProtonVPN
-After=network-online.target
-
-[Install]
-WantedBy=default.target
-
-[Network]
-NetworkName=protonvpn
-Subnet=172.25.0.0/28
-Gateway=172.25.0.1
-DNS=1.1.1.1
-```
-
-### ~/.config/containers/systemd/gluetun.container
-
-This is our VPN container. This example uses ProtonVPN.
-
-> [!WARNING] I disabled SELinux to not deal with this for every other issue.
+> [!WARNING] I disabled SELinux to not deal with this for every container.
 > /etc/selinux/config -> `SELINUX=disabled`
+
+> [!TODO] Set up the correct policies permanently instead of disabling SELinux
 
 Temporarily set SELinux policy to allow containers to use devices.
 
 ```bash
 setsebool -P container_use_devices 1
-```
-
-> [!TIP] Get protonvpn user/pass
-> [OpenVpnIKEv2](https://account.proton.me/u/0/vpn/OpenVpnIKEv2)
-
-```ini
-[Unit]
-Description=gluetun VPN
-After=protonvpn-network.service
-PartOf=protonvpn-network.service
-
-[Service]
-Restart=on-failure
-TimeoutStartSec=900
-
-[Install]
-WantedBy=default.target
-
-[Container]
-Image=docker.io/qmcgaw/gluetun:$gluetun_version
-ContainerName=gluetun
-HostName=gluetun
-AutoUpdate=registry
-AddCapability=NET_ADMIN
-AddDevice=/dev/net/tun:/dev/net/tun
-
-Network=protonvpn
-
-Volume=/volumes/gluetun/auth/config.toml:/gluetun/auth/config.toml
-
-Environment=TZ=$timezone
-Environment=UPDATER_PERIOD=24h
-Environment=UPDATER_VPN_SERVICE_PROVIDERS=protonvpn
-Environment=VPN_SERVICE_PROVIDER=protonvpn
-# The trailing `+pmp` is for port forwarding
-Environment=OPENVPN_USER=${openvpn_user}+pmp
-Environment=OPENVPN_PASSWORD=$openvpn_password
-Environment=OPENVPN_CIPHERS=aes-256-gcm
-Environment=SERVER_COUNTRIES=$countries
-Environment=VPN_PORT_FORWARDING=on
-Environment=FIREWALL_DEBUG=on
-```
-
-### /volumes/gluetun/auth/config.toml
-
-This allows us to query the `gluetun` API for the forwarded port without
-needing an API user and password.
-
-> [!WARNING] Do not expose the API to the internet.
-
-```toml
-[[roles]]
-name = "qbittorrent"
-routes = ["GET /v1/openvpn/portforwarded"]
-auth = "none"
-```
-
-### ~/.config/containers/systemd/qbittorrent.container
-
-> [!NOTE] Check $qbt_version from tags on dockerhub.
-> [qbittorrentofficial](https://docker.io/qbittorrentofficial/qbittorrent-nox)
-
-```ini
-[Unit]
-Description=qbittorrent client
-After=gluetun.service
-BindsTo=gluetun.service
-
-[Service]
-Restart=on-failure
-TimeoutStartSec=900
-
-[Install]
-WantedBy=default.target
-
-[Container]
-Image=docker.io/qbittorrentofficial/qbittorrent-nox:$qbt_version
-ContainerName=qbittorrent
-HostName=qbittorrent
-AutoUpdate=registry
-
-Network=container:gluetun
-
-Volume=/volumes/qbittorrent/config:/config
-Volume=/volumes/qbittorrent/downloads:/downloads
-
-Environment=QBT_LEGAL_NOTICE=confirm
-Environment=QBT_VERSION=$qbt_version
-Environment=TZ=$timezone
-```
-
-### ~/.config/containers/systemd/qbittorrent-port-forward.container
-
-This updates the `qbittorrent` configuration to match the forwarded port from
-`gluetun`.
-
-> [!TIP] Check the ip address of most containers.
-> `podman exec -it $container_name ip addr show`
-
-```ini
-[Unit]
-Description=Port forward updater for qbittorrent over gluetun
-After=gluetun.service
-After=qbittorrent.service
-BindsTo=gluetun.service
-BindsTo=qbittorrent.service
-
-[Service]
-Restart=on-failure
-TimeoutStartSec=900
-
-[Install]
-WantedBy=default.target
-
-[Container]
-# TODO: Replace this with one that has tags
-# Probably have to repack my own
-Image=docker.io/mjmeli/qbittorrent-port-forward-gluetun-server:latest
-ContainerName=qbittorrent-port-forward
-HostName=qbittorrent-port-forward
-AutoUpdate=registry
-
-Network=container:gluetun
-
-Environment=QBT_USERNAME=$qbt_user
-Environment=QBT_PASSWORD=$qbt_password
-Environment=QBT_ADDR=http://localhost:8080
-Environment=GTN_ADDR=http://localhost:8000
-```
-
-### ~/.config/containers/systemd/seedboxapi.container
-
-This ensures that your torrent session stays in sync with your MAM session.
-
-> [!NOTE] Set your dynamic session with ASN lock now to view the $mam_id.
-
-```ini
-[Unit]
-Description=Update qbittorrent session IP for tracker
-After=qbittorrent.service
-After=gluetun.service
-BindsTo=gluetun.service
-BindsTo=qbittorrent.service
-
-[Service]
-Restart=on-failure
-TimeoutStartSec=900
-
-[Install]
-WantedBy=default.target
-
-[Container]
-# TODO: Is `latest` safe for this container?
-Image=docker.io/myanonamouse/seedboxapi:latest
-ContainerName=seedboxapi
-HostName=seedboxapi
-AutoUpdate=registry
-
-Network=container:gluetun
-
-Volume=/volumes/seedboxapi/config:/config
-
-Environment=DEBUG=1
-Environment=mam_id=$mam_id
-Environment=interval=1
-```
-
-### ~/.config/containers/systemd/pointspend.container
-
-> [!TIP] Optional bonus points spender.
-> Useful to maintain VIP and not hit max 99999.
-
-```ini
-[Unit]
-Description=Bonus points spender
-After=qbittorrent.service
-After=gluetun.service
-BindsTo=gluetun.service
-BindsTo=qbittorrent.service
-
-[Service]
-Restart=on-failure
-TimeoutStartSec=900
-
-[Install]
-WantedBy=default.target
-
-[Container]
-# TODO: Is `latest` safe for this container?
-Image=docker.io/myanonamouse/pointspend:latest
-ContainerName=pointspend
-HostName=pointspend
-AutoUpdate=registry
-
-Network=container:gluetun
-
-Environment=MAMID=$mam_id
-Environment=BUFFER=10000
-Environment=WEDGEHOURS=0
-Environment=VIP=1
-```
-
-### ~/.config/containers/systemd/weechat.container
-
-Optional container to add an always on IRC client.
-
-
-```ini
-[Unit]
-Description=IRC client
-After=gluetun.service
-BindsTo=gluetun.service
-
-[Service]
-Restart=on-failure
-TimeoutStartSec=900
-
-[Install]
-WantedBy=default.target
-
-[Container]
-Image=docker.io/weechat/weechat:latest-alpine-slim
-ContainerName=weechat
-HostName=weechat
-AutoUpdate=registry
-
-Network=container:gluetun
-
-Volume=/volumes/weechat/dot-config:/home/user/.config
-Volume=/volumes/weechat/dot-cache:/home/user/.cache
-Volume=/volumes/weechat/dot-local/share:/home/user/.local/share
-
-# FIXME: Better way to attach stdin and tty
-PodmanArgs=-a stdin --tty=true
-```
-#### Attach and connect
-
-```bash
-podman attach weechat
-/set irc.look.smart_filter on
-/set irc.server_default.msg_part ""
-/set irc.server_default.msg_quit ""
-/set irc.ctcp.clientinfo ""
-/set irc.ctcp.finger ""
-/set irc.ctcp.source ""
-/set irc.ctcp.time ""
-/set irc.ctcp.userinfo ""
-/set irc.ctcp.version ""
-/set irc.ctcp.ping ""
-/plugin unload xfer
-/set weechat.plugin.autoload "*,!xfer"
-/filter add irc_smart * irc_smart_filter *
-/server add mam irc.myanonamouse.net/6697
-/set irc.server.mam.username $irc_username
-/set irc.server_default.autojoin_dynamic on
-/set irc.server.mam.autojoin "#anonamouse.net"
-/set irc.server.mam.nicks "$irc_nick1,$irc_nick2"
-/connect mam
-```
-
-### ~/.config/containers/systemd/caddy.container
-
-This is an optional container to add a reverse proxy (and more).
-
-> [!TODO] Needs to be filled out.
-> Works as is but doesn't do anything with a default config.
-
-```ini
-[Unit]
-Description=Reverse proxy
-After=protonvpn-network.service
-
-[Service]
-Restart=on-failure
-
-[Install]
-WantedBy=default.target
-
-[Container]
-Image=docker.io/caddy:2
-ContainerName=caddy
-HostName=caddy
-
-Network=protonvpn
-PublishPort=80:80
-PublishPort=443:443
-PublishPort=443:443/udp
-
-Volume=/volumes/caddy/config:/config
-Volume=/volumes/caddy/etc/caddy/Caddyfile:/etc/caddy/Caddyfile
-Volume=/volumes/caddy/srv:/srv
-Volume=/volumes/caddy/data:/data
-```
-
-### /volumes/caddy/etc/caddy/Caddyfile
-
-```
-# The Caddyfile is an easy way to configure your Caddy web server.
-#
-# Unless the file starts with a global options block, the first
-# uncommented line is always the address of your site.
-#
-# To use your own domain name (with automatic HTTPS), first make
-# sure your domain's A/AAAA DNS records are properly pointed to
-# this machine's public IP, then replace ":80" below with your
-# domain name.
-
-:80 {
-        # Set this path to your site's directory.
-        root * /usr/share/caddy
-
-        # Enable the static file server.
-        file_server
-
-        # Another common task is to set up a reverse proxy:
-        # reverse_proxy localhost:8080
-
-        # Or serve a PHP site through php-fpm:
-        # php_fastcgi localhost:9000
-}
-
-# Refer to the Caddy docs for more information:
-# https://caddyserver.com/docs/caddyfile
 ```
 

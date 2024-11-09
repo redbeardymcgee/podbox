@@ -1,0 +1,24 @@
+[Unit]
+Description=IRC client
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/weechat/weechat:latest-alpine-slim
+ContainerName=weechat
+HostName=weechat
+AutoUpdate=registry
+
+# Persist the full home dir
+# FIXME: weechat throws tons of permission errors. Could be related to me
+# destroying and rebuilding the volumes and disks and $ctuser on my end
+Volume=/volumes/books/weechat/home/user:/home/user
+
+# FIXME: Better way to attach stdin and tty
+PodmanArgs=-a stdin --tty=true
+

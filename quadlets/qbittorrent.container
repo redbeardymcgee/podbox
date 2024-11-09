@@ -1,0 +1,27 @@
+[Unit]
+Description=qbittorrent client
+After=gluetun.service
+BindsTo=gluetun.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/qbittorrentofficial/qbittorrent-nox:$qbt_version
+ContainerName=qbittorrent
+HostName=qbittorrent
+AutoUpdate=registry
+
+Network=container:gluetun
+
+Volume=/volumes/books/qbittorrent/config:/config
+Volume=/volumes/books/qbittorrent/downloads:/downloads
+
+Environment=QBT_LEGAL_NOTICE=confirm
+Environment=QBT_VERSION=$qbt_version
+Environment=TZ=$timezone
+

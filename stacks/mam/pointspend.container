@@ -1,0 +1,28 @@
+[Unit]
+Description=Bonus points spender
+After=qbittorrent.service
+After=gluetun.service
+BindsTo=gluetun.service
+BindsTo=qbittorrent.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+# TODO: Is `latest` safe for this container?
+Image=docker.io/myanonamouse/pointspend:latest
+ContainerName=pointspend
+HostName=pointspend
+AutoUpdate=registry
+
+Network=container:gluetun
+
+Environment=MAMID=$mam_id
+Environment=BUFFER=1000
+Environment=WEDGEHOURS=0
+Environment=VIP=1
+
