@@ -33,6 +33,18 @@ reuse. It would be similar to the `linuxserver.io` fleet, but I don't think
 there is much need anymore for more custom containers. Many upstreams now
 provide ready-built containers that we need only configure.
 
+
+## Upcoming
+
+- [ ] Caddy
+- [ ] Kavita
+- [ ] Netbird
+- [ ] Dashboard
+- [ ] Monitoring
+- [ ] Notifications
+- [ ] [booktree](https://github.com/myxdvz/booktree/tree/main)
+- [ ] [Lounge](https://thelounge.chat)
+
 ## Operating System
 
 My proof of concept server running this container stack is built on AlmaLinux
