@@ -36,9 +36,11 @@ provide ready-built containers that we need only configure.
 
 ## Upcoming
 
-- [ ] Caddy
-- [ ] Kavita
-- [ ] Netbird
+- [x] [Caddy](https://caddyserver.com)
+    - [ ] Socket activation (requires newer `caddy` and `podman`)
+- [ ] [LazyLibrarian](https://lazylibrarian.gitlab.io/)
+- [x] [Kavita](https://www.kavitareader.com/)
+- [ ] [Netbird](https://netbird.io/)
 - [ ] Dashboard
 - [ ] Monitoring
 - [ ] Notifications
