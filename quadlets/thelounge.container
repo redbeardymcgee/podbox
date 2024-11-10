@@ -1,0 +1,22 @@
+[Unit]
+Description=IRC client
+After=caddy.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/thelounge/thelounge:latest
+ContainerName=thelounge
+HostName=thelounge
+AutoUpdate=registry
+
+Network=protonvpn
+PublishPort=9000
+
+Volume=/volumes/books/thelounge/var/opt/thelounge:/var/opt/thelounge
+
