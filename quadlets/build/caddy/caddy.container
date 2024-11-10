@@ -1,0 +1,24 @@
+[Unit]
+Description=Reverse proxy
+After=network-online.target
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=caddy.build
+ContainerName=caddy
+HostName=caddy
+
+PublishPort=80:80
+PublishPort=443:443
+PublishPort=443:443/udp
+
+Volume=/volumes/caddy/config:/config
+Volume=/volumes/caddy/data:/data
+
+Volume=./Caddyfile:/etc/caddy/Caddyfile
+
