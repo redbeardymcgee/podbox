@@ -1,0 +1,27 @@
+[Unit]
+Description=Ebook reader
+After=caddy.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/kareadita/kavita:latest
+ContainerName=kavita
+HostName=kavita
+AutoUpdate=registry
+
+Network=protonvpn
+PublishPort=5000
+
+Volume=/volumes/books/kavita/kavita/config:/kavita/config
+Volume=/volumes/books/kavita/manga:/manga
+Volume=/volumes/books/kavita/comics:/comics
+Volume=/volumes/books/kavita/books:/books
+
+Environment=TZ=$timezone
+
