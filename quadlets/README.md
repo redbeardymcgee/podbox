@@ -4,6 +4,8 @@ Quadlets go in `~/.config/containers/systemd`.
 
 ## Weechat
 
+> [!NOTE] [Potential permissions issue fix](https://github.com/weechat/weechat-container/issues/10#issuecomment-2472077317)
+
 ### Attach and configure
 
 > [!TIP] Detach key sequence: `ctrl-p` `ctrl-q`.
