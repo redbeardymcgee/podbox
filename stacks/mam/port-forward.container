@@ -14,7 +14,6 @@ WantedBy=default.target
 
 [Container]
 # TODO: Replace this with one that has tags
-# Probably have to repack my own
 Image=docker.io/mjmeli/qbittorrent-port-forward-gluetun-server:latest
 ContainerName=qbittorrent-port-forward
 HostName=qbittorrent-port-forward
@@ -23,7 +22,7 @@ AutoUpdate=registry
 Network=container:gluetun
 
 Environment=QBT_USERNAME=$qbt_user
-Environment=QBT_PASSWORD=$qbt_password
 Environment=QBT_ADDR=http://localhost:8080
 Environment=GTN_ADDR=http://localhost:8000
 
+Secret=qbt_pw,type=env,target=QBT_PASSWORD

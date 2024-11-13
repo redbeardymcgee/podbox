@@ -31,3 +31,9 @@ name = "qbittorrent"
 routes = ["GET /v1/openvpn/portforwarded"]
 auth = "none"
 ```
+
+## Secrets
+
+```bash
+printf $mam_id | podman secret create --replace --label STACK=MAM mam_id -
+```

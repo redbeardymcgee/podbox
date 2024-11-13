@@ -24,5 +24,6 @@ Network=container:gluetun
 Volume=/volumes/books/seedboxapi/config:/config
 
 Environment=DEBUG=1
-Environment=mam_id=$mam_id
 Environment=interval=1
+
+Secret=mam_id,type=env,target=mam_id

@@ -21,8 +21,8 @@ AutoUpdate=registry
 
 Network=container:gluetun
 
-Environment=MAMID=$mam_id
 Environment=BUFFER=1000
 Environment=WEDGEHOURS=0
 Environment=VIP=1
 
+Secret=mam_id,type=env,target=MAMID
