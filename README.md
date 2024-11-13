@@ -45,7 +45,8 @@ provide ready-built containers that we need only configure.
 - [ ] Monitoring
 - [ ] Notifications
 - [ ] [booktree](https://github.com/myxdvz/booktree/tree/main)
-- [ ] [Lounge](https://thelounge.chat)
+- [x] [Lounge](https://thelounge.chat)
+- [x] Secrets management
 
 ## Operating System
 
