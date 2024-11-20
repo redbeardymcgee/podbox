@@ -33,21 +33,6 @@ reuse. It would be similar to the `linuxserver.io` fleet, but I don't think
 there is much need anymore for more custom containers. Many upstreams now
 provide ready-built containers that we need only configure.
 
-
-## Upcoming
-
-- [x] [Caddy](https://caddyserver.com)
-    - [ ] Socket activation (requires newer `caddy` and `podman`)
-- [ ] [LazyLibrarian](https://lazylibrarian.gitlab.io/)
-- [x] [Kavita](https://www.kavitareader.com/)
-- [ ] [Netbird](https://netbird.io/)
-- [ ] Dashboard
-- [ ] Monitoring
-- [ ] Notifications
-- [ ] [booktree](https://github.com/myxdvz/booktree/tree/main)
-- [x] [Lounge](https://thelounge.chat)
-- [x] Secrets management
-
 ## Operating System
 
 My proof of concept server running this container stack is built on AlmaLinux
@@ -290,4 +275,82 @@ Temporarily set SELinux policy to allow containers to use devices.
 ```bash
 setsebool -P container_use_devices 1
 ```
+
+## Upcoming containers
+
+- [x] [Caddy](https://caddyserver.com)
+    - [-] Socket activation (requires newer `caddy` and `podman`)
+- [ ] [LazyLibrarian](https://lazylibrarian.gitlab.io/)
+- [x] [Kavita](https://www.kavitareader.com/)
+- [ ] Notifications
+- [x] [Lounge](https://thelounge.chat)
+- [x] Secrets management
+- [ ] PXE network boot container
+    - [ ] [netboot.xyz](https://netboot.xyz)
+- [ ] Finance tool
+    - [ ] [Actual](https://actualbudget.github.io/docs/)
+- [-] Speedtest server
+    - [-] [librespeed](https://librespeed.org)
+- [ ] Time server
+    - NTP: Network Time Protocol
+    - PTP: Precision Time Protocol
+- [-] Monitoring
+    - [ ] [Graphite](https://graphiteapp.org/)
+    - [ ] [Cabot](https://cabotapp.com/)
+    - [ ] [ntop](https://www.ntop.org/)
+    - [x] [Glances](https://nicolargo.github.io/glances/)
+    - [ ] [Netdata](https://www.netdata.cloud/)
+    - [ ] [OpenNMS](https://www.opennms.org/)
+    - [ ] [Supervisord](http://supervisord.org/)
+    - [ ] [Zenoss](https://www.zenoss.com/)
+    - [ ] [Healthchecks](https://healthchecks.io/)
+- [ ] Ticketing
+    - [ ] [Dittofeed](https://www.dittofeed.com)
+- [ ] Music
+    - [ ] [betanin](https://github.com/sentriz/betanin)
+- [ ] Notifications
+    - [ ] [Apprise](https://github.com/caronc/apprise)
+- [ ] Time tracking
+    - [ ] [solidtime](https://docs.solidtime.io/self-hosting/intro)
+- [ ] Books
+    - [x] [booktree](https://github.com/myxdvz/booktree)
+    - [ ] [LazyLibrarian](https://gitlab.com/LazyLibrarian/LazyLibrarian)
+    - [x] Audio
+        - [x] [Audiobookshelf](https://www.audiobookshelf.org/)
+    - [-] Text
+        - [x] [Kavita](https://kavitareader.com)
+        - [ ] Calibre + [Calibre-web](https://github.com/janeczku/calibre-web)
+        - [ ] [Ubooquity](https://vaemendis.net/ubooquity/)
+        - [ ] [Komga](https://komga.org/)
+- [ ] Website automation
+    - [-] [Kibitzr](https://kibitzr.github.io/)
+- [ ] Proton MailBridge
+    - [ ] [ProtonMailBridgeDocker](https://github.com/VideoCurio/ProtonMailBridgeDocker)
+    - [ ] [protonmail-bridge-docker](https://github.com/shenxn/protonmail-bridge-docker)
+- [ ] Notes
+    - [ ] [Notesnook](https://github.com/streetwriters/notesnook-sync-server)
+- [-] Dashboard
+    - [x] [Dashy](https://dashy.to)
+    - [ ] [Homarr](https://homarr.dev/)
+    - [ ] [Homepage](https://gethomepage.dev/)
+- [-] Download Manager
+    - [x] qbittorrent
+- [-] VPN
+    - [x] gluetun
+    - [ ] [Netbird](https://netbird.io/)
+- [ ] File sync/sharing
+    - [ ] [Seafile](https://www.seafile.com)
+- [ ] User management
+    - [ ] [Keycloak](https://www.keycloak.org)
+    - [ ] [Authelia](https://www.authelia.com/)
+    - [ ] [Authentik](https://goauthentik.io/)
+    - [ ] [Zitadel](https://zitadel.com/)
+- [ ] SIEM
+    - [ ] [Wazuh](https://wazuh.com/)
+- [ ] Backups
+    - [ ] [UrBackup](https://urbackup.org)
+    - [ ] [Duplicati](https://duplicati.com/)
+    - [ ] [Duplicacy](https://duplicacy.com/)
+- [ ] [Stirling PDF](https://stirlingpdf.io)
+- [ ] [Code::Stats](https://codestats.net/)
 

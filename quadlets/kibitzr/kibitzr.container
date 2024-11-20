@@ -1,0 +1,23 @@
+[Unit]
+Description=Web assistant
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/peterdemin/kibitzr:latest
+AutoUpdate=registry
+ContainerName=kibitzr
+HostName=kibitzr
+
+Network=
+
+Volume=/volumes/kibitzr/root:/root
+
+# NOTE: Initialize a default kibitzr.yml and kibitzr-creds.yml
+#Exec=init
+Exec=run
