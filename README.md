@@ -306,7 +306,7 @@ setsebool -P container_use_devices 1
 - [ ] Calibre + [Calibre-web](https://github.com/janeczku/calibre-web)
 - [ ] [Ubooquity](https://vaemendis.net/ubooquity/)
 - [ ] [Komga](https://komga.org/)
-- [ ] [Kibitzr](https://kibitzr.github.io/)
+- [x] [Kibitzr](https://kibitzr.github.io/)
 - [ ] [ProtonMailBridgeDocker](https://github.com/VideoCurio/ProtonMailBridgeDocker)
 - [ ] [protonmail-bridge-docker](https://github.com/shenxn/protonmail-bridge-docker)
 - [ ] [Notesnook](https://github.com/streetwriters/notesnook-sync-server)
