@@ -282,75 +282,47 @@ setsebool -P container_use_devices 1
     - [ ] Socket activation (requires newer `caddy` and `podman`)
 - [ ] [LazyLibrarian](https://lazylibrarian.gitlab.io/)
 - [x] [Kavita](https://www.kavitareader.com/)
-- [ ] Notifications
 - [x] [Lounge](https://thelounge.chat)
-- [x] Secrets management
-- [ ] PXE network boot container
-    - [ ] [netboot.xyz](https://netboot.xyz)
-- [ ] Finance tool
-    - [ ] [Actual](https://actualbudget.github.io/docs/)
-- [ ] Speedtest server
-    - [ ] [librespeed](https://librespeed.org)
-- [ ] Time server
-    - NTP: Network Time Protocol
-    - PTP: Precision Time Protocol
-- [ ] Monitoring
-    - [ ] [Graphite](https://graphiteapp.org/)
-    - [ ] [Cabot](https://cabotapp.com/)
-    - [ ] [ntop](https://www.ntop.org/)
-    - [x] [Glances](https://nicolargo.github.io/glances/)
-    - [ ] [Netdata](https://www.netdata.cloud/)
-    - [ ] [OpenNMS](https://www.opennms.org/)
-    - [ ] [Supervisord](http://supervisord.org/)
-    - [ ] [Zenoss](https://www.zenoss.com/)
-    - [ ] [Healthchecks](https://healthchecks.io/)
-- [ ] Ticketing
-    - [ ] [Dittofeed](https://www.dittofeed.com)
-- [ ] Music
-    - [ ] [betanin](https://github.com/sentriz/betanin)
-- [ ] Notifications
-    - [ ] [Apprise](https://github.com/caronc/apprise)
-- [ ] Time tracking
-    - [ ] [solidtime](https://docs.solidtime.io/self-hosting/intro)
-- [ ] Books
-    - [x] [booktree](https://github.com/myxdvz/booktree)
-    - [ ] [LazyLibrarian](https://gitlab.com/LazyLibrarian/LazyLibrarian)
-    - [x] Audio
-        - [x] [Audiobookshelf](https://www.audiobookshelf.org/)
-    - [ ] Text
-        - [x] [Kavita](https://kavitareader.com)
-        - [ ] Calibre + [Calibre-web](https://github.com/janeczku/calibre-web)
-        - [ ] [Ubooquity](https://vaemendis.net/ubooquity/)
-        - [ ] [Komga](https://komga.org/)
-- [ ] Website automation
-    - [ ] [Kibitzr](https://kibitzr.github.io/)
-- [ ] Proton MailBridge
-    - [ ] [ProtonMailBridgeDocker](https://github.com/VideoCurio/ProtonMailBridgeDocker)
-    - [ ] [protonmail-bridge-docker](https://github.com/shenxn/protonmail-bridge-docker)
-- [ ] Notes
-    - [ ] [Notesnook](https://github.com/streetwriters/notesnook-sync-server)
-- [ ] Dashboard
-    - [x] [Dashy](https://dashy.to)
-    - [ ] [Homarr](https://homarr.dev/)
-    - [ ] [Homepage](https://gethomepage.dev/)
-- [ ] Download Manager
-    - [x] qbittorrent
-- [ ] VPN
-    - [x] gluetun
-    - [ ] [Netbird](https://netbird.io/)
-- [ ] File sync/sharing
-    - [ ] [Seafile](https://www.seafile.com)
-- [ ] User management
-    - [ ] [Keycloak](https://www.keycloak.org)
-    - [ ] [Authelia](https://www.authelia.com/)
-    - [ ] [Authentik](https://goauthentik.io/)
-    - [ ] [Zitadel](https://zitadel.com/)
-- [ ] SIEM
-    - [ ] [Wazuh](https://wazuh.com/)
-- [ ] Backups
-    - [ ] [UrBackup](https://urbackup.org)
-    - [ ] [Duplicati](https://duplicati.com/)
-    - [ ] [Duplicacy](https://duplicacy.com/)
+- [ ] [netboot.xyz](https://netboot.xyz)
+- [ ] [Actual](https://actualbudget.github.io/docs/)
+- [ ] [librespeed](https://librespeed.org)
+- [ ] [Graphite](https://graphiteapp.org/)
+- [ ] [Cabot](https://cabotapp.com/)
+- [ ] [ntop](https://www.ntop.org/)
+- [x] [Glances](https://nicolargo.github.io/glances/)
+- [ ] [Netdata](https://www.netdata.cloud/)
+- [ ] [OpenNMS](https://www.opennms.org/)
+- [ ] [Supervisord](http://supervisord.org/)
+- [ ] [Zenoss](https://www.zenoss.com/)
+- [ ] [Healthchecks](https://healthchecks.io/)
+- [ ] [Dittofeed](https://www.dittofeed.com)
+- [ ] [betanin](https://github.com/sentriz/betanin)
+- [ ] [Apprise](https://github.com/caronc/apprise)
+- [ ] [solidtime](https://docs.solidtime.io/self-hosting/intro)
+- [x] [booktree](https://github.com/myxdvz/booktree)
+- [ ] [LazyLibrarian](https://gitlab.com/LazyLibrarian/LazyLibrarian)
+- [x] [Audiobookshelf](https://www.audiobookshelf.org/)
+- [x] [Kavita](https://kavitareader.com)
+- [ ] Calibre + [Calibre-web](https://github.com/janeczku/calibre-web)
+- [ ] [Ubooquity](https://vaemendis.net/ubooquity/)
+- [ ] [Komga](https://komga.org/)
+- [ ] [Kibitzr](https://kibitzr.github.io/)
+- [ ] [ProtonMailBridgeDocker](https://github.com/VideoCurio/ProtonMailBridgeDocker)
+- [ ] [protonmail-bridge-docker](https://github.com/shenxn/protonmail-bridge-docker)
+- [ ] [Notesnook](https://github.com/streetwriters/notesnook-sync-server)
+- [x] [Dashy](https://dashy.to)
+- [ ] [Homarr](https://homarr.dev/)
+- [ ] [Homepage](https://gethomepage.dev/)
+- [ ] [Netbird](https://netbird.io/)
+- [ ] [Seafile](https://www.seafile.com)
+- [ ] [Keycloak](https://www.keycloak.org)
+- [ ] [Authelia](https://www.authelia.com/)
+- [ ] [Authentik](https://goauthentik.io/)
+- [ ] [Zitadel](https://zitadel.com/)
+- [ ] [Wazuh](https://wazuh.com/)
+- [ ] [UrBackup](https://urbackup.org)
+- [ ] [Duplicati](https://duplicati.com/)
+- [ ] [Duplicacy](https://duplicacy.com/)
 - [ ] [Stirling PDF](https://stirlingpdf.io)
 - [ ] [Code::Stats](https://codestats.net/)
 
