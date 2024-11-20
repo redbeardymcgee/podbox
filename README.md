@@ -279,7 +279,7 @@ setsebool -P container_use_devices 1
 ## Upcoming containers
 
 - [x] [Caddy](https://caddyserver.com)
-    - [-] Socket activation (requires newer `caddy` and `podman`)
+    - [ ] Socket activation (requires newer `caddy` and `podman`)
 - [ ] [LazyLibrarian](https://lazylibrarian.gitlab.io/)
 - [x] [Kavita](https://www.kavitareader.com/)
 - [ ] Notifications
@@ -289,12 +289,12 @@ setsebool -P container_use_devices 1
     - [ ] [netboot.xyz](https://netboot.xyz)
 - [ ] Finance tool
     - [ ] [Actual](https://actualbudget.github.io/docs/)
-- [-] Speedtest server
-    - [-] [librespeed](https://librespeed.org)
+- [ ] Speedtest server
+    - [ ] [librespeed](https://librespeed.org)
 - [ ] Time server
     - NTP: Network Time Protocol
     - PTP: Precision Time Protocol
-- [-] Monitoring
+- [ ] Monitoring
     - [ ] [Graphite](https://graphiteapp.org/)
     - [ ] [Cabot](https://cabotapp.com/)
     - [ ] [ntop](https://www.ntop.org/)
@@ -317,25 +317,25 @@ setsebool -P container_use_devices 1
     - [ ] [LazyLibrarian](https://gitlab.com/LazyLibrarian/LazyLibrarian)
     - [x] Audio
         - [x] [Audiobookshelf](https://www.audiobookshelf.org/)
-    - [-] Text
+    - [ ] Text
         - [x] [Kavita](https://kavitareader.com)
         - [ ] Calibre + [Calibre-web](https://github.com/janeczku/calibre-web)
         - [ ] [Ubooquity](https://vaemendis.net/ubooquity/)
         - [ ] [Komga](https://komga.org/)
 - [ ] Website automation
-    - [-] [Kibitzr](https://kibitzr.github.io/)
+    - [ ] [Kibitzr](https://kibitzr.github.io/)
 - [ ] Proton MailBridge
     - [ ] [ProtonMailBridgeDocker](https://github.com/VideoCurio/ProtonMailBridgeDocker)
     - [ ] [protonmail-bridge-docker](https://github.com/shenxn/protonmail-bridge-docker)
 - [ ] Notes
     - [ ] [Notesnook](https://github.com/streetwriters/notesnook-sync-server)
-- [-] Dashboard
+- [ ] Dashboard
     - [x] [Dashy](https://dashy.to)
     - [ ] [Homarr](https://homarr.dev/)
     - [ ] [Homepage](https://gethomepage.dev/)
-- [-] Download Manager
+- [ ] Download Manager
     - [x] qbittorrent
-- [-] VPN
+- [ ] VPN
     - [x] gluetun
     - [ ] [Netbird](https://netbird.io/)
 - [ ] File sync/sharing
