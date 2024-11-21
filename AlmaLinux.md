@@ -153,7 +153,9 @@ systemctl enable --now podman
 > [!NOTE] Read the docs.
 > `man podman-systemd.unit`
 
-### slirp4netns
+### Prepare host networking stack
+
+#### slirp4netns
 
 > [!TODO]
 > This may not be necessary but my system is currently using it.
@@ -162,7 +164,7 @@ systemctl enable --now podman
 dnf install slirp4netns
 ```
 
-### Install DNS server for `podman`
+#### Install DNS server for `podman`
 
 > [!TODO]
 > Not sure how to resolve these correctly yet but the journal logs it
@@ -171,14 +173,20 @@ dnf install slirp4netns
 ```bash
 dnf install aardvark-dns
 ```
-
-### Enable unprivileged port binding
+#### Allow rootless binding port 80+
 
 > [!NOTE] This is only necessary if you are setting up the reverse proxy.
 
 ```bash
 printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' > /etc/sysctl.d/99-unprivileged-port-binding.conf
 sysctl 'net.ipv4.ip_unprivileged_port_start=80'
+```
+
+#### Allow containers to route within multiple networks
+
+```bash
+printf '%s\n' 'net.ipv4.conf.all.rp_filter=2' > /etc/sysctl.d/99-reverse-path-loose.conf
+sysctl -w net.ipv4.conf.all.rp_filter=2
 ```
 
 ### Prepare container user
