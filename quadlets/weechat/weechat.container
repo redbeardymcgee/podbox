@@ -14,10 +14,9 @@ ContainerName=weechat
 HostName=weechat
 AutoUpdate=registry
 
-# Persist the full home dir
-# FIXME: requires `chmod 777 /volumes/books/weechat/home/user` on host
 Volume=/volumes/books/weechat/home/user:/home/user
 
-# FIXME: Better way to attach stdin and tty
+# FIXME: Better way to attach stdin and tty. Quadlets don't seem to support
+# this, probably because attaching to containers is weirder than `exec sh` into
+# it
 PodmanArgs=-a stdin --tty=true
-
