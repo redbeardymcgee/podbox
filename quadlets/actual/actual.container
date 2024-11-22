@@ -1,0 +1,27 @@
+[Unit]
+Description=Budget management
+After=network-online.target
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/actualbudget/actual-server:latest
+ContainerName=actual
+HostName=actual
+
+Network=protonvpn.network
+
+Volume=/volumes/actual/data:/data
+
+#Environment=ACTUAL_HTTPS_KEY=
+#Environment=ACTUAL_HTTPS_CERT=
+#Environment=ACTUAL_PORT=
+#Environment=ACTUAL_UPLOAD_FILE_SYNC_SIZE_LIMIT_MB=
+#Environment=ACTUAL_UPLOAD_SYNC_ENCRYPTED_FILE_SYNC_SIZE_LIMIT_MB=
+#Environment=ACTUAL_UPLOAD_FILE_SIZE_LIMIT=
+
