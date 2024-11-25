@@ -1,0 +1,6 @@
+# source: https://github.com/fpatrick/podman-quadlet
+[Network]
+Subnet= # (Mandatory) Subnet for the network
+Gateway= # (Mandatory) Gateway IP address
+Label= # (Optional) Custom label for the network
+

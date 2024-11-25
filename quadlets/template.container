@@ -1,23 +1,31 @@
+# source: https://github.com/fpatrick/podman-quadlet
 [Unit]
-Description=
-After=
-
-[Service]
-Restart=on-failure
-TimeoutStartSec=900
-
-[Install]
-WantedBy=default.target
+Description=  # (Optional) A brief description of the service
+Wants=        # (Optional) Services you want to run with this one
+After=        # (Optional) Services that need to start before this one
 
 [Container]
-Image=
-ContainerName=
-HostName=
+ContainerName=  # (Mandatory) The container's name
+Image=          # (Mandatory) The container image to use (e.g., docker.io/library/alpine)
+HostName=       # (Optional) The containers hostname
+EnvironmentFile= # (Optional) Path to an .env file
+Environment=    # (Optional) Key=value pairs for environment variables
+Volume=         # (Optional) Persistent storage paths (host:container)
+Network=        # (Optional) Custom network for the container
+PublishPort=    # (Optional) Ports to expose (host:container)
+Exec=           # (Optional) Custom command to run in the container
+PodmanArgs=     # (Optional) Additional Podman arguments
+AddCapability=  # (Optional) Extra capabilities to add to the container
+AddDevice=      # (Optional) Add host devices to the container
+SecurityLabelDisable= # (Optional) Disable SELinux labels
+User=           # (Optional) Run as a specific user inside the container
+Label=          # (Optional) Add metadata labels to the container
+UIDMap=         # (Optional) User ID mapping. Example: 0:10000:10 (Inside:Outside:Range)
+GIDMap=         # (Optional) Group ID mapping Example: 0:10000:10 (Inside:Outside:Range)
 
-Network=
+[Service]
+Restart=        # (Optional) Set to 'always' or 'on-failure' to restart on failure
+TimeoutStartSec= # (Optional) Time to wait before considering a failure
 
-Volume=
-
-Secret=
-
-Environment=
+[Install]
+WantedBy=       # (Optional) Target to start with (default: multi-user.target). For graphical user interface systems default.target
