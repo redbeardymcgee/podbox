@@ -1,0 +1,26 @@
+[Unit]
+Description=Fitness tracker
+After=network-online.target
+Requires=wger-db.service
+Requires=wger-nginx.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/wger/server:latest
+ContainerName=wger
+HostName=wger
+
+Network=protonvpn
+#PublishPort=8000
+
+Volume=/volumes/wger/home/wger/static:/home/wger/static
+
+Secret=
+
+EnvironmentFile=./config/prod.env

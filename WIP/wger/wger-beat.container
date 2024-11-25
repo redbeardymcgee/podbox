@@ -1,0 +1,26 @@
+[Unit]
+Description=Wger heartbeat
+After=network-online.target
+Requires=wger-worker.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/wger/server:latest
+ContainerName=wger-beat
+HostName=wger-beat
+Exec=/start-beat
+
+Network=protonvpn
+
+Volume=/volumes/wger/home/wger/beat:/home/wger/beat
+
+Secret=
+
+Environment=./config/prod.env
+

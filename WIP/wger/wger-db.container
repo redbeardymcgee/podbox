@@ -1,0 +1,27 @@
+[Unit]
+Description=Wger database
+After=network-online.target
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres:15-alpine
+ContainerName=wger-db
+HostName=wger-db
+
+Network=
+#PublishPort=5432
+
+Volume=/volumes/wger/var/lib/postgresql/data:/var/lib/postgresql/data
+
+Secret=
+
+Environment=POSTGRES_USER=wger
+Environment=POSTGRES_PASSWORD=wger
+Environment=POSTGRES_DB=wger
+

@@ -1,0 +1,38 @@
+[Unit]
+Description=Wger static web server
+After=network-online.target
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/nginx:stable
+ContainerName=wger-nginx
+HostName=wger-nginx
+
+Network=protonvpn
+PublishPort=80
+
+Volume=/volumes/wger/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+Volume=/volumes/wger/wger/static:/wger/static:ro
+Volume=/volumes/wger/wger/media:/wger/media:ro
+
+Secret=
+
+Environment=
+
+volumes:
+  postgres-data:
+  celery-beat:
+  static:
+  media:
+  redis-data:
+
+networks:
+  default:
+    name: wger_network
+
