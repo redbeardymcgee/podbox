@@ -18,7 +18,7 @@ AutoUpdate=registry
 AddCapability=NET_ADMIN
 AddDevice=/dev/net/tun:/dev/net/tun
 
-Network=protonvpn
+Network=
 
 Volume=/volumes/books/gluetun/auth/config.toml:/gluetun/auth/config.toml
 

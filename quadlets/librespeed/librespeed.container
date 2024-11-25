@@ -16,7 +16,7 @@ ContainerName=librespeed
 HostName=librespeed
 AutoUpdate=registry
 
-Network=container:gluetun
+Network=
 
 Volume=/volumes/librespeed/database:/database
 

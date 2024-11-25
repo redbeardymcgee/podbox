@@ -16,7 +16,7 @@ ContainerName=qbittorrent
 HostName=qbittorrent
 AutoUpdate=registry
 
-Network=container:gluetun
+Network=
 
 Volume=/volumes/books/qbittorrent/config:/config
 Volume=/volumes/books/qbittorrent/downloads:/downloads

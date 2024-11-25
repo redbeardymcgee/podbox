@@ -15,7 +15,7 @@ ContainerName=thelounge
 HostName=thelounge
 AutoUpdate=registry
 
-Network=protonvpn
+Network=
 PublishPort=9000
 
 Volume=/volumes/books/thelounge/var/opt/thelounge:/var/opt/thelounge

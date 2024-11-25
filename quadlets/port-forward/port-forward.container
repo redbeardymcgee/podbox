@@ -20,7 +20,7 @@ ContainerName=qbittorrent-port-forward
 HostName=qbittorrent-port-forward
 AutoUpdate=registry
 
-Network=container:gluetun
+Network=
 
 Environment=QBT_USERNAME=$qbt_user
 Environment=QBT_ADDR=http://localhost:8080

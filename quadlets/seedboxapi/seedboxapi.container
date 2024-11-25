@@ -19,7 +19,7 @@ ContainerName=seedboxapi
 HostName=seedboxapi
 AutoUpdate=registry
 
-Network=container:gluetun
+Network=
 
 Volume=/volumes/books/seedboxapi/config:/config
 

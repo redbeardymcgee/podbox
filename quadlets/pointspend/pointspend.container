@@ -19,7 +19,7 @@ ContainerName=pointspend
 HostName=pointspend
 AutoUpdate=registry
 
-Network=container:gluetun
+Network=
 
 Environment=BUFFER=1000
 Environment=WEDGEHOURS=0

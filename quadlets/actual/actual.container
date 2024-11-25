@@ -14,7 +14,7 @@ Image=docker.io/actualbudget/actual-server:latest
 ContainerName=actual
 HostName=actual
 
-Network=protonvpn.network
+Network=
 
 Volume=/volumes/actual/data:/data
 

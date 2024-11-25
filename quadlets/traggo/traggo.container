@@ -14,7 +14,7 @@ Image=docker.io/traggo/server:latest
 ContainerName=traggo
 HostName=traggo
 
-Network=protonvpn
+Network=
 
 Volume=/volumes/traggo/opt/traggo/data:/opt/traggo/data
 

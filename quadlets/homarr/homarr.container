@@ -14,7 +14,7 @@ Image=ghcr.io/ajnart/homarr:latest
 ContainerName=homarr
 HostName=homarr
 
-Network=protonvpn
+Network=
 #PublishPort=7575:7575
 
 Volume=/volumes/homarr/app/data/configs:/app/data/configs

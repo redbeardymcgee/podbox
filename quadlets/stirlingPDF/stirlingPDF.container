@@ -14,7 +14,7 @@ Image=docker.io/frooodle/s-pdf:latest
 ContainerName=stirlingPDF
 HostName=stirlingPDF
 
-Network=protonvpn
+Network=
 
 Volume=/volumes/stirlingPDF/usr/share/tesseract-ocr/5/tessdata:/usr/share/tesseract-ocr/5/tessdata
 Volume=/volumes/stirlingPDF/configs:/configs

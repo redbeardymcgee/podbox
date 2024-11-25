@@ -15,7 +15,7 @@ ContainerName=dashy
 HostName=dashy
 AutoUpdate=registry
 
-Network=protonvpn
+Network=
 
 Volume=./user-data:/app/user-data
 
