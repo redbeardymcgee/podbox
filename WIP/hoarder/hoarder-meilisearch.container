@@ -1,0 +1,24 @@
+[Unit]
+Description=Hoarder requirement
+After=network-online.target
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+ContainerName=hoarder-meilisearch
+
+Image=docker.io/getmeili/meilisearch:v1.6
+
+EnvironmentFile=hoarder.env
+Environment=MEILI_NO_ANALYTICS=true
+
+Volume=/volumes/hoarder/meili_data:/meili_data
+
+Network=hoarder.network
+
+Secret=meili-master-key,type=env,target=MEILI_MASTER_KEY
