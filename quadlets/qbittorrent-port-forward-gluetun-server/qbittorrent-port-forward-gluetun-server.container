@@ -16,8 +16,8 @@ WantedBy=default.target
 # TODO: Replace this with one that has tags
 # Probably have to repack my own
 Image=docker.io/mjmeli/qbittorrent-port-forward-gluetun-server:latest
-ContainerName=qbittorrent-port-forward
-HostName=qbittorrent-port-forward
+ContainerName=qbittorrent-port-forward-gluetun-server
+HostName=qbittorrent-port-forward-gluetun-server
 AutoUpdate=registry
 
 Network=
