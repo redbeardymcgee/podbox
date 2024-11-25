@@ -1,0 +1,23 @@
+[Unit]
+Description=Tag-based time tracking
+After=network-online.target
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/traggo/server:latest
+ContainerName=traggo
+HostName=traggo
+
+Network=protonvpn
+
+Volume=/volumes/traggo/opt/traggo/data:/opt/traggo/data
+
+Secret=traggo-pw,type=env,target=TRAGGO_DEFAULT_USER_PASS
+
+Environment=TRAGGO_DEFAULT_USER_NAME=$traggo_admin
