@@ -16,9 +16,7 @@ HostName=kavita
 AutoUpdate=registry
 
 Volume=kavita-config:/kavita/config
-Volume=/volumes/books/kavita/manga:/manga
-Volume=/volumes/books/kavita/comics:/comics
-Volume=/volumes/books/kavita/books:/books
+Volume=/volumes/books:/library
 
 Environment=TZ=
 
