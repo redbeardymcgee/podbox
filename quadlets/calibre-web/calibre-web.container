@@ -14,6 +14,8 @@ Image=lscr.io/linuxserver/calibre-web:latest
 ContainerName=calibre-web
 HostName=calibre-web
 
+PublishPort=8083
+
 Volume=/volumes/calibre-web/books:/books
 Volume=calibre-web-config:/config
 Volume=calibre-web-database:/database
