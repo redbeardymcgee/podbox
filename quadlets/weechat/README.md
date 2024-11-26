@@ -25,7 +25,6 @@ ssh -t $remotehost sh -lc 'cd; podman attach weechat'
 /server add mam irc.myanonamouse.net/6697
 /set irc.server.mam.username $irc_username
 /set irc.server_default.autojoin_dynamic on
-/set irc.server.mam.autojoin "#anonamouse.net"
 /set irc.server.mam.nicks "$irc_nick1,$irc_nick2"
 /set irc.server.mam.autoconnect on
 /connect mam
