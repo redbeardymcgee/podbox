@@ -15,6 +15,8 @@ ContainerName=kavita
 HostName=kavita
 AutoUpdate=registry
 
+PublishPort=5000
+
 Volume=kavita-config:/kavita/config
 Volume=/volumes/books:/library
 
