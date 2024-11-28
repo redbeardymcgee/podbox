@@ -16,7 +16,7 @@ HostName=kibitzr
 
 Network=
 
-Volume=/volumes/kibitzr/root:/root
+Volume=kibitzr-root:/root
 
 # NOTE: Initialize a default kibitzr.yml and kibitzr-creds.yml
 #Exec=init

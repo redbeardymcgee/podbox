@@ -18,9 +18,7 @@ AutoUpdate=registry
 AddCapability=NET_ADMIN
 AddDevice=/dev/net/tun:/dev/net/tun
 
-Network=
-
-Volume=/volumes/books/gluetun/auth/config.toml:/gluetun/auth/config.toml
+Volume=./config.toml:/gluetun/auth/config.toml
 
 Environment=TZ=$timezone
 Environment=UPDATER_PERIOD=24h

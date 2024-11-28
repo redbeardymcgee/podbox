@@ -14,9 +14,7 @@ Image=docker.io/actualbudget/actual-server:latest
 ContainerName=actual
 HostName=actual
 
-Network=
-
-Volume=/volumes/actual/data:/data
+Volume=actual-data:/data
 
 #Environment=ACTUAL_HTTPS_KEY=
 #Environment=ACTUAL_HTTPS_CERT=

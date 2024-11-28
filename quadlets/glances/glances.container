@@ -17,3 +17,6 @@ AutoUpdate=registry
 Volume=%t/podman/podman.sock:/run/user/1000/podman/podman.sock:ro
 Volume=/etc/os-release:/etc/os-release:ro
 Volume=./glances.conf:/glances/conf/glances.conf
+
+Environment=GLANCES_OPT="-C /glances/conf/glances.conf -w"
+
