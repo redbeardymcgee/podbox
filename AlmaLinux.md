@@ -33,22 +33,18 @@ one single logical volume.
 lsblk -f
 # Clear the partition table
 dd if=/dev/zero of=/dev/sdX bs=512 count=1 conv=notrunc
-# Create LVM partition
-parted --fix --align optimal --script /dev/sdX \
-    mklabel gpt \
-    mkpart primary ext4 1MiB -2048s \
-    set 1 lvm on
+dd if=/dev/zero of=/dev/sdY bs=512 count=1 conv=notrunc
 ```
 
 #### LVM
 
 ```bash
 # Create physical volume
-pvcreate /dev/sdX1
+pvcreate /dev/sdX
 # Create volume group for disks
-vgcreate library /dev/sdX1
+vgcreate library /dev/sdX
 # Add more disks to volume group
-vgextend library /dev/sdY1
+vgextend library /dev/sdY
 # Create logical volume across all disks in volume group
 lvcreate -l100%FREE -n books library
 # Add filesystem to logical volume
@@ -69,8 +65,11 @@ Type=ext4
 WantedBy=default.target
 ```
 
+> [!NOTE]
+> We could use a different filesystem that allows mount options to set the
+> permissions
+
 ```bash
-mkdir -p /volumes/books
 chown -R $ctuser:$ctuser /volumes
 ```
 
