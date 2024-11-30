@@ -1,7 +1,6 @@
 [Unit]
 Description=Wger heartbeat
 After=network-online.target
-Requires=wger-worker.service
 
 [Service]
 Restart=on-failure
@@ -18,9 +17,7 @@ Exec=/start-beat
 
 Network=protonvpn
 
-Volume=/volumes/wger/home/wger/beat:/home/wger/beat
+Volume=wger-beat:/home/wger/beat
 
-Secret=
-
-Environment=./config/prod.env
+Environment=./prod.env
 

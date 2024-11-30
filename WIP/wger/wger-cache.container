@@ -1,6 +1,6 @@
 [Unit]
-Description=
-After=
+Description=Wger Redis cache
+After=network-online.target
 
 [Service]
 Restart=on-failure
@@ -10,28 +10,8 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=
-ContainerName=
-HostName=
+Image=docker.io/redis:latest
+ContainerName=wger-cache
+HostName=wger-cache
 
-Network=
-
-Volume=
-
-Secret=
-
-Environment=
-  cache:
-    image: redis
-    expose:
-      - 6379
-    volumes:
-      - redis-data:/data
-    healthcheck:
-      test: redis-cli ping
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
-    restart: unless-stopped
-
+Volume=wger-cache:/data

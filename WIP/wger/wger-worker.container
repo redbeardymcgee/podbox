@@ -1,6 +1,6 @@
 [Unit]
-Description=
-After=
+Description=Wger worker
+After=network-online.target
 
 [Service]
 Restart=on-failure
@@ -10,31 +10,8 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=
-ContainerName=
-HostName=
+Image=docker.io/wger/server:latest
+ContainerName=wger-worker
+HostName=wger-worker
 
-Network=
-
-Volume=
-
-Secret=
-
-Environment=
-  celery_worker:
-    image: wger/server:latest
-    command: /start-worker
-    env_file:
-      - ./config/prod.env
-    volumes:
-      - media:/home/wger/media
-    depends_on:
-      web:
-        condition: service_healthy
-    healthcheck:
-      test: celery -A wger inspect ping
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
-
+Environment=prod.env

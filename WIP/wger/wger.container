@@ -16,11 +16,8 @@ Image=docker.io/wger/server:latest
 ContainerName=wger
 HostName=wger
 
-Network=protonvpn
-#PublishPort=8000
+PublishPort=8000
 
-Volume=/volumes/wger/home/wger/static:/home/wger/static
+Volume=wger-static:/home/wger/static
 
-Secret=
-
-EnvironmentFile=./config/prod.env
+EnvironmentFile=prod.env

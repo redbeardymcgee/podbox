@@ -17,9 +17,9 @@ HostName=wger-db
 Network=
 #PublishPort=5432
 
-Volume=/volumes/wger/var/lib/postgresql/data:/var/lib/postgresql/data
+Volume=wger-database:/var/lib/postgresql/data
 
-Secret=
+#Secret=wger-db-pw,type=env,target=POSTGRES_PASSWORD
 
 Environment=POSTGRES_USER=wger
 Environment=POSTGRES_PASSWORD=wger
