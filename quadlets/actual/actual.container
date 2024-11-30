@@ -1,6 +1,6 @@
 [Unit]
 Description=Budget management
-After=network-online.target
+
 
 [Service]
 Restart=on-failure

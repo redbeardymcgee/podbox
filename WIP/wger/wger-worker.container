@@ -1,6 +1,6 @@
 [Unit]
 Description=Wger worker
-After=network-online.target
+
 
 [Service]
 Restart=on-failure

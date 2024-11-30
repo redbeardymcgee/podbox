@@ -1,6 +1,6 @@
 [Unit]
 Description=Homarr
-After=network-online.target
+
 
 [Service]
 Restart=on-failure

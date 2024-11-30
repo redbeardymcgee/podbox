@@ -1,6 +1,6 @@
 [Unit]
 Description=StirlingPDF
-After=network-online.target
+
 
 [Service]
 Restart=always

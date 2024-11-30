@@ -1,6 +1,6 @@
 [Unit]
 Description=Hoarder chrome browser
-After=network-online.target
+
 
 [Service]
 Restart=on-failure

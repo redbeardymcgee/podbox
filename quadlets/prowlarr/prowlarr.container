@@ -1,6 +1,6 @@
 [Unit]
 Description=Manage indexers
-After=network-online.target
+
 
 [Service]
 Restart=on-failure

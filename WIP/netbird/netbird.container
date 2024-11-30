@@ -1,6 +1,6 @@
 [Unit]
 Description=Overlay VPN
-After=network-online.target
+
 Wants=netbird-signal.service
 Wants=netbird-relay.service
 

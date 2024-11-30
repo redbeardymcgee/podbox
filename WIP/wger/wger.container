@@ -1,6 +1,6 @@
 [Unit]
 Description=Fitness tracker
-After=network-online.target
+
 Requires=wger-db.service
 Requires=wger-nginx.service
 

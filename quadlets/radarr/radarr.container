@@ -1,6 +1,6 @@
 [Unit]
 Description=Movie metadata manager
-After=network-online.target
+
 
 [Service]
 Restart=on-failure

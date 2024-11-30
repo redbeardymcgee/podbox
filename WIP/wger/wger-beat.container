@@ -1,6 +1,6 @@
 [Unit]
 Description=Wger heartbeat
-After=network-online.target
+
 
 [Service]
 Restart=on-failure
