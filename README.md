@@ -74,7 +74,7 @@ journalctl -e # jump to the end of the logs to see if the app started
 - [x] [Prowlarr](https://prowlarr.com)
 - [x] [qBittorrent](https://qbittorrent.org)
 - [x] [qbittorrent-port-forward-gluetun-server](https://github.com/mjmeli/qbittorrent-port-forward-gluetun-server)
-- [ ] [qbit_manage](https://github.com/StuffAnThings/qbit_manage)
+- [x] [qbit_manage](https://github.com/StuffAnThings/qbit_manage)
 - [x] [Radarr](https://radarr.video)
 - [ ] [Seafile](https://www.seafile.com)
 - [ ] [solidtime](https://docs.solidtime.io/self-hosting/intro)
