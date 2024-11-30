@@ -14,17 +14,17 @@ are `quadlets`, which is an interface between `systemd` and `podman`.
 - `podman>=4.3.0`
 - `systemd`
 
-### How to use these files
-
-Copy the `quadlets/$application` directory from this repository that you want to run
-into `/home/$ctuser/.config/containers/systemd/`. Make any necessary changes to
-the files within this directory to match your system and needs, such as
-pointing a volume path at a different mount point or filling in any
-`$variables` or blank values.
+### Quickstart
 
 ```bash
-systemctl --user start $application
-journalctl -e # jump to the end of the logs to see if the app started
+git clone  --depth=1 https://github.com/redbeardymcgee/podbox
+cp -a podbox/quadlets/"$app" "$XDG_CONFIG_HOME"/containers/systemd/
+# Edit the files in $XDG_CONFIG_HOME/containers/systemd/$app/ as needed
+$EDITOR "$XDG_CONFIG_HOME/containers/systemd/$app/*"
+systemctl --user daemon-reload
+systemctl --user start "$app"
+# Jump to the end of the logs to see if the app started
+journalctl -e
 ```
 
 ## Upcoming containers
