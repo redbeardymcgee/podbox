@@ -20,7 +20,7 @@ Copy the `quadlets/$application` directory from this repository that you want to
 into `/home/$ctuser/.config/containers/systemd/`. Make any necessary changes to
 the files within this directory to match your system and needs, such as
 pointing a volume path at a different mount point or filling in any
-`$variables`.
+`$variables` or blank values.
 
 ```bash
 systemctl --user start $application
@@ -57,7 +57,7 @@ journalctl -e # jump to the end of the logs to see if the app started
 - [ ] [Healthchecks](https://healthchecks.io/)
 - [x] [Homarr](https://homarr.dev/)
 - [ ] [Homepage](https://gethomepage.dev/)
-- [ ] [hoarder](https://hoarder.app/)
+- [x] [hoarder](https://hoarder.app/)
 - [ ] [Keycloak](https://www.keycloak.org)
 - [ ] [Komga](https://komga.org/)
 - [ ] [LazyLibrarian](https://lazylibrarian.gitlab.io/)
@@ -71,11 +71,14 @@ journalctl -e # jump to the end of the logs to see if the app started
 - [ ] [OpenNMS](https://www.opennms.org/)
 - [ ] [protonmail-bridge-docker](https://github.com/shenxn/protonmail-bridge-docker)
 - [ ] [ProtonMailBridgeDocker](https://github.com/VideoCurio/ProtonMailBridgeDocker)
+- [x] [Prowlarr](https://prowlarr.com)
 - [x] [qBittorrent](https://qbittorrent.org)
 - [x] [qbittorrent-port-forward-gluetun-server](https://github.com/mjmeli/qbittorrent-port-forward-gluetun-server)
 - [ ] [qbit_manage](https://github.com/StuffAnThings/qbit_manage)
+- [x] [Radarr](https://radarr.video)
 - [ ] [Seafile](https://www.seafile.com)
 - [ ] [solidtime](https://docs.solidtime.io/self-hosting/intro)
+- [x] [Sonarr](https://sonarr.tv)
 - [x] [Stirling PDF](https://stirlingpdf.io)
 - [ ] [Supervisord](http://supervisord.org/)
 - [x] [traggo](https://traggo.net)
