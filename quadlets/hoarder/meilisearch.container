@@ -10,15 +10,10 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-ContainerName=hoarder-meilisearch
-
 Image=docker.io/getmeili/meilisearch:v1.6
+ContainerName=hoarder-meilisearch
+HostName=hoarder-meilisearch
 
 EnvironmentFile=hoarder.env
-Environment=MEILI_NO_ANALYTICS=true
 
-Volume=/volumes/hoarder/meili_data:/meili_data
-
-Network=hoarder.network
-
-Secret=meili-master-key,type=env,target=MEILI_MASTER_KEY
+Volume=meilisearch:/meili_data
