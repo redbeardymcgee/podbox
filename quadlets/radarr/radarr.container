@@ -1,0 +1,21 @@
+[Unit]
+Description=Movie metadata manager
+After=network-online.target
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/hotio/radarr
+ContainerName=radarr
+HostName=radarr
+
+Volume=radarr-config:/config
+Volume=/volumes/media:/data
+
+PublishPort=7878
+
