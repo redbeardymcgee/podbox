@@ -18,8 +18,8 @@ PublishPort=8083
 
 Volume=/volumes/books:/books
 Volume=calibre-web-config:/config
-Volume=calibre-web-database:/database
+Volume=calibre-config:/database
 
-Environment=TZ=
+Environment=TZ=Etc/UTC
 
 
