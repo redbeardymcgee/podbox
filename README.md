@@ -18,9 +18,9 @@ are `quadlets`, which is an interface between `systemd` and `podman`.
 
 ```bash
 git clone  --depth=1 https://github.com/redbeardymcgee/podbox
-cp -a podbox/quadlets/"$app" "$XDG_CONFIG_HOME"/containers/systemd/
+cp -a "podbox/quadlets/$app" "$XDG_CONFIG_HOME/containers/systemd/"
 # Edit the files in $XDG_CONFIG_HOME/containers/systemd/$app/ as needed
-$EDITOR "$XDG_CONFIG_HOME/containers/systemd/$app/*"
+$EDITOR "$XDG_CONFIG_HOME/containers/systemd/$app/"*
 systemctl --user daemon-reload
 systemctl --user start "$app"
 # Jump to the end of the logs to see if the app started
