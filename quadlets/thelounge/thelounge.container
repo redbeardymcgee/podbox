@@ -1,6 +1,5 @@
 [Unit]
 Description=IRC client
-After=caddy.service
 
 [Service]
 Restart=on-failure
@@ -15,8 +14,7 @@ ContainerName=thelounge
 HostName=thelounge
 AutoUpdate=registry
 
-Network=
 PublishPort=9000
 
-Volume=/volumes/books/thelounge/var/opt/thelounge:/var/opt/thelounge
+Volume=thelounge-data:/var/opt/thelounge
 
