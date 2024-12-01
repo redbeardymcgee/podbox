@@ -26,7 +26,7 @@ You may need to add a large range of subuids and subgids, because `podman` will
 use them when users are generated inside the containers.
 
 ```bash
-usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $USER
+sudo usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $USER
 ```
 
 ### Quickstart
