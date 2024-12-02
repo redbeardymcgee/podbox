@@ -1,0 +1,10 @@
+[Pod]
+PodName=MAMstack
+
+Network=mamstack.network
+
+PublishPort=80
+PublishPort=443
+PublishPort=443:443/udp
+
+Volume=

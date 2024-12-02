@@ -1,0 +1,19 @@
+[Unit]
+Description=IRC client
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/thelounge/thelounge:latest
+ContainerName=thelounge
+HostName=thelounge
+Pod=MAMstack.pod
+AutoUpdate=registry
+
+Volume=thelounge-data:/var/opt/thelounge
+

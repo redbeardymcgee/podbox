@@ -1,0 +1,33 @@
+[Unit]
+Description=gluetun VPN
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/qmcgaw/gluetun:$gluetun_version
+ContainerName=gluetun
+HostName=gluetun
+AddCapability=NET_ADMIN
+AddDevice=/dev/net/tun:/dev/net/tun
+Pod=MAMstack.pod
+AutoUpdate=registry
+
+Volume=./config.toml:/gluetun/auth/config.toml
+
+Environment=TZ=$timezone
+Environment=UPDATER_PERIOD=24h
+Environment=UPDATER_VPN_SERVICE_PROVIDERS=protonvpn
+Environment=VPN_SERVICE_PROVIDER=protonvpn
+# The trailing `+pmp` is for port forwarding
+Environment=OPENVPN_USER=${openvpn_user}+pmp
+Environment=OPENVPN_PASSWORD=$openvpn_password
+Environment=OPENVPN_CIPHERS=aes-256-gcm
+Environment=SERVER_COUNTRIES=$countries
+Environment=VPN_PORT_FORWARDING=on
+Environment=FIREWALL_DEBUG=on
+

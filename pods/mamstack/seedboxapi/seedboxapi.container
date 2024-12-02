@@ -1,0 +1,28 @@
+[Unit]
+Description=Update qbittorrent session IP for tracker
+After=qbittorrent.service
+After=gluetun.service
+BindsTo=gluetun.service
+BindsTo=qbittorrent.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+# TODO: Is `latest` safe for this container?
+Image=docker.io/myanonamouse/seedboxapi:latest
+ContainerName=seedboxapi
+HostName=seedboxapi
+Pod=MAMstack.pod
+AutoUpdate=registry
+
+Volume=/volumes/books/seedboxapi/config:/config
+
+Environment=DEBUG=1
+Environment=interval=1
+
+Secret=mam_id,type=env,target=mam_id

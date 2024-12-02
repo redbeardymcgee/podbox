@@ -1,0 +1,21 @@
+[Pod]
+AddHost=example.com:192.168.10.11 # Add host-to-IP mapping to /etc/hosts.
+ContainersConfModule=/etc/nvd.conf # Load the specified containers.conf(5) module.
+DNS=192.168.55.1 # Set network-scoped DNS resolver/nameserver for containers in this pod
+DNSOption=ndots:1 # Set custom DNS options.
+DNSSearch=example.com # Set custom DNS search domains. Use DNSSearch=. to remove the search domain.
+GIDMap=0:10000:10 # Create the pod in a new user namespace using the supplied GID mapping.
+GlobalArgs=--log-level=debug # This key contains a list of arguments passed directly between podman and pod in the generated file.
+IP=192.5.0.1 # Specify a static IPv4 address for the pod.
+IP6=2001:db8::1 # Specify a static IPv6 address for the pod.
+Network=host # Specify a custom network for the pod.
+NetworkAlias=name # Add a network-scoped alias for the pod.
+PodmanArgs=--cpus=2 # This key contains a list of arguments passed directly to the end of the podman pod create command in the generated file.
+PodName=name # The name of the Podman pod.
+PublishPort=8080:80 # Exposes a port, or a range of ports (e.g. 50-59), from the pod to the host.
+ServiceName=name # By default, Quadlet will name the systemd service unit by appending -pod to the name of the Quadlet.
+SubGIDMap=gtest # Create the pod in a new user namespace using the map with name in the /etc/subgid file.
+SubUIDMap=utest # Create the pod in a new user namespace using the map with name in the /etc/subuid file.
+UIDMap=0:10000:10 # Create the pod in a new user namespace using the supplied UID mapping.
+UserNS=keep-id:uid=200,gid=210 # Set the user namespace mode for the pod.
+Volume=/source:/dest # Mount a volume in the pod.

@@ -1,0 +1,20 @@
+[Unit]
+Description=Ebook manager
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=lscr.io/linuxserver/calibre:latest
+ContainerName=calibre
+HostName=calibre
+Pod=MAMstack.pod
+AutoUpdate=registry
+
+Volume=calibre-config:/config
+
+Environment=TZ=Etc/UTC

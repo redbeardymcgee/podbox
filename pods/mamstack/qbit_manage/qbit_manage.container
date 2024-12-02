@@ -1,0 +1,24 @@
+[Unit]
+Description=qBittorrent manager
+Wants=qbittorrent.service
+After=qbittorrent.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/stuffanthings/qbit_manage:latest
+ContainerName=qbit_manage
+HostName=qbit_manage
+Pod=MAMstack.pod
+AutoUpdate=registry
+
+Volume=qbit_manage-config:/config
+Volume=/volumes/books/qbittorrent/downloads:/data/torrents
+Volume=qbittorrent-config:/qbittorrent
+
+EnvironmentFile=qbit_manage.env
