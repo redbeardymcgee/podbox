@@ -1,7 +1,6 @@
 [Unit]
 Description=Hoarder chrome browser
 
-
 [Service]
 Restart=on-failure
 TimeoutStartSec=900
