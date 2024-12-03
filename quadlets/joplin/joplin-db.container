@@ -1,0 +1,27 @@
+[Unit]
+Description=Joplin DB Quadlet
+WantedBy=joplin.service
+Wants=network-online.target
+After=network-online.target
+After=local-fs.target
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
+
+[Container]
+Image=docker.io/library/postgres:15
+ContainerName=joplin-db
+HostName=joplin-db
+#AutoUpdate=registry
+
+Network=joplin.network
+
+Volume=joplindb-data:/var/lib/postgresql/data
+
+Environment=POSTGRES_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Environment=POSTGRES_USER=postgres
+Environment=POSTGRES_DB=joplin

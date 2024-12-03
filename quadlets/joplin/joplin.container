@@ -1,0 +1,31 @@
+[Unit]
+Description=Joplin Server Quadlet
+Wants=network-online.target
+After=network-online.target
+After=local-fs.target
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
+
+[Container]
+Image=docker.io/etechonomy/joplin-server:latest
+ContainerName=joplin-server
+HostName=joplin-server
+Network=joplin.network
+#AutoUpdate=registry
+
+Network=joplin.network
+PublishPort=22300:22300
+
+Environment=APP_BASE_URL=https://xxxxx.xxx
+Environment=APP_PORT=22300
+Environment=DB_CLIENT=pg
+Environment=POSTGRES_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Environment=POSTGRES_DATABASE=joplin
+Environment=POSTGRES_USER=postgres
+Environment=POSTGRES_PORT=5432
+Environment=POSTGRES_HOST=joplin-db

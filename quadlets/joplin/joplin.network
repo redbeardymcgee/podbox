@@ -1,0 +1,4 @@
+[Network]
+Subnet=10.20.10.0/24
+Gateway=10.20.10.1
+Label=app=joplin

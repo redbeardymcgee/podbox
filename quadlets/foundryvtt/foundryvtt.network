@@ -1,0 +1,4 @@
+[Network]
+Subnet=10.20.40.0/24
+Gateway=10.20.40.1
+Label=app=foundryvtt
