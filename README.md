@@ -102,7 +102,7 @@ Dec 01 08:42:05 perseus helloworld[1143334]: Mastodon:  @Podman_io@fosstodon.org
 ```bash
 # Step 1
 git clone --depth=1 https://github.com/redbeardymcgee/podbox
-cp -a "podbox/quadlets/thelounge" "$XDG_CONFIG_HOME/containers/systemd/"
+cp -a podbox/quadlets/thelounge "$XDG_CONFIG_HOME"/containers/systemd/
 # Step 2
 $EDITOR "$XDG_CONFIG_HOME"/containers/systemd/thelounge/*
 # Step 3

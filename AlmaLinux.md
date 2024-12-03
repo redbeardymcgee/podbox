@@ -3,7 +3,8 @@
 My proof of concept server running this container stack is built on AlmaLinux
 9.4.
 
-> [!WARNING] Perform `dnf update` immediately
+> [!WARNING]
+> Perform `dnf update` immediately
 
 ### [Repositories](https://wiki.almalinux.org/repos/)
 
@@ -103,15 +104,16 @@ printf '%s\n' \
 
 ## Cockpit -> https://ip-addr:9090
 
-> [!WARNING] Disable the firewall if you are lazy
-> Exposing ports for other services can be exhausting and I have not learned
-> how to do this for containers properly. Each container may need a new rule
-> for something, not sure.
+> [!WARNING]
+> Disable the firewall if you are lazy Exposing ports for other services can be
+> exhausting and I have not learned how to do this for containers properly.
+> Each container may need a new rule for something, not sure.
 > ```bash
 > systemctl disable --now firewalld
 > ```
 
-> [!TODO] Should be able to set up good firewall with only 80/443 open.
+> [!NOTE]
+> Should be able to set up good firewall with only 80/443 open.
 
 Enable the socket-activated cockpit service and allow it through the firewall.
 
@@ -125,7 +127,8 @@ firewall-cmd --reload
 
 ### Add SSH keys
 
-> [!TIP] Skip if you copied your keys with `ssh-copy-id` above.
+> [!TIP]
+> Skip if you copied your keys with `ssh-copy-id` above.
 
 `Accounts` -> `Your account` -> `Authorized public SSH keys` -> `Add Key`
 
@@ -149,14 +152,15 @@ dnf install podman
 systemctl enable --now podman
 ```
 
-> [!NOTE] Read the docs.
+> [!NOTE]
+> Read the docs.
 > `man podman-systemd.unit`
 
 ### Prepare host networking stack
 
 #### slirp4netns
 
-> [!TODO]
+> [!NOTE]
 > This may not be necessary but my system is currently using it.
 
 ```bash
@@ -165,16 +169,18 @@ dnf install slirp4netns
 
 #### Install DNS server for `podman`
 
-> [!TODO]
+> [!NOTE]
 > Not sure how to resolve these correctly yet but the journal logs it
 > so it's running for something.
 
 ```bash
 dnf install aardvark-dns
 ```
+
 #### Allow rootless binding port 80+
 
-> [!NOTE] This is only necessary if you are setting up the reverse proxy.
+> [!NOTE]
+> This is only necessary if you are setting up the reverse proxy.
 
 ```bash
 printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' > /etc/sysctl.d/99-unprivileged-port-binding.conf
@@ -214,11 +220,12 @@ usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $ctuser
 loginctl enable-linger $ctuser
 ```
 
-> [!TIP] Optionally setup ssh keys to directly login to $ctuser.
+> [!TIP]
+> Optionally setup ssh keys to directly login to $ctuser.
 
-> [!NOTE] The login shell doesn't exist.
-> Launch `bash -l` manually to get a shell or else your `ssh` will exit with a
-> status of 1.
+> [!NOTE]
+> The login shell doesn't exist. Launch `bash -l` manually to get a shell or
+> else your `ssh` will exit with a status of 1.
 
 ### Setup $ctuser env
 
@@ -236,10 +243,12 @@ systemctl --user enable --now podman-auto-update
 exit
 ```
 
-> [!WARNING] I disabled SELinux to not deal with this for every container.
+> [!WARNING]
+> I disabled SELinux to not deal with this for every container.
 > /etc/selinux/config -> `SELINUX=disabled`
 
-> [!TODO] Set up the correct policies permanently instead of disabling SELinux
+> [!NOTE]
+> Set up the correct policies permanently instead of disabling SELinux
 
 Temporarily set SELinux policy to allow containers to use devices.
 
