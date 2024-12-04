@@ -1,0 +1,4 @@
+[Volume]
+VolumeName=filebrowser-db  
+VolumeName=filebrowser-config
+VolumeName=filebrowser-branding
