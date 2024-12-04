@@ -37,7 +37,7 @@ Create the following unit file at `~/.config/containers/systemd/helloworld.conta
 
 ```ini
 [Unit]
-Description=hello world
+Description=Hello, world
 
 [Service]
 Restart=on-failure

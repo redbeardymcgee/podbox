@@ -1,4 +1,4 @@
-## Operating System
+# AlmaLinux
 
 My proof of concept server running this container stack is built on AlmaLinux
 9.4.
@@ -6,7 +6,7 @@ My proof of concept server running this container stack is built on AlmaLinux
 > [!WARNING]
 > Perform `dnf update` immediately
 
-### [Repositories](https://wiki.almalinux.org/repos/)
+## [Repositories](https://wiki.almalinux.org/repos/)
 
 These may not really be necessary to set up, but you should absolutely review
 them and decide for yourself.
@@ -21,9 +21,9 @@ them and decide for yourself.
         - `dnf install elrepo-release`
     - [RPM Fusion](https://wiki.almalinux.org/documentation/epel-and-rpmfusion.html)
 
-### Disks
+## Disks
 
-#### Partitions
+## Partitions
 
 Repeat the following steps for all disks that you want to join together into
 one single logical volume.
@@ -37,7 +37,7 @@ dd if=/dev/zero of=/dev/sdX bs=512 count=1 conv=notrunc
 dd if=/dev/zero of=/dev/sdY bs=512 count=1 conv=notrunc
 ```
 
-#### LVM
+## LVM
 
 ```bash
 # Create physical volume
@@ -54,7 +54,7 @@ mke2fs -t ext4 /dev/library/books
 e2fsck -f /dev/library/books
 ```
 
-#### /etc/systemd/system/volumes-books.mount
+## /etc/systemd/system/volumes-books.mount
 
 ```ini
 [Mount]
@@ -74,7 +74,7 @@ WantedBy=default.target
 chown -R $ctuser:$ctuser /volumes
 ```
 
-### SSH
+## SSH
 
 SSH is optional, but highly encouraged. Cockpit gives you a terminal too, but
 that's nowhere near as good as what you can do with a real terminal emulator
@@ -90,7 +90,7 @@ ssh-keygen -t ed25519 -a 32 -f ~/.ssh/$localhost-to-$remotehost
 ssh-copy-id -i ~/.ssh/$localhost-to-$remotehost $user@$remotehost
 ```
 
-#### Override `sshd` config
+## Override `sshd` config
 
 We don't want to allow anyone to login as root remotely ever. You must be a
 `sudoer` with public key auth to elevate to root.
@@ -125,14 +125,14 @@ firewall-cmd --permanent --zone=public --add-service=cockpit
 firewall-cmd --reload
 ```
 
-### Add SSH keys
+## Add SSH keys
 
 > [!TIP]
 > Skip if you copied your keys with `ssh-copy-id` above.
 
 `Accounts` -> `Your account` -> `Authorized public SSH keys` -> `Add Key`
 
-### Install SELinux troubleshoot tool
+## Install SELinux troubleshoot tool
 
 This is a component for Cockpit.
 
@@ -145,7 +145,7 @@ dnf install setroubleshoot-server
 Podman is a daemonless container hypervisor. This document prepares a fully
 rootless environment for our containers to run in.
 
-### Install
+## Install
 
 ```bash
 dnf install podman
@@ -156,9 +156,9 @@ systemctl enable --now podman
 > Read the docs.
 > `man podman-systemd.unit`
 
-### Prepare host networking stack
+## Prepare host networking stack
 
-#### slirp4netns
+## slirp4netns
 
 > [!NOTE]
 > This may not be necessary but my system is currently using it.
@@ -167,7 +167,7 @@ systemctl enable --now podman
 dnf install slirp4netns
 ```
 
-#### Install DNS server for `podman`
+## Install DNS server for `podman`
 
 > [!NOTE]
 > Not sure how to resolve these correctly yet but the journal logs it
@@ -177,7 +177,7 @@ dnf install slirp4netns
 dnf install aardvark-dns
 ```
 
-#### Allow rootless binding port 80+
+## Allow rootless binding port 80+
 
 > [!NOTE]
 > This is only necessary if you are setting up the reverse proxy.
@@ -187,14 +187,14 @@ printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' > /etc/sysctl.d/99-unpriv
 sysctl 'net.ipv4.ip_unprivileged_port_start=80'
 ```
 
-#### Allow containers to route within multiple networks
+## Allow containers to route within multiple networks
 
 ```bash
 printf '%s\n' 'net.ipv4.conf.all.rp_filter=2' > /etc/sysctl.d/99-reverse-path-loose.conf
 sysctl -w net.ipv4.conf.all.rp_filter=2
 ```
 
-### Prepare container user
+## Prepare container user
 
 This user will be the owner of all containers with no login shell or root
 privileges.
@@ -227,7 +227,7 @@ loginctl enable-linger $ctuser
 > The login shell doesn't exist. Launch `bash -l` manually to get a shell or
 > else your `ssh` will exit with a status of 1.
 
-### Setup $ctuser env
+## Setup $ctuser env
 
 ```bash
 # Switch to user (`-i` doesn't work without a login shell)
