@@ -1,0 +1,24 @@
+[Unit]
+Description=Matrix Synapse Quadlet
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/matrixdotorg/synapse:latest
+ContainerName=matrix_synapse
+HostName=matrix_synapse
+
+PublishPort=8008:8008
+
+Volume=matrix-data:/data
+
+Environment=VIRTUAL_HOST=matrix.example.com
+Environment=VIRTUAL_PORT=8008
+Environment=LETSENCRYPT_HOST=matrix.example.com
+Environment=SYNAPSE_SERVER_NAME=matrix.example.com
+Environment=SYNAPSE_REPORT_STATS=no
