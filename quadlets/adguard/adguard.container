@@ -1,0 +1,28 @@
+[Unit]
+Description=Adguard Quadlet
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/adguard/adguardhome:latest
+ContainerName=adguard
+HostName=adguard
+
+# Optionally run this on network mode host, if you want real client ips to show in the logs
+# Network=host
+PublishPort=53:53/tcp
+PublishPort=53:53/udp
+PublishPort=784:784/udp
+PublishPort=853:853/tcp
+PublishPort=3000:3000/tcp
+PublishPort=8844:80/tcp
+PublishPort=8443:443/tcp
+
+Volume=adguard-config:/opt/adguardhome/work:z
+Volume=adguard-work:/opt/adguardhome/conf:z
+Volume=/var/log/AdGuardHome.log:/var/log/AdGuardHome.log:z
