@@ -1,0 +1,27 @@
+[Unit]
+Description=Matrix Synapse DB Quadlet
+WantedBy=matrix.service
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/library/postgres:15
+ContainerName=matrix_synapse_db
+HostName=matrix_synapse_db
+
+PublishPort=5432:5432
+
+Volume=matrix-db-data:/var/lib/postgresql/data:z
+
+Environment=POSTGRES_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Environment=POSTGRES_USER=synapse_user
+Environment=POSTGRES_DB=synapse
+Environment=LANG=C
+Environment=LC_COLLATE=C
+Environment=LC_CTYPE=C
+Environment=POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
