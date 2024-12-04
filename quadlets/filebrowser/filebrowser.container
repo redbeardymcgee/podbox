@@ -1,0 +1,25 @@
+[Unit]
+Description=Filebrowser Quadlet
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/filebrowser/filebrowser:latest
+ContainerName=filebrowser
+HostName=filebrowser
+
+# You will have to manually create the config and db file on first run as it mounts files not dirs
+Volume=/path/to/what/you/want/to/share:/srv:z
+Volume=%h/.local/share/containers/storage/volumes/filebrowser-db/_data/database.db:/database.db:Z
+Volume=%h/.local/share/containers/storage/volumes/filebrowser-config/_data/.filebrowser.json:/.filebrowser.json:Z
+Volume=filebrowser-branding:/branding
+
+PublishPort=8008:8008
+
+Environment=PUID=1000
+Environment=PGID=1000
