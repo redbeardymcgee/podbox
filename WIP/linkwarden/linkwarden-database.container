@@ -1,0 +1,23 @@
+[Unit]
+Description=Linkwarden database
+
+Requires=linkwarden-database.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres:16-alpine
+ContainerName=linkwarden
+HostName=linkwarden
+
+Volume=linkwarden-database:/var/lib/postgresql/data
+
+Environment=DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+
+# FIXME: Secret is not injected into env before Environment parses
+Secret=linkwarden-db-pw,type=env,target=POSTGRES_PASSWORD

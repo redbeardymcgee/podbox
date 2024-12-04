@@ -8,15 +8,14 @@ Wants=netbird-relay.service
 ContainerName=netbird
 Image=docker.io/netbirdio/dashboard:latest
 EnvironmentFile=./netbird.env
-Volume=/volumes/netbird/etc/letsencrypt:/etc/letsencrypt
-Network=protonvpn
-PublishPort=    # (Optional) Ports to expose (host:container)
-Exec=           # (Optional) Custom command to run in the container
-PodmanArgs=     # (Optional) Additional Podman arguments
+
+Volume=netbird-letsencrypt:/etc/letsencrypt
+
+PublishPort=
 
 [Service]
 Restart=on-failure
 TimeoutStartSec=900
 
 [Install]
-WantedBy=default.target       # (Optional) Target to start with (default: multi-user.target). For graphical user interface systems default.target
+WantedBy=default.target
