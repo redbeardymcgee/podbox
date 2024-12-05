@@ -1,5 +1,5 @@
 [Unit]
-Description=Netbook.xyz Quadlet
+Description=Netboot.xyz Quadlet
 
 [Service]
 Restart=always
