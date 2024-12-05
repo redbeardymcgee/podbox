@@ -1,0 +1,21 @@
+[Unit]
+Description=Nginx container
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/nginx
+ContainerName=nginx
+HostName=nginx
+
+PublishPort=80:80
+PublishPort=443:443
+
+Volume=nginx-html:/usr/share/nginx/html:Z,U
+
+Environment=TZ=Etc/UTC
