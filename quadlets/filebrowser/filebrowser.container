@@ -6,20 +6,14 @@ Restart=always
 TimeoutStartSec=900
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target default.target
 
 [Container]
-Image=docker.io/filebrowser/filebrowser:latest
+Image=docker.io/hurlenko/filebrowser:latest
 ContainerName=filebrowser
-HostName=filebrowser
 
-# You will have to manually create the config and db file on first run as it mounts files not dirs
-Volume=/path/to/what/you/want/to/share:/srv:z
-Volume=%h/.local/share/containers/storage/volumes/filebrowser-db/_data/database.db:/database.db:Z
-Volume=%h/.local/share/containers/storage/volumes/filebrowser-config/_data/.filebrowser.json:/.filebrowser.json:Z
-Volume=filebrowser-branding:/branding
+Volume=/path/to/what/you/want/to/share:/data:z
+Volume=fb-config:/config:z
+Volume=fb-branding:/branding:z
 
-PublishPort=8008:8008
-
-Environment=PUID=1000
-Environment=PGID=1000
+PublishPort=8008:8080

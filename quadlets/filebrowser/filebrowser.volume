@@ -1,4 +1,3 @@
 [Volume]
-VolumeName=filebrowser-db  
-VolumeName=filebrowser-config
-VolumeName=filebrowser-branding
+VolumeName=fb-config
+VolumeName=fb-branding
