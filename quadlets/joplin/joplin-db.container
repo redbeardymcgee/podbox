@@ -1,0 +1,21 @@
+[Unit]
+Description=Joplin DB Quadlet
+WantedBy=joplin.service
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/library/postgres:15
+ContainerName=joplin-db
+HostName=joplin-db
+
+Volume=joplindb-data:/var/lib/postgresql/data
+
+Environment=POSTGRES_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Environment=POSTGRES_USER=postgres
+Environment=POSTGRES_DB=joplin
