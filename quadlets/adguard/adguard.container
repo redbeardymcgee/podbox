@@ -13,8 +13,6 @@ Image=docker.io/adguard/adguardhome:latest
 ContainerName=adguard
 HostName=adguard
 
-# Optionally run this on network mode host, if you want real client ips to show in the logs
-# Network=host
 PublishPort=53:53/tcp
 PublishPort=53:53/udp
 PublishPort=784:784/udp
