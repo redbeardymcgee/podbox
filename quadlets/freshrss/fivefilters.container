@@ -13,6 +13,7 @@ Image=docker.io/heussd/fivefilters-full-text-rss:latest
 ContainerName=fivefilters
 HostName=fivefilters
 
+Network=freshrss.network
 PublishPort=5000:80
 
 Environment=FTR_ADMIN_PASSWORD=XXXXXXXX
