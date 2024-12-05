@@ -1,0 +1,16 @@
+[Unit]
+Description=IT Tools Quadlet
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/corentinth/it-tools:latest
+ContainerName=it-tools
+HostName=it-tools
+
+PublishPort=8088:80
