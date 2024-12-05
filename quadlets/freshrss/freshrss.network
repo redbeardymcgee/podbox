@@ -1,0 +1,9 @@
+[Network]
+Subnet=10.10.10.0/24
+Gateway=10.10.10.1
+Label=app=freshrss
+Driver=pasta
+
+
+
+
