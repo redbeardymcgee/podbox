@@ -1,0 +1,19 @@
+[Unit]
+Description=Filebrowser Quadlet
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
+
+[Container]
+Image=docker.io/hurlenko/filebrowser:latest
+ContainerName=filebrowser
+
+Volume=/path/to/what/you/want/to/share:/data:z
+Volume=fb-config:/config:z
+Volume=fb-branding:/branding:z
+
+PublishPort=8008:8080
