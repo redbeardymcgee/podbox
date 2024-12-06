@@ -127,9 +127,10 @@ Navigate to `http://localhost:9000` in your browser.
 
 I'm working on new quadlets every day. This is a list of all of the containers
 that I intend to add to this repository. It is still growing, and I welcome
-your submissions on the [issue tracker](https://github.com/redbeardymcgee/podbox/issues).
+[pull requests](https://github.com/redbeardymcgee/podbox/pulls).
 
 - [x] [Actual](https://actualbudget.github.io/docs/)
+- [x] [AdGuard](https://adguard.com)
 - [ ] [Apprise](https://github.com/caronc/apprise)
 - [x] [Audiobookshelf](https://www.audiobookshelf.org/)
 - [ ] [Authelia](https://www.authelia.com/)
@@ -147,7 +148,10 @@ your submissions on the [issue tracker](https://github.com/redbeardymcgee/podbox
 - [ ] [Duplicacy](https://duplicacy.com/)
 - [ ] [Duplicati](https://duplicati.com/)
 - [ ] [EmulatorJS](https://emulatorjs.org/)
-- [ ] [Foundry VTT](https://foundryvtt.com)
+- [x] [Filebrowser](https://filebrowser.org/)
+- [x] [FreshRSS](https://www.freshrss.org/)
+- [x] [FiveFilters](https://www.fivefilters.org/)
+- [x] [Foundry VTT](https://foundryvtt.com)
 - [ ] [Gaseous](https://github.com/gaseous-project/gaseous-server)
 - [x] [Glances](https://nicolargo.github.io/glances/)
 - [ ] [glueforward](https://github.com/GeoffreyCoulaud/glueforward)
@@ -157,6 +161,7 @@ your submissions on the [issue tracker](https://github.com/redbeardymcgee/podbox
 - [x] [hoarder](https://hoarder.app/)
 - [x] [Homarr](https://homarr.dev/)
 - [ ] [Homepage](https://gethomepage.dev/)
+- [x] [IT-Tools](https://it-tools.tech/)
 - [x] [Kavita](https://kavitareader.com)
 - [ ] [Keycloak](https://www.keycloak.org)
 - [x] [Kibitzr](https://kibitzr.github.io/)
@@ -165,10 +170,11 @@ your submissions on the [issue tracker](https://github.com/redbeardymcgee/podbox
 - [x] [librespeed](https://librespeed.org)
 - [ ] [Linkwarden](https://linkwarden.app/)
 - [x] [Lounge](https://thelounge.chat)
+- [x] [Matrix](https://matrix.org/)
 - [ ] [Miniflux](https://miniflux.app/)
 - [ ] [n8n](https://n8n.io/)
 - [ ] [Netbird](https://netbird.io/)
-- [ ] [netboot.xyz](https://netboot.xyz)
+- [x] [netboot.xyz](https://netboot.xyz)
 - [ ] [Netdata](https://www.netdata.cloud/)
 - [ ] [Notesnook](https://github.com/streetwriters/notesnook-sync-server)
 - [ ] [ntop](https://www.ntop.org/)
