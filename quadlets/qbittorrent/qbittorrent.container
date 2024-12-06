@@ -16,10 +16,8 @@ ContainerName=qbittorrent
 HostName=qbittorrent
 AutoUpdate=registry
 
-Network=
-
-Volume=/volumes/books/qbittorrent/config:/config
-Volume=/volumes/books/qbittorrent/downloads:/downloads
+Volume=qbittorrent-config:/config
+Volume=qbittorrent-downloads:/downloads
 
 Environment=QBT_LEGAL_NOTICE=confirm
 Environment=QBT_VERSION=$qbt_version
