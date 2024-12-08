@@ -171,6 +171,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [Linkwarden](https://linkwarden.app/)
 - [x] [Lounge](https://thelounge.chat)
 - [x] [Matrix](https://matrix.org/)
+- [ ] [Mealie](https://mealie.io/)
 - [ ] [Miniflux](https://miniflux.app/)
 - [ ] [n8n](https://n8n.io/)
 - [ ] [Netbird](https://netbird.io/)

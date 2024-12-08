@@ -1,0 +1,25 @@
+[Unit]
+Description=Mealie Quadlet
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/hkotel/mealie:latest
+ContainerName=mealie
+HostName=mealie
+
+Volume=mealie-data:/app/data
+
+Environment=BASE_URL=https://mealie.mcgee.red
+Environment=RECIPE_PUBLIC='true'
+Environment=RECIPE_SHOW_NUTRITION='true'
+Environment=RECIPE_SHOW_ASSETS='true'
+Environment=RECIPE_LANDSCAPE_VIEW='true'
+Environment=RECIPE_DISABLE_COMMENTS='false'
+Environment=RECIPE_DISABLE_AMOUNT='false'
+
