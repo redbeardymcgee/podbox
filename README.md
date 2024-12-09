@@ -203,6 +203,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [RomM](https://romm.app/)
 - [ ] [Seafile](https://www.seafile.com)
 - [ ] [Shiori](https://github.com/go-shiori/shiori)
+- [ ] [Snowflake](https://snowflake.torproject.org/)
 - [ ] [solidtime](https://docs.solidtime.io/self-hosting/intro)
 - [x] [Sonarr](https://sonarr.tv)
 - [x] [Stirling PDF](https://stirlingpdf.io)
