@@ -15,6 +15,16 @@ under the same user permissions as yourself, from within your own `$HOME`.
 > containers, but it is not strictly required. Details for setting up a system
 > from scratch are located in [AlmaLinux.md](./AlmaLinux.md).
 
+## Table of Contents
+
+- [Getting started](#getting-started)
+  - [Dependencies](#dependencies)
+  - [Quickstart](#quickstart)
+    - [Hello, world](#hello-world)
+  - [Running real apps](#running-real-apps)
+    - [Example](#example)
+- [Coming soon](#coming-soon)
+
 ## Getting started
 
 ### Dependencies
@@ -123,7 +133,7 @@ Navigate to `http://localhost:9000` in your browser.
 > tcp   LISTEN 0      4096       *:9000           *:*   users:(("rootlessport",pid=913878,fd=10))
 > ```
 
-## Upcoming containers
+## Coming soon
 
 I'm working on new quadlets every day. This is a list of all of the containers
 that I intend to add to this repository. It is still growing, and I welcome
@@ -136,6 +146,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [Authelia](https://www.authelia.com/)
 - [ ] [Authentik](https://goauthentik.io/)
 - [ ] [betanin](https://github.com/sentriz/betanin)
+- [ ] [Blinko](https://blinko.mintlify.app/introduction)
 - [x] [booktree](https://github.com/myxdvz/booktree)
 - [ ] [Cabot](https://cabotapp.com/)
 - [x] [Caddy](https://caddyserver.com) # Socket activation requires newer `caddy` and `podman`
