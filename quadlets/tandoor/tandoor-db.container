@@ -1,7 +1,6 @@
 [Unit]
 Description=Tandoor postgres
 Wants=tandoor.service
-After=tandoor.service
 
 [Service]
 Restart=on-failure
