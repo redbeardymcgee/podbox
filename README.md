@@ -208,7 +208,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Sonarr](https://sonarr.tv)
 - [x] [Stirling PDF](https://stirlingpdf.io)
 - [ ] [Supervisord](http://supervisord.org/)
-- [ ] [TandoorRecipes](https://github.com/TandoorRecipes/recipes)
+- [x] [Tandoor](https://github.com/TandoorRecipes/recipes)
 - [x] [traggo](https://traggo.net)
 - [ ] [Ubooquity](https://vaemendis.net/ubooquity/)
 - [ ] [UrBackup](https://urbackup.org)
