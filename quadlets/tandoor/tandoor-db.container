@@ -1,0 +1,19 @@
+[Unit]
+Description=Tandoor postgres
+Wants=tandoor.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres:16-alpine
+ContainerName=tandoor-db
+HostName=tandoor-db
+
+Volume=tandoor-db:/var/lib/postgresql/data
+
+EnvironmentFile=tandoor.env
