@@ -1,7 +1,9 @@
 [Unit]
 Description=Tandoor
 Requires=tandoor-db.service
+Requires=tandoor-nginx.service
 After=tandoor-db.service
+After=tandoor-nginx.service
 
 [Service]
 Restart=on-failure

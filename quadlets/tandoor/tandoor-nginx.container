@@ -1,0 +1,26 @@
+[Unit]
+Description=Tandoor nginx
+Wants=tandoor.service
+Wants=tandoor-db.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/nginx:mainline-alpine
+ContainerName=tandoor-nginx
+HostName=tandoor-nginx
+
+Network=protonvpn.network
+
+Volume=tandoor-nginx-config:/etc/nginx/conf.d
+Volume=tandoor-static:/static
+Volume=tandoor-media:/media
+Volume=tandoor-external:/opt/recipes/externalfiles
+
+EnvironmentFile=tandoor.env
+
