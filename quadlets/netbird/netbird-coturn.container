@@ -1,0 +1,21 @@
+[Unit]
+Description=Netbird coturn
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/coturn/coturn
+ContainerName=netbird-coturn
+
+HostName=netbird-coturn
+
+Volume=./turnserver.conf:/etc/turnserver.conf
+
+Environment=NETBIRD_STORE_ENGINE_POSTGRES_DSN=
+
+Exec=-c /etc/turnserver.conf

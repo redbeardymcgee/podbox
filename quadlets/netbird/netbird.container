@@ -1,0 +1,22 @@
+[Unit]
+Description=Netbird dashboard
+Wants=netbird-signal.service
+Wants=netbird-relay.service
+Wants=netbird-management.service
+Wants=netbird-coturn.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/netbirdio/dashboard
+ContainerName=netbird-dashboard
+
+HostName=netbird-dashboard
+
+Volume=netbird-letsencrypt:/etc/letsencrypt
+

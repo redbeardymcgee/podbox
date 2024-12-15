@@ -1,0 +1,19 @@
+[Unit]
+Description=Netbird signal
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/netbirdio/signal
+ContainerName=netbird-signal
+
+HostName=netbird-signal
+
+Volume=netbird-signal:/var/lib/netbird
+
+

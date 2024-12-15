@@ -1,0 +1,23 @@
+[Unit]
+Description=Netbird relay
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/netbirdio/relay
+ContainerName=netbird-relay
+
+HostName=netbird-relay
+
+Volume=netbird-relay:/var/lib/netbird
+
+Environment=NB_LOG_LEVEL=
+Environment=NB_LISTEN_ADDRESS=
+Environment=NB_EXPOSED_ADDRESS=
+Environment=NB_AUTH_SECRET=
+
