@@ -1,6 +1,6 @@
 [Unit]
 Description=Linkwarden database
-Requires=linkwarden-database.service
+Wants=linkwarden.service
 
 [Service]
 Restart=on-failure
@@ -11,12 +11,10 @@ WantedBy=default.target
 
 [Container]
 Image=docker.io/postgres:16-alpine
-ContainerName=linkwarden
-HostName=linkwarden
+ContainerName=linkwarden-database
+HostName=linkwarden-database
 
 Volume=linkwarden-database:/var/lib/postgresql/data
 
-Environment=DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+EnvironmentFile=linkwarden.env
 
-# FIXME: Secret is not injected into env before Environment parses
-Secret=linkwarden-db-pw,type=env,target=POSTGRES_PASSWORD
