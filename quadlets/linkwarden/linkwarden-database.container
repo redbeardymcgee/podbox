@@ -1,0 +1,20 @@
+[Unit]
+Description=Linkwarden database
+Wants=linkwarden.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres:16-alpine
+ContainerName=linkwarden-database
+HostName=linkwarden-database
+
+Volume=linkwarden-database:/var/lib/postgresql/data
+
+EnvironmentFile=linkwarden.env
+
