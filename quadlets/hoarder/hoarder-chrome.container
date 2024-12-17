@@ -9,7 +9,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=ghcr.io/zenika-hub/alpine-chrome:123
+Image=docker.io/zenika/alpine-chrome
 ContainerName=hoarder-chrome
 HostName=hoarder-chrome
 
