@@ -1,11 +1,14 @@
-# Weechat
+## Weechat
 
-> [!WARNING] If you have permissions issue trying to persist data
-> [Potential permissions issue fix](https://github.com/weechat/weechat-container/issues/10#issuecomment-2472077317)
+> [!WARNING]
+> If you have permissions issue trying to persist data > [Potential permissions
+> issue
+> fix](https://github.com/weechat/weechat-container/issues/10#issuecomment-2472077317)
 
 ### Attach and configure
 
-> [!TIP] Detach key sequence: `ctrl-p` `ctrl-q`.
+> [!TIP]
+> Detach key sequence: `ctrl-p` `ctrl-q`.
 
 ```bash
 ssh -t $remotehost sh -lc 'cd; podman attach weechat'
