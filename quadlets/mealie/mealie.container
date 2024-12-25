@@ -15,7 +15,7 @@ HostName=mealie
 
 Volume=mealie-data:/app/data
 
-Environment=BASE_URL=https://mealie.mcgee.red
+Environment=BASE_URL=https://mealie.example.com
 Environment=RECIPE_PUBLIC='true'
 Environment=RECIPE_SHOW_NUTRITION='true'
 Environment=RECIPE_SHOW_ASSETS='true'
