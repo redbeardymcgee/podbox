@@ -16,6 +16,7 @@ HostName=joplin-db
 
 Volume=joplindb-data:/var/lib/postgresql/data
 
-Environment=POSTGRES_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 Environment=POSTGRES_USER=postgres
 Environment=POSTGRES_DB=joplin
+
+Secret=joplin-db-pw,type=env,target=POSTGRES_PASSWORD
