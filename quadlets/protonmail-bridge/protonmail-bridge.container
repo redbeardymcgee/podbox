@@ -1,0 +1,21 @@
+## NOTE: Requires `podman run --rm -it -v protonmail-bridge-root:/root docker.io/shenxn/protonmail-bridge init` to bootstrap
+## Use `login` to set up your account, then `info` to find your password
+[Unit]
+Description=Protonmail secure bridge
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/shenxn/protonmail-bridge
+ContainerName=protonmail-bridge
+
+HostName=protonmail-bridge
+PublishPort=1143:143/tcp
+PublishPort=1025:25/tcp
+
+Volume=protonmail-bridge-root:/root
