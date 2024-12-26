@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus monitoring
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/prom/prometheus
+ContainerName=prometheus
+
+HostName=prometheus
+PublishPort=9090:9090
+
+Volume=prometheus-data:/prometheus
+Volume=./prometheus.yml:/etc/prometheus/prometheus.yml
+
