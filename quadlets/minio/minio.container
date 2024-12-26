@@ -1,0 +1,27 @@
+[Unit]
+Description=A minio server container for local S3 compatible storage
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+ContainerName=minio
+Image=docker.io/minio/minio
+
+HostName=minio
+PublishPort=9000:9000
+PublishPort=9001:9001
+
+Volume=minio-data:/data
+
+Environment=MINIO_ROOT_USER=admin
+Environment=MINIO_VOLUMES=/data
+
+Secret=minio-root-pw,type=env,target=MINIO_ROOT_PASSWORD
+
+Exec=server --console-address ":9001"
+
