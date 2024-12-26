@@ -9,12 +9,11 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/prom/prometheus
+Image=quay.io/prometheus/prometheus
 ContainerName=prometheus
 
 HostName=prometheus
 PublishPort=9090:9090
 
 Volume=prometheus-data:/prometheus
-Volume=./prometheus.yml:/etc/prometheus/prometheus.yml
 
