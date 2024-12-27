@@ -1,0 +1,18 @@
+[Unit]
+Description=ChartDB diagramming editor
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/chartdb/chartdb
+ContainerName=chartdb
+
+HostName=chartdb
+PublishPort=8080:80
+
+Secret=openai-api-key,type=env,target=OPENAI_API_KEY

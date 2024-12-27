@@ -155,7 +155,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Caddy](https://caddyserver.com) # Socket activation requires newer `caddy` and `podman`
 - [x] [Calibre](https://github.com/linuxserver/docker-calibre)
 - [x] [Calibre-web](https://github.com/janeczku/calibre-web)
-- [ ] [ChartDB](https://chartdb.io/)
+- [x] [ChartDB](https://chartdb.io/)
 - [ ] [Checkmate](https://github.com/bluewave-labs/checkmate)
 - [ ] [Code::Stats](https://codestats.net/)
 - [ ] [dash.](https://getdashdot.com/)
