@@ -191,7 +191,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Matrix](https://matrix.org/)
 - [ ] [Maxun](https://github.com/getmaxun/maxun)
 - [x] [Mealie](https://mealie.io/)
-- [ ] [Memos](https://usememos.com)
+- [x] [Memos](https://usememos.com)
 - [ ] [Miniflux](https://miniflux.app/)
 - [x] [MinIO](https://min.io)
 - [ ] [n8n](https://n8n.io/)

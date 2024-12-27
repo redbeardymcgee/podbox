@@ -1,0 +1,19 @@
+[Unit]
+Description=Memos note taking
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/neosmemo/memos:stable
+ContainerName=memos
+
+HostName=memos
+PublishPort=5230
+
+Volume=memos-data:/var/opt/memos
+
