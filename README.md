@@ -149,7 +149,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [betanin](https://github.com/sentriz/betanin)
 - [ ] [Bigcapital](https://bigcapital.app/)
 - [ ] [Bitwarden](https://bitwarden.com/)
-- [ ] [Blinko](https://blinko.mintlify.app/introduction)
+- [x] [Blinko](https://blinko.mintlify.app/introduction)
 - [x] [booktree](https://github.com/myxdvz/booktree)
 - [ ] [Cabot](https://cabotapp.com/)
 - [x] [Caddy](https://caddyserver.com) # Socket activation requires newer `caddy` and `podman`
@@ -191,6 +191,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [Maxun](https://github.com/getmaxun/maxun)
 - [x] [Mealie](https://mealie.io/)
 - [ ] [Miniflux](https://miniflux.app/)
+- [x] [MinIO](https://min.io)
 - [ ] [n8n](https://n8n.io/)
 - [ ] [Netbird](https://netbird.io/)
 - [x] [netboot.xyz](https://netboot.xyz)
