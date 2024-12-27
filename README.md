@@ -193,6 +193,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [Miniflux](https://miniflux.app/)
 - [x] [MinIO](https://min.io)
 - [ ] [n8n](https://n8n.io/)
+- [x] [Nebula](https://github.com/slackhq/nebula)
 - [ ] [Netbird](https://netbird.io/)
 - [x] [netboot.xyz](https://netboot.xyz)
 - [ ] [Netdata](https://www.netdata.cloud/)

@@ -1,0 +1,19 @@
+[Unit]
+Description=Nebula overlay network
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/nebulaoss/nebula
+ContainerName=nebula
+AddCapability=NET_ADMIN
+
+HostName=nebula
+Network=host
+
+Volume=nebula-config:/config
