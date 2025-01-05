@@ -15,4 +15,4 @@ ContainerName=mirotalk
 HostName=mirotalk
 PublishPort=3000
 
-EnvironmentFile=mirotalk.env
+Volume=./mirotalk.env:/src/.env
