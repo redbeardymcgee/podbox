@@ -24,6 +24,7 @@ under the same user permissions as yourself, from within your own `$HOME`.
   - [Running real apps](#running-real-apps)
     - [Example](#example)
 - [Coming soon](#coming-soon)
+- [Acknowledgments](#acknowledgments)
 
 ## Getting started
 
@@ -237,9 +238,9 @@ that I intend to add to this repository. It is still growing, and I welcome
 
 ## Acknowledgments
 
-Thanks to these other users for their examples and contributions!
+Thanks to these users for their examples and contributions!
 
-@fpatrick/podman-quadlet
-@dwedia/podmanQuadlets
-@sudo-kraken
-@EphemeralDev
+- [@fpatrick](https://github.com/fpatrick)/[podman-quadlet](https://github.com/fpatrick/podman-quadlet)
+- [@dwedia](https://github.com/dwedia)/[podmanQuadlets](https://github.com/dwedia/podmanQuadlets)
+- [@sudo-kraken](https://github.com/sudo-kraken)
+- [@EphemeralDev](https://github.com/EphemeralDev)
