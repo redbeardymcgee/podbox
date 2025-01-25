@@ -5,16 +5,16 @@ Wants=        # (Optional) Services you want to run with this one
 After=        # (Optional) Services that need to start before this one
 
 [Service]
-Restart=        # (Optional) Set to 'always' or 'on-failure' to restart on failure
-TimeoutStartSec= # (Optional) Time to wait before considering a failure
+Restart=on-failure        # (Optional) Set to 'always' or 'on-failure' to restart on failure
+TimeoutStartSec=900 # (Optional) Time to wait before considering a failure
 
 [Install]
-WantedBy=       # (Optional) Target to start with (default: multi-user.target). For graphical user interface systems default.target
+WantedBy=default.target       # (Optional) Target to start with (default: multi-user.target). For graphical user interface systems default.target
 
 [Container]
 Image=          # (Mandatory) The container image to use (e.g., docker.io/library/alpine)
 ContainerName=  # (Mandatory) The container's name
-HostName=       # (Optional) The containers hostname
+AutoUpdate=registry
 
 AddCapability=  # (Optional) Extra capabilities to add to the container
 AddDevice=      # (Optional) Add host devices to the container
@@ -25,6 +25,7 @@ UIDMap=         # (Optional) User ID mapping. Example: 0:10000:10 (Inside:Outsid
 GIDMap=         # (Optional) Group ID mapping Example: 0:10000:10 (Inside:Outside:Range)
 
 Network=        # (Optional) Custom network for the container
+HostName=       # (Optional) The containers hostname
 PublishPort=    # (Optional) Ports to expose (host:container)
 
 Volume=         # (Optional) Persistent storage paths (host:container)
