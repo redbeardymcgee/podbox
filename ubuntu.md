@@ -3,7 +3,7 @@
 Setting up rootless podman on a fresh ubuntu 24.10 server.
 
 > [!WARNING]
-> Perform `sudo apt update && sudo apt upgrade` immediately. Perform reboot if necessary
+> Perform `sudo apt update && sudo apt upgrade` immediately. Reboot system.
 
 ## SSH
 
@@ -26,7 +26,9 @@ ssh-copy-id username@remote_host
 We don't want to allow anyone to login as root remotely ever. You must be a
 `sudoer` with public key auth to elevate to root.
 
-SSH into your server and run `sudoedit /etc/ssh/sshd_config` See [stackoverflow question](https://superuser.com/questions/785187/sudoedit-why-use-it-over-sudo-vi) for reasons to use sudoedit over sudo.
+SSH into your server and run `sudoedit /etc/ssh/sshd_config` 
+
+See [stackoverflow question](https://superuser.com/questions/785187/sudoedit-why-use-it-over-sudo-vi) for reasons to use sudoedit over sudo.
 
 ```bash
 ## Uncomment PasswordAuthentication and set value to no
@@ -48,7 +50,9 @@ rootless environment for our containers to run in.
 ## Install
 
 ```bash
-dnf install podman
+sudo apt install podman
+
+## Make sure podman is running
 systemctl enable --now podman
 ```
 
@@ -58,46 +62,44 @@ systemctl enable --now podman
 
 ## Prepare host networking stack
 
-## slirp4netns
+## Pasta or slirp4netns
 
 > [!NOTE]
-> This may not be necessary but my system is currently using it.
+> As of Podman 5.0 Pasta is the default rootless networking tool.
+> 
+> Podman 5.0 is available in standard Ubuntu repo since 24.10.
 
 ```bash
-dnf install slirp4netns
-```
-
-## Install DNS server for `podman`
-
-> [!NOTE]
-> Not sure how to resolve these correctly yet but the journal logs it
-> so it's running for something.
-
-```bash
-dnf install aardvark-dns
+sudo apt install passt
 ```
 
 ## Allow rootless binding port 80+
 
+### Option 1: Modify range of unpriveleged ports
+
 > [!NOTE]
-> This is only necessary if you are setting up the reverse proxy.
+> This is only necessary if you are setting up the reverse proxy (or any service on ports <1024).
 
+`sudoedit /etc/sysctl.conf`
 ```bash
-printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' > /etc/sysctl.d/99-unprivileged-port-binding.conf
-sysctl 'net.ipv4.ip_unprivileged_port_start=80'
+## Add the following line and save
+net.ipv4.ip_unprivileged_port_start=80
 ```
 
-## Allow containers to route within multiple networks
+### Option 2: Redirect using firewalls
+See [jdboyd blog post for PARTIAL examples using UFW, iptables, and nftables](https://blog.jdboyd.net/2024/05/exposing-privileged-ports-with-podman/)
 
-```bash
-printf '%s\n' 'net.ipv4.conf.all.rp_filter=2' > /etc/sysctl.d/99-reverse-path-loose.conf
-sysctl -w net.ipv4.conf.all.rp_filter=2
-```
+>[!WARNING]
+> IF UTILIZING THIS METHOD
+>
+> CREATE RULES TO ALLOW SSH BEFORE ENABLING THE FIREWALL
 
 ## Prepare container user
 
 This user will be the owner of all containers with no login shell or root
-privileges.
+privileges. 
+
+Note $ctuser is a placeholder, replace with your username
 
 ```bash
 # Prepare a group id outside of the normal range
@@ -120,18 +122,17 @@ usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $ctuser
 loginctl enable-linger $ctuser
 ```
 
-> [!TIP]
-> Optionally setup ssh keys to directly login to $ctuser.
-
-> [!NOTE]
-> The login shell doesn't exist. Launch `bash -l` manually to get a shell or
-> else your `ssh` will exit with a status of 1.
-
 ## Setup $ctuser env
 
+>[!NOTE]
+> See the following for reasons to use machinectl instead of su
+> [RedHat blog post](https://www.redhat.com/en/blog/sudo-rootless-podman)
+>
+> [reddit post](https://old.reddit.com/r/linuxadmin/comments/rxrczr/in_interesting_tidbit_i_just_learned_about_the/)
+
 ```bash
-# Switch to user (`-i` doesn't work without a login shell)
-sudo -u $ctuser bash -l
+# Switch to $ctuser
+machinectl shell $ctuser
 # Create dirs
 mkdir -p ~/.config/{containers/systemd,environment.d} ~/containers/storage
 # Prepare `systemd --user` env
