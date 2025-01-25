@@ -68,10 +68,8 @@ systemctl enable --now podman
 > As of Podman 5.0 Pasta is the default rootless networking tool.
 > 
 > Podman 5.0 is available in standard Ubuntu repo since 24.10.
-
-```bash
-sudo apt install passt
-```
+>
+> Both are installed with podman see [rootless networking for configuration](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md#networking-configuration)
 
 ## Allow rootless binding port 80+
 
@@ -142,17 +140,4 @@ podman system migrate
 # WARNING: Set strict versions for all containers or risk catastrophe
 systemctl --user enable --now podman-auto-update
 exit
-```
-
-> [!WARNING]
-> I disabled SELinux to not deal with this for every container.
-> /etc/selinux/config -> `SELINUX=disabled`
-
-> [!NOTE]
-> Set up the correct policies permanently instead of disabling SELinux
-
-Temporarily set SELinux policy to allow containers to use devices.
-
-```bash
-setsebool -P container_use_devices 1
 ```
