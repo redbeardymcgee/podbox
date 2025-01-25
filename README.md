@@ -234,3 +234,12 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [wger](https://wger.de/)
 - [ ] [Zenoss](https://www.zenoss.com/)
 - [ ] [Zitadel](https://zitadel.com/)
+
+## Acknowledgments
+
+Thanks to these other users for their examples and contributions!
+
+@fpatrick/podman-quadlet
+@dwedia/podmanQuadlets
+@sudo-kraken
+@EphemeralDev
