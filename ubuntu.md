@@ -128,9 +128,13 @@ loginctl enable-linger $ctuser
 >
 > [reddit post](https://old.reddit.com/r/linuxadmin/comments/rxrczr/in_interesting_tidbit_i_just_learned_about_the/)
 
+Install systemd-container
+`sudo apt install systemd-container`
+
 ```bash
 # Switch to $ctuser
-machinectl shell $ctuser
+# Note do not remove the trailing @
+machinectl shell $ctuser@ /bin/bash
 # Create dirs
 mkdir -p ~/.config/{containers/systemd,environment.d} ~/containers/storage
 # Prepare `systemd --user` env
