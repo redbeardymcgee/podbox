@@ -101,10 +101,10 @@ Note $ctuser is a placeholder, replace with your username
 
 ```bash
 # Prepare a group id outside of the normal range
-groupadd --gid 2000 $ctuser
+sudo groupadd --gid 2000 $ctuser
 # Create user with restrictions
 # We need the $HOME to live in
-useradd --create-home \
+sudo useradd --create-home \
     --shell /usr/bin/false \
     --password $ctuser_pw \
     --no-user-group \
@@ -113,9 +113,9 @@ useradd --create-home \
     --uid 2000 \
     $ctuser
 # Lock user from password login
-usermod --lock $ctuser
+sudo usermod --lock $ctuser
 # Add container sub-ids
-usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $ctuser
+sudo usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $ctuser
 # Start $ctuser session at boot without login
 loginctl enable-linger $ctuser
 ```
