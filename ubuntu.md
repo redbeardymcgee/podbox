@@ -119,6 +119,8 @@ sudo usermod --lock $ctuser
 # Start $ctuser session at boot without login
 loginctl enable-linger $ctuser
 ```
+>[!NOTE]
+> Consider removing bash history entry that contains the password entered above
 
 ## Setup $ctuser env
 
