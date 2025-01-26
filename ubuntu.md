@@ -50,7 +50,7 @@ rootless environment for our containers to run in.
 ## Install
 
 ```bash
-sudo apt install podman
+sudo apt install podman systemd-container
 
 ## Make sure podman is running
 systemctl enable --now podman
@@ -95,7 +95,9 @@ See [jdboyd blog post for PARTIAL examples using UFW, iptables, and nftables](ht
 ## Prepare container user
 
 This user will be the owner of all containers with no login shell or root
-privileges. 
+privileges.
+
+Container user should have range of uid/gid automatically generated. See [subuid and subgid tutorial](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md#etcsubuid-and-etcsubgid-configuration) to verify range or create if it does not exist.
 
 Note $ctuser is a placeholder, replace with your username
 
@@ -114,8 +116,6 @@ sudo useradd --create-home \
     $ctuser
 # Lock user from password login
 sudo usermod --lock $ctuser
-# Add container sub-ids
-sudo usermod --add-subuids 200000-299999 --add-subgids 200000-299999 $ctuser
 # Start $ctuser session at boot without login
 loginctl enable-linger $ctuser
 ```
@@ -127,9 +127,6 @@ loginctl enable-linger $ctuser
 > [RedHat blog post](https://www.redhat.com/en/blog/sudo-rootless-podman)
 >
 > [reddit post](https://old.reddit.com/r/linuxadmin/comments/rxrczr/in_interesting_tidbit_i_just_learned_about_the/)
-
-Install systemd-container
-`sudo apt install systemd-container`
 
 ```bash
 # Switch to $ctuser
