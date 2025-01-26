@@ -1,4 +1,4 @@
-# Ubuntu Server 
+# Ubuntu Server
 
 Setting up rootless podman on a fresh ubuntu 24.10 server.
 
@@ -7,7 +7,8 @@ Setting up rootless podman on a fresh ubuntu 24.10 server.
 
 ## SSH
 
-SSH is optional, but highly encouraged. OpenSSH is installed by default and sshd is running by default.
+SSH is optional, but highly encouraged. OpenSSH is installed by default and sshd
+is running by default.
 
 ```bash
 ## Generate strong key on your laptop or workstation/desktop
@@ -26,9 +27,11 @@ ssh-copy-id username@remote_host
 We don't want to allow anyone to login as root remotely ever. You must be a
 `sudoer` with public key auth to elevate to root.
 
-SSH into your server and run `sudoedit /etc/ssh/sshd_config` 
+SSH into your server and run `sudoedit /etc/ssh/sshd_config`
 
-See [stackoverflow question](https://superuser.com/questions/785187/sudoedit-why-use-it-over-sudo-vi) for reasons to use sudoedit over sudo.
+See
+[stackoverflow question](https://superuser.com/questions/785187/sudoedit-why-use-it-over-sudo-vi)
+for reasons to use sudoedit over sudo.
 
 ```bash
 ## Uncomment PasswordAuthentication and set value to no
@@ -40,7 +43,9 @@ PermitRootLogin no
 ## Optionally disable X11 forwarding
 X11Forwarding no
 ```
-Save file and then run `systemctl restart ssh` Before closing your session, open a new terminal and test SSH is functioning correctly.
+
+Save file and then run `systemctl restart ssh` Before closing your session, open
+a new terminal and test SSH is functioning correctly.
 
 ## Podman
 
@@ -57,8 +62,7 @@ systemctl enable --now podman
 ```
 
 > [!NOTE]
-> Read the docs.
-> `man podman-systemd.unit`
+> Read the docs. `man podman-systemd.unit`
 
 ## Prepare host networking stack
 
@@ -66,28 +70,33 @@ systemctl enable --now podman
 
 > [!NOTE]
 > As of Podman 5.0 Pasta is the default rootless networking tool.
-> 
+>
 > Podman 5.0 is available in standard Ubuntu repo since 24.10.
 >
-> Both are installed with podman see [rootless networking for configuration](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md#networking-configuration)
+> Both are installed with podman see
+> [rootless networking for configuration](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md#networking-configuration)
 
 ## Allow rootless binding port 80+
 
-### Option 1: Modify range of unpriveleged ports
+### Option 1: Modify range of unprivileged ports
 
 > [!NOTE]
-> This is only necessary if you are setting up the reverse proxy (or any service on ports <1024).
+> This is only necessary if you are setting up the reverse proxy (or any service
+> on ports <1024).
 
 `sudoedit /etc/sysctl.conf`
+
 ```bash
 ## Add the following line and save
 net.ipv4.ip_unprivileged_port_start=80
 ```
 
 ### Option 2: Redirect using firewalls
-See [jdboyd blog post for PARTIAL examples using UFW, iptables, and nftables](https://blog.jdboyd.net/2024/05/exposing-privileged-ports-with-podman/)
 
->[!WARNING]
+See
+[jdboyd blog post for PARTIAL examples using UFW, iptables, and nftables](https://blog.jdboyd.net/2024/05/exposing-privileged-ports-with-podman/)
+
+> [!WARNING]
 > IF UTILIZING THIS METHOD
 >
 > CREATE RULES TO ALLOW SSH BEFORE ENABLING THE FIREWALL
@@ -97,7 +106,9 @@ See [jdboyd blog post for PARTIAL examples using UFW, iptables, and nftables](ht
 This user will be the owner of all containers with no login shell or root
 privileges.
 
-Container user should have range of uid/gid automatically generated. See [subuid and subgid tutorial](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md#etcsubuid-and-etcsubgid-configuration) to verify range or create if it does not exist.
+Container user should have range of uid/gid automatically generated. See
+[subuid and subgid tutorial](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md#etcsubuid-and-etcsubgid-configuration)
+to verify range or create if it does not exist.
 
 Note $ctuser is a placeholder, replace with your username
 
@@ -119,12 +130,13 @@ sudo usermod --lock $ctuser
 # Start $ctuser session at boot without login
 loginctl enable-linger $ctuser
 ```
->[!NOTE]
+
+> [!NOTE]
 > Consider removing bash history entry that contains the password entered above
 
 ## Setup $ctuser env
 
->[!NOTE]
+> [!NOTE]
 > See the following for reasons to use machinectl instead of su
 > [RedHat blog post](https://www.redhat.com/en/blog/sudo-rootless-podman)
 >
