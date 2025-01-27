@@ -76,11 +76,9 @@ systemctl enable --now podman
 > This is only necessary if you are setting up the reverse proxy (or any service
 > on ports <1024).
 
-`sudoedit /etc/sysctl.conf`
-
 ```bash
-## Add the following line and save
-net.ipv4.ip_unprivileged_port_start=80
+printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' | sudo tee /etc/sysctl.d/99-unprivileged-port-binding.conf
+sysctl -w 'net.ipv4.ip_unprivileged_port_start=80'
 ```
 
 ### Option 2: Redirect using firewalls
