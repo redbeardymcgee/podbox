@@ -1,8 +1,8 @@
 ## Weechat
 
 > [!WARNING]
-> If you have permissions issue trying to persist data > [Potential permissions
-> issue
+> If you have permissions issue trying to persist data > [Potential
+> permissions issue
 > fix](https://github.com/weechat/weechat-container/issues/10#issuecomment-2472077317)
 
 ### Attach and configure
@@ -11,7 +11,7 @@
 > Detach key sequence: `ctrl-p` `ctrl-q`.
 
 ```bash
-ssh -t $remotehost sh -lc 'cd; podman attach weechat'
+ssh -t $host machinectl shell $ctuser@ podman attach weechat
 /set irc.look.smart_filter on
 /set irc.server_default.msg_part ""
 /set irc.server_default.msg_quit ""

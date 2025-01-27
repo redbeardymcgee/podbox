@@ -1,5 +1,18 @@
 # podbox
 
+## Table of Contents
+
+- [What is this?](#what-is-this)
+- [Table of Contents](#table-of-contents)
+- [Getting started](#getting-started)
+  - [Dependencies](#dependencies)
+  - [Quickstart](#quickstart)
+    - [Hello, world](#hello-world)
+  - [Running real apps](#running-real-apps)
+    - [Example](#example)
+- [Coming soon](#coming-soon)
+- [Acknowledgments](#acknowledgments)
+
 ## What is this?
 
 [Make `systemd` better for Podman with Quadlet](https://www.redhat.com/en/blog/quadlet-podman)
@@ -14,17 +27,6 @@ under the same user permissions as yourself, from within your own `$HOME`.
 > It is recommended to create another user specifically for running these
 > containers, but it is not strictly required. Details for setting up a system
 > from scratch are located in [AlmaLinux.md](./AlmaLinux.md).
-
-## Table of Contents
-
-- [Getting started](#getting-started)
-  - [Dependencies](#dependencies)
-  - [Quickstart](#quickstart)
-    - [Hello, world](#hello-world)
-  - [Running real apps](#running-real-apps)
-    - [Example](#example)
-- [Coming soon](#coming-soon)
-- [Acknowledgments](#acknowledgments)
 
 ## Getting started
 

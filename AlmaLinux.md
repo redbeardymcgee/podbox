@@ -23,7 +23,7 @@ them and decide for yourself.
 
 ## Disks
 
-## Partitions
+### Partitions
 
 Repeat the following steps for all disks that you want to join together into
 one single logical volume.
@@ -37,7 +37,7 @@ dd if=/dev/zero of=/dev/sdX bs=512 count=1 conv=notrunc
 dd if=/dev/zero of=/dev/sdY bs=512 count=1 conv=notrunc
 ```
 
-## LVM
+### LVM
 
 ```bash
 # Create physical volume
@@ -54,7 +54,7 @@ mke2fs -t ext4 /dev/library/books
 e2fsck -f /dev/library/books
 ```
 
-## /etc/systemd/system/volumes-books.mount
+### /etc/systemd/system/volumes-books.mount
 
 ```ini
 [Mount]
@@ -105,9 +105,10 @@ printf '%s\n' \
 ## Cockpit -> https://ip-addr:9090
 
 > [!WARNING]
-> Disable the firewall if you are lazy Exposing ports for other services can be
-> exhausting and I have not learned how to do this for containers properly.
-> Each container may need a new rule for something, not sure.
+> Disable the firewall if you are lazy like me. Exposing ports for other
+> services can be exhausting and I have not learned how to do this for
+> containers properly. Each container may need a new rule for something, not
+> sure.
 > ```bash
 > systemctl disable --now firewalld
 > ```
@@ -145,7 +146,7 @@ dnf install setroubleshoot-server
 Podman is a daemonless container hypervisor. This document prepares a fully
 rootless environment for our containers to run in.
 
-## Install
+### Install
 
 ```bash
 dnf install podman
@@ -156,9 +157,9 @@ systemctl enable --now podman
 > Read the docs.
 > `man podman-systemd.unit`
 
-## Prepare host networking stack
+### Prepare host networking stack
 
-## slirp4netns
+### slirp4netns
 
 > [!NOTE]
 > This may not be necessary but my system is currently using it.
@@ -167,7 +168,7 @@ systemctl enable --now podman
 dnf install slirp4netns
 ```
 
-## Install DNS server for `podman`
+### Install DNS server for `podman`
 
 > [!NOTE]
 > Not sure how to resolve these correctly yet but the journal logs it
@@ -177,7 +178,7 @@ dnf install slirp4netns
 dnf install aardvark-dns
 ```
 
-## Allow rootless binding port 80+
+### Allow rootless binding port 80+
 
 > [!NOTE]
 > This is only necessary if you are setting up the reverse proxy.
@@ -187,14 +188,14 @@ printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' > /etc/sysctl.d/99-unpriv
 sysctl 'net.ipv4.ip_unprivileged_port_start=80'
 ```
 
-## Allow containers to route within multiple networks
+### Allow containers to route within multiple networks
 
 ```bash
 printf '%s\n' 'net.ipv4.conf.all.rp_filter=2' > /etc/sysctl.d/99-reverse-path-loose.conf
 sysctl -w net.ipv4.conf.all.rp_filter=2
 ```
 
-## Prepare container user
+### Prepare container user
 
 This user will be the owner of all containers with no login shell or root
 privileges.
@@ -223,17 +224,17 @@ loginctl enable-linger $ctuser
 > [!TIP]
 > Optionally setup ssh keys to directly login to $ctuser.
 
+### Setup $ctuser env
+
 > [!NOTE]
 > The login shell doesn't exist. Launch `bash -l` manually to get a shell or
 > else your `ssh` will exit with a status of 1.
 
-## Setup $ctuser env
-
 ```bash
 # Switch to user (`-i` doesn't work without a login shell)
-sudo -u $ctuser bash -l
+machinectl shell $ctuser@ /bin/bash
 # Create dirs
-mkdir -p ~/.config/{containers/systemd,environment.d} ~/containers/storage
+mkdir -p ~/.config/{containers/systemd,environment.d}
 # Prepare `systemd --user` env
 echo 'XDG_RUNTIME_DIR=/run/user/2000' >> ~/.config/environment.d/10-xdg.conf
 # Enable container auto-update
