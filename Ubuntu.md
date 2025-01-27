@@ -1,6 +1,6 @@
 # Ubuntu Server
 
-Setting up rootless podman on a fresh ubuntu 24.10 server.
+Setting up rootless podman on a fresh Ubuntu 24.10 server.
 
 > [!WARNING]
 > Perform `sudo apt update && sudo apt upgrade` immediately. Reboot system.
