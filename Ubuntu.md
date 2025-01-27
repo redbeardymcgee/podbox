@@ -14,7 +14,7 @@ is running by default.
 ## Generate strong key on your laptop or workstation/desktop
 ## If you already have keys DO NOT overwrite your previous keys
 
-ssh-keygen
+ssh-keygen -t ed25519 -a 32 -f ~/.ssh/$localhost-to-$remotehost
 
 ## Optionally set a passphrase
 
@@ -27,21 +27,13 @@ ssh-copy-id username@remote_host
 We don't want to allow anyone to login as root remotely ever. You must be a
 `sudoer` with public key auth to elevate to root.
 
-SSH into your server and run `sudoedit /etc/ssh/sshd_config`
-
-See
-[stackoverflow question](https://superuser.com/questions/785187/sudoedit-why-use-it-over-sudo-vi)
-for reasons to use sudoedit over sudo.
+SSH into your server and run
 
 ```bash
-## Uncomment PasswordAuthentication and set value to no
-PasswordAuthentication no
-
-## Disable root login
-PermitRootLogin no
-
-## Optionally disable X11 forwarding
-X11Forwarding no
+printf '%s\n' 'PermitRootLogin no' | sudo tee /etc/ssh/sshd_config.d/01-root.conf
+printf '%s\n' \
+    'PubkeyAuthentication yes' \
+    'PasswordAuthentication no' | sudo tee /etc/ssh/sshd_config.d/01-pubkey.conf
 ```
 
 Save file and then run `systemctl restart ssh` Before closing your session, open
