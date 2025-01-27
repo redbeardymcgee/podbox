@@ -70,7 +70,7 @@ systemctl enable --now podman
 
 ## Allow rootless binding port 80+
 
-### Option 1: Modify range of unprivileged ports
+### Modify range of unprivileged ports
 
 > [!NOTE]
 > This is only necessary if you are setting up the reverse proxy (or any service
@@ -80,16 +80,6 @@ systemctl enable --now podman
 printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' | sudo tee /etc/sysctl.d/99-unprivileged-port-binding.conf
 sysctl -w 'net.ipv4.ip_unprivileged_port_start=80'
 ```
-
-### Option 2: Redirect using firewalls
-
-See
-[jdboyd blog post for PARTIAL examples using UFW, iptables, and nftables](https://blog.jdboyd.net/2024/05/exposing-privileged-ports-with-podman/)
-
-> [!WARNING]
-> IF UTILIZING THIS METHOD
->
-> CREATE RULES TO ALLOW SSH BEFORE ENABLING THE FIREWALL
 
 ## Prepare container user
 
