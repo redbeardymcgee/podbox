@@ -117,17 +117,18 @@ loginctl enable-linger $ctuser
 ## Setup $ctuser env
 
 > [!NOTE]
-> See the following for reasons to use machinectl instead of su
-> [RedHat blog post](https://www.redhat.com/en/blog/sudo-rootless-podman)
->
-> [reddit post](https://old.reddit.com/r/linuxadmin/comments/rxrczr/in_interesting_tidbit_i_just_learned_about_the/)
+> Use machinectl instead of sudo or su to get a shell that is fully isolated
+> from the original session. See the developers comments on the problem
+> [with su](https://github.com/systemd/systemd/issues/825#issuecomment-127917622)
+> as well as the purpose of
+> [machinectl shell](https://github.com/systemd/systemd/pull/1022#issuecomment-136133244)
 
 ```bash
 # Switch to $ctuser
 # Note do not remove the trailing @
 machinectl shell $ctuser@ /bin/bash
 # Create dirs
-mkdir -p ~/.config/{containers/systemd,environment.d} ~/containers/storage
+mkdir -p ~/.config/{containers/systemd,environment.d}
 # Prepare `systemd --user` env
 echo 'XDG_RUNTIME_DIR=/run/user/2000' >> ~/.config/environment.d/10-xdg.conf
 # Enable container auto-update
