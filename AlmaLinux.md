@@ -105,16 +105,13 @@ printf '%s\n' \
 ## Cockpit -> https://ip-addr:9090
 
 > [!WARNING]
-> Disable the firewall if you are lazy like me. Exposing ports for other
-> services can be exhausting and I have not learned how to do this for
-> containers properly. Each container may need a new rule for something, not
-> sure.
+> I run behind an existing firewall, not in a VPS or cloud provider.
 > ```bash
 > systemctl disable --now firewalld
 > ```
 
 > [!NOTE]
-> Should be able to set up good firewall with only 80/443 open.
+> Should be able to set up good firewall with only 22/80/443 open.
 
 Enable the socket-activated cockpit service and allow it through the firewall.
 
@@ -146,7 +143,7 @@ dnf install setroubleshoot-server
 Podman is a daemonless container hypervisor. This document prepares a fully
 rootless environment for our containers to run in.
 
-### Install
+## Install
 
 ```bash
 dnf install podman
@@ -157,7 +154,7 @@ systemctl enable --now podman
 > Read the docs.
 > `man podman-systemd.unit`
 
-### Prepare host networking stack
+## Prepare host networking stack
 
 ### slirp4netns
 
@@ -185,7 +182,7 @@ dnf install aardvark-dns
 
 ```bash
 printf '%s\n' 'net.ipv4.ip_unprivileged_port_start=80' > /etc/sysctl.d/99-unprivileged-port-binding.conf
-sysctl 'net.ipv4.ip_unprivileged_port_start=80'
+sysctl -w net.ipv4.ip_unprivileged_port_start=80
 ```
 
 ### Allow containers to route within multiple networks
@@ -195,7 +192,7 @@ printf '%s\n' 'net.ipv4.conf.all.rp_filter=2' > /etc/sysctl.d/99-reverse-path-lo
 sysctl -w net.ipv4.conf.all.rp_filter=2
 ```
 
-### Prepare container user
+## Prepare container user
 
 This user will be the owner of all containers with no login shell or root
 privileges.
@@ -248,7 +245,7 @@ exit
 > I disabled SELinux to not deal with this for every container.
 > /etc/selinux/config -> `SELINUX=disabled`
 
-> [!NOTE]
+> [!TIP]
 > Set up the correct policies permanently instead of disabling SELinux
 
 Temporarily set SELinux policy to allow containers to use devices.
