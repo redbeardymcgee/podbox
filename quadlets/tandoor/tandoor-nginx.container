@@ -15,8 +15,6 @@ Image=docker.io/nginx:mainline-alpine
 ContainerName=tandoor-nginx
 HostName=tandoor-nginx
 
-Network=protonvpn.network
-
 Volume=tandoor-nginx-config:/etc/nginx/conf.d
 Volume=tandoor-static:/static
 Volume=tandoor-media:/media
