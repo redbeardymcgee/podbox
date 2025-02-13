@@ -1,0 +1,26 @@
+[Unit]
+Description=dashdot-nvidia
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/mauricenino/dashdot:nvidia
+ContainerName=dashdot-nvidia
+AutoUpdate=registry
+
+Network=
+HostName=dashdot
+PublishPort=3001:3001
+
+## FIXME: compose uses super weird syntax to find the gpu instead of mapping it directly
+# AddDevice=/dev/dri/renderD129:/dev/dri/renderD129
+
+Volume=/:/mnt/host:ro
+
+EnvironmentFile=dashdot.env
+
