@@ -1,0 +1,21 @@
+[Unit]
+Description=Reverse proxy
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=caddy.build
+ContainerName=caddy
+HostName=caddy
+Pod=MAMstack.pod
+AutoUpdate=registry
+
+Volume=caddy-config:/config
+Volume=caddy-data:/data
+
+Volume=./Caddyfile:/etc/caddy/Caddyfile
+
