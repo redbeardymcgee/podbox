@@ -1,4 +1,0 @@
-[Build]
-ImageTag=localhost/caddy-njalla
-SetWorkingDirectory=unit
-

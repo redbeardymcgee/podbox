@@ -1,7 +1,0 @@
-{
-        acme_dns $provider $api_key
-}
-
-qb.$domain.$tld {
-        reverse_proxy localhost:8080
-}
