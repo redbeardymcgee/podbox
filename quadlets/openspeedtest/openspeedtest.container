@@ -1,0 +1,22 @@
+[Unit]
+Description=OpenSpeedTest server
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/openspeedtest/latest
+ContainerName=openspeedtest
+AutoUpdate=registry
+
+HostName=openspeedtest
+PublishPort=80:3000
+PublishPort=443:3001
+
+Environment=ENABLE_LETSENCRYPT=True
+Environment=DOMAIN_NAME=openspeedtest.example.com
+Environment=USER_EMAIL=you@example.com
