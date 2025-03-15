@@ -1,0 +1,20 @@
+[Unit]
+Description=Glance dashboard
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/glanceapp/glance
+ContainerName=glance
+AutoUpdate=registry
+
+HostName=glance
+PublishPort=8080
+
+Volume=./config:/app/config
+

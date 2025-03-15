@@ -171,6 +171,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Foundry VTT](https://foundryvtt.com)
 - [x] [FreshRSS](https://www.freshrss.org/)
 - [ ] [Gaseous](https://github.com/gaseous-project/gaseous-server)
+- [ ] [Glance](https://github.com/glanceapp/glance)
 - [x] [Glances](https://nicolargo.github.io/glances/)
 - [ ] [glueforward](https://github.com/GeoffreyCoulaud/glueforward)
 - [x] [gluetun](https://github.com/qdm12/gluetun)
