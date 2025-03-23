@@ -137,3 +137,42 @@ podman system migrate
 systemctl --user enable --now podman-auto-update
 exit
 ```
+
+## Podman fails autostart
+
+In Podman < 5.3 containers may fail to autostart because user level units cannot depend on system level units (in this case `network-online.target`)
+
+Podman >= 5.3 should ship with a workaround user unit that can be used `podman-user-wait-network-online.service`, use that instead of the fix below.  
+
+See [this github issue](https://github.com/containers/podman/issues/22197) for workarounds, the workaround below is what worked for me. The google.com ping can be replaced with your preferred (reachable) ip/host
+
+To fix this, create the following
+
+```bash
+# ~/.config/systemd/user/network-online.service
+[Unit]
+Description=User-level proxy to system-level network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=sh -c 'until ping -c 1 google.com; do sleep 5; done'
+
+[Install]
+WantedBy=default.target
+```
+```bash
+# ~/.config/systemd/user/network-online.target
+[Unit]
+Description=User-level network-online.target
+Requires=network-online.service
+Wants=network-online.service
+After=network-online.service
+```
+Then enable the service `systemctl --user enable network-online.service`
+
+In quadlets add the following:
+
+```bash
+[Unit]
+After=network-online.target
+```
