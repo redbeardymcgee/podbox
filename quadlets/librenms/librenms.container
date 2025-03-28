@@ -3,6 +3,9 @@ Description=LibreNMS
 After=librenms-db
 After=librenms-redis
 After=librenms-msmtpd
+Wants=librenms-dispatcher
+Wants=librenms-syslogng
+Wants=librenms-snmptrapd
 
 [Service]
 Restart=on-failure

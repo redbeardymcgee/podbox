@@ -13,7 +13,7 @@ WantedBy=default.target
 [Container]
 Image=docker.io/librenms/librenms:latest
 ContainerName=librenms-syslogng
-AutoUpdate=
+AutoUpdate=registry
 
 Network=
 HostName=librenms-syslogng
