@@ -1,0 +1,19 @@
+[Unit]
+Description=LibreNMS msmtpd
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/crazymax/msmtpd:latest
+ContainerName=librenms-msmtpd
+AutoUpdate=registry
+
+Network=
+HostName=librenms-msmtpd
+
+EnvironmentFile=msmtpd.env

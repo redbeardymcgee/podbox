@@ -1,0 +1,19 @@
+[Unit]
+Description=LibreNMS Redis
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/redis/redis:7.2-alpine
+ContainerName=librenms-redis
+AutoUpdate=registry
+
+Network=
+HostName=librenms-redis
+
+EnvironmentFile=tz.env
