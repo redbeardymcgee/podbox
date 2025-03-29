@@ -26,7 +26,9 @@ under the same user permissions as yourself, from within your own `$HOME`.
 > [!NOTE]
 > It is recommended to create another user specifically for running these
 > containers, but it is not strictly required. Details for setting up a system
-> from scratch are located in [AlmaLinux.md](./AlmaLinux.md).
+> from scratch are located in [AlmaLinux.md](./AlmaLinux.md) or
+> [Ubuntu.md](./Ubuntu.md
+)
 
 ## Getting started
 
