@@ -21,8 +21,6 @@ Volume=librenms-db:/var/lib/mysql
 EnvironmentFile=tz.env
 EnvironmentFile=mariadb.env
 
-Environment=MARAIADB_RANDOM_ROOT_PASSWORD=yes
-
 Secret=librenms-db-pw,type=env,target=MYSQL_PASSWORD
 
 Exec=mysqld --innodb-file-per-table=1 --lower-case-table-names=0 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
