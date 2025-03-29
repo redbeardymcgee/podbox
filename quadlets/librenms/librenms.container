@@ -1,11 +1,11 @@
 [Unit]
 Description=LibreNMS
-After=librenms-db
-After=librenms-redis
-After=librenms-msmtpd
-Wants=librenms-dispatcher
-Wants=librenms-syslogng
-Wants=librenms-snmptrapd
+After=librenms-db.container
+After=librenms-redis.container
+After=librenms-msmtpd.container
+Wants=librenms-dispatcher.container
+Wants=librenms-syslogng.container
+Wants=librenms-snmptrapd.container
 
 [Service]
 Restart=on-failure

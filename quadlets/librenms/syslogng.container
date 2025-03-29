@@ -1,7 +1,7 @@
 [Unit]
 Description=LibreNMS syslogng
-After=librenms
-After=librenms-redis
+After=librenms.container
+After=librenms-redis.container
 
 [Service]
 Restart=on-failure

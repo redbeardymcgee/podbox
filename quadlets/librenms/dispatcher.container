@@ -1,7 +1,7 @@
 [Unit]
 Description=LibreNMS dispatcher
-After=librenms
-After=librenms-redis
+After=librenms.container
+After=librenms-redis.container
 
 [Service]
 Restart=on-failure
