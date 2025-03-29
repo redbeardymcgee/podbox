@@ -188,6 +188,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Kibitzr](https://kibitzr.github.io/)
 - [ ] [Komga](https://komga.org/)
 - [ ] [LazyLibrarian](https://lazylibrarian.gitlab.io/)
+- [x] [LibreNMS](https://librenms.org)
 - [x] [librespeed](https://librespeed.org)
 - [x] [Linkwarden](https://linkwarden.app/)
 - [x] [Lounge](https://thelounge.chat)
