@@ -1,0 +1,21 @@
+[Unit]
+Description=Termix terminals
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/lukegus/termix:latest
+ContainerName=termix
+
+Network=
+HostName=termix
+PublishPort=8080:8080
+
+Volume=termix-db:/data/db
+
+Secret=termixt-salt,type=env,target=SALT
