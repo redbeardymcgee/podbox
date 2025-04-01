@@ -18,4 +18,4 @@ PublishPort=8080:8080
 
 Volume=termix-db:/data/db
 
-Secret=termixt-salt,type=env,target=SALT
+Secret=termix-salt,type=env,target=SALT
