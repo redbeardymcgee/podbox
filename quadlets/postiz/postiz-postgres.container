@@ -21,4 +21,4 @@ Volume=postiz-db:/var/lib/postgresql/data
 Environment=POSTGRES_USER=postiz-user
 Environment=POSTGRES_DB=postiz-db-local
 
-Secret=postiz-password,type=env,target=POSTIZ_PASSWORD
+Secret=postiz-password,type=env,target=POSTGRES_PASSWORD

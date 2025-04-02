@@ -28,7 +28,10 @@ Environment=MAIN_URL=https://postiz.example.com
 Environment=FRONTEND_URL=https://postiz.example.com
 Environment=NEXT_PUBLIC_BACKEND_URL=https://postiz.example.com/api
 
-Environment=DATABASE_URL=postgresql://postiz-user:${POSTIZ_PASSWORD}@postiz-postgres:5432/postiz-db-local
+## Make this whole env var a podman secret to hide the password
+## Secrets do not populate the env before Environment is established
+## Secret=postiz-db-url,type=env,target=DATABASE_URL
+Environment=DATABASE_URL=postgresql://postiz-user:postiz-password@postiz-postgres:5432/postiz-db-local
 Environment=redis://postiz-redis:6379
 Environment=BACKEND_INTERNAL_URL=http://localhost:3000
 Environment=IS_GENERAL=true
