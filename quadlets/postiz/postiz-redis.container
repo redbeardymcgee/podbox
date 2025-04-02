@@ -1,0 +1,19 @@
+[Unit]
+Description=Postiz Redis
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/redis:7.2
+ContainerName=postiz-redis
+AutoUpdate=registry
+
+Network=
+HostName=postiz-redis
+
+Volume=postiz-redis-data:/data
