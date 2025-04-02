@@ -17,7 +17,7 @@ Image=docker.io/graylog:6.1
 ContainerName=graylog
 AutoUpdate=registry
 
-Network=graylog
+Network=graylog.network
 HostName=graylog
 PublishPort=5044
 PublishPort=5044:5044/tcp
@@ -35,11 +35,12 @@ Volume=graylog-data:/usr/share/graylog/data/data
 
 Environment=GRAYLOG_NODE_ID_FILE=/usr/share/graylog/data/data/node-id
 Environment=GRAYLOG_HTTP_BIND_ADDRESS=0.0.0.0:9000
-Environment=GRAYLOG_HTTP_EXTERNAL_URI=http://localhost:9000
+Environment=GRAYLOG_HTTP_EXTERNAL_URI=http://localhost:9000/
 Environment=GRAYLOG_MONGODB_URI=mongodb://graylog-db:27017/graylog
 
 Secret=graylog-password-secret,type=env,target=GRAYLOG_PASSWORD_SECRET
 Secret=graylog-root-password-sha2,type=env,target=GRAYLOG_ROOT_PASSWORD_SHA2
 
-Entrypoint=/usr/bin/tini -- /docker-entrypoint.sh
+Entrypoint=/usr/bin/tini
+Exec=-- /docker-entrypoint.sh
 

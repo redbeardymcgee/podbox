@@ -13,7 +13,7 @@ Image=docker.io/mongo:6.0
 ContainerName=graylog-db
 AutoUpdate=registry
 
-Network=graylog
+Network=graylog.network
 HostName=graylog-db
 
 Volume=graylog-db-data:/data/db

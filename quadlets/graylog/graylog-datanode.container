@@ -13,7 +13,7 @@ Image=docker.io/graylog/graylog-datanode:6.1
 ContainerName=graylog-datanode
 AutoUpdate=registry
 
-Network=graylog
+Network=graylog.network
 HostName=graylog-datanode
 PublishPort=8999:8999
 PublishPort=9200:9200
