@@ -1,0 +1,21 @@
+[Unit]
+Description=Graylog MongoDB
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/mongo:6.0
+ContainerName=graylog-db
+AutoUpdate=registry
+
+Network=graylog
+HostName=graylog-db
+
+Volume=graylog-db-data:/data/db
+Volume=graylog-db-config:/data/configdb
+

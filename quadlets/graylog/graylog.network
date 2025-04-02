@@ -1,0 +1,7 @@
+[Unit]
+Description=Graylog network
+
+[Network]
+NetworkName=graylog
+Subnet=172.25.1.0/29
+Gateway=172.25.0.1
