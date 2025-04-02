@@ -40,5 +40,4 @@ Environment=STORAGE_PROVIDER=local
 Environment=UPLOAD_DIRECTORY=/uploads
 Environment=NEXT_PUBLIC_UPLOAD_DIRECTORY=/uploads
 
-Secret=postiz-password,type=env,target=POSTIZ_PASSWORD
 Secret=postiz-jwt,type=env,target=JWT_SECRET
