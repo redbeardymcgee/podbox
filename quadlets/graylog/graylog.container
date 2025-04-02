@@ -19,7 +19,6 @@ AutoUpdate=registry
 
 Network=graylog.network
 HostName=graylog
-PublishPort=5044
 PublishPort=5044:5044/tcp
 PublishPort=5140:5140/udp
 PublishPort=5140:5140/tcp
