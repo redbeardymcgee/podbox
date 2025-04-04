@@ -1,7 +1,5 @@
 [Unit]
-Description=
-Wants=
-After=
+Description=Notesnook mongodb
 
 [Service]
 Restart=on-failure
@@ -11,26 +9,14 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=
-ContainerName=
+Image=docker.io/mongo/mongo:7.0.12
+ContainerName=notesnook-db
 AutoUpdate=registry
 
-AddCapability=
-AddDevice=
-SecurityLabelDisable=
-User=
-Label=
-UIDMap=
-GIDMap=
+Network=notesnook.network
+HostName=notesnook-db
 
-Network=
-HostName=
-PublishPort=
+Volume=notesnook-dbdata:/data/db
+Volume=notesnook-dbdata:/data/configdb
 
-Volume=
-
-EnvironmentFile=
-Environment=
-
-PodmanArgs=
-Exec=
+ExecStartPre=sh -c 'printf %s\\n "rs.initiate();" "rs.status();" | mongosh mongodb://notesnook-db:27017'

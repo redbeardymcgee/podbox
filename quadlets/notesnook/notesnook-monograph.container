@@ -1,0 +1,25 @@
+[Unit]
+Description=Notesnook monograph server
+Requires=notesnook.service
+After=notesnook.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/streetwriters/monograph:latest
+ContainerName=notesnook-monograph
+AutoUpdate=registry
+
+Network=notesnook.network
+HostName=notesnook-monograph
+PublishPort=6264:3000
+
+EnvironmentFile=notesnook-server-discovery.env
+EnvironmentFile=notesnook.env
+Environment=API_HOST=http://notesnook:5264
+Environment=PUBLIC_URL=https://monograph.notesnook.mcgee.red

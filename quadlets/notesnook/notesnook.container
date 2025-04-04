@@ -1,7 +1,8 @@
 [Unit]
-Description=
-Wants=
-After=
+Description=Notesnook
+Requires=notesnook-s3.service
+Requires=notesnook-setup-s3.service
+Requires=notesnook-identity.service
 
 [Service]
 Restart=on-failure
@@ -11,26 +12,22 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=
-ContainerName=
+Image=docker.io/streetwriters/notesnook-sync:latest
+ContainerName=notesnook
 AutoUpdate=registry
 
-AddCapability=
-AddDevice=
-SecurityLabelDisable=
-User=
-Label=
-UIDMap=
-GIDMap=
+Network=notesnook.network
+HostName=notesnook
+PublishPort=5264:5264
 
-Network=
-HostName=
-PublishPort=
-
-Volume=
-
-EnvironmentFile=
-Environment=
-
-PodmanArgs=
-Exec=
+EnvironmentFile=notesnook-server-discovery.env
+EnvironmentFile=notesnook.env
+Environment=MONGODB_CONNECTION_STRING=mongodb://notesnook-db:27017/?replSet=rs0
+Environment=MONGODB_DATABASE_NAME=notesnook
+Environment=S3_INTERNAL_SERVICE_URL=http://notesnook-s3:9000
+Environment=S3_INTERNAL_BUCKET_NAME=attachments
+Environment=S3_ACCESS_KEY_ID=${MINIO_ROOT_USER}
+Environment=S3_ACCESS_KEY=${MINIO_ROOT_PASSWORD}
+Environment=S3_SERVICE_URL=${ATTACHMENTS_SERVER_PUBLIC_URL}
+Environment=S3_REGION=us-east-1
+Environment=S3_BUCKET_NAME=attachments

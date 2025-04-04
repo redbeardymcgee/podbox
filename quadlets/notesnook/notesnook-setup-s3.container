@@ -1,36 +1,23 @@
 [Unit]
-Description=
-Wants=
-After=
+Description=Notesnook S3 setup
+Requires=notesnook-s3.service
+After=notesnook-s3.service
 
 [Service]
-Restart=on-failure
+Restart=no
 TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target
 
 [Container]
-Image=
-ContainerName=
+Image=docker.io/minio/mc:RELEASE.2024-07-26T13-08-44Z
+ContainerName=notesnook-setup-s3
 AutoUpdate=registry
 
-AddCapability=
-AddDevice=
-SecurityLabelDisable=
-User=
-Label=
-UIDMap=
-GIDMap=
+Network=notesnook.network
+HostName=notesnook-setup-s3
 
-Network=
-HostName=
-PublishPort=
+EnvironmentFile=notesnook.env
 
-Volume=
-
-EnvironmentFile=
-Environment=
-
-PodmanArgs=
-Exec=
+Exec=bash -c 'until mc alias set minio http://notesnook-s3:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD}; do sleep 1; done; mc mb minio/attachments -p'

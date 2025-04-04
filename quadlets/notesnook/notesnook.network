@@ -1,8 +1,6 @@
 [Unit]
-Description=
+Description=Notesnook network
 
 [Network]
-NetworkName=
-Subnet=
-Gateway=
+NetworkName=notesnook
 

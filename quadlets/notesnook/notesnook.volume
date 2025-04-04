@@ -1,0 +1,4 @@
+[Volume]
+VolumeName=notesnook-dbdata
+VolumeName=notesnook-s3data
+

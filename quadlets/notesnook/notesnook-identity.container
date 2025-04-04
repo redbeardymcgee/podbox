@@ -1,0 +1,23 @@
+[Unit]
+Description=Notesnook identity server
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/streetwriters/identity:latest
+ContainerName=notesnook-identity
+AutoUpdate=registry
+
+Network=notesnook.network
+HostName=notesnook-identity
+PublishPort=8264:8264
+
+EnvironmentFile=notesnook-server-discovery.env
+EnvironmentFile=notesnook.env
+Environment=MONGODB_CONNECTION_STRING=mongodb://notesnook-db/identity?replSet=rs0
+Environment=MONGODB_DATABASE_NAME=identity

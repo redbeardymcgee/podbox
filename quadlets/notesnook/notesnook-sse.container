@@ -1,0 +1,25 @@
+[Unit]
+Description=Notesnook SSE server
+Requires=notesnook-identity.service
+Requires=notesnook.service
+After=notesnook.service
+After=notesnook-identity.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/streetwriters/sse:latest
+ContainerName=notesnook-sse
+AutoUpdate=registry
+
+Network=notesnook.network
+HostName=notesnook-sse
+PublishPort=7264:7264
+
+EnvironmentFile=notesnook.env
+EnvironmentFile=notesnook-server-discovery.env
