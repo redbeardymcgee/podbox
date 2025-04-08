@@ -1,0 +1,23 @@
+[Unit]
+Description=Gaseous MariaDB
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/mariadb/mariadb:latest
+ContainerName=gaseous-mariadb
+AutoUpdate=registry
+
+Network=gaseous.network
+HostName=gaseous-mariadb
+
+Volume=gaseous-mariadb:/var/lib/mysql
+
+Environment=MARIADB_ROOT_PASSWORD=gaseous
+Environment=MARIADB_USER=gaseous
+Environment=MARIADB_PASSWORD=gaseous
