@@ -9,7 +9,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/mariadb/mariadb:latest
+Image=docker.io/mariadb:latest
 ContainerName=gaseous-mariadb
 AutoUpdate=registry
 
