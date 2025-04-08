@@ -1,0 +1,6 @@
+[Unit]
+Description=Gaseous ROMs network
+
+[Network]
+NetworkName=gaseous
+
