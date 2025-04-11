@@ -13,7 +13,6 @@ Image=docker.io/vaultwarden/server:latest
 ContainerName=vaultwarden
 AutoUpdate=registry
 
-Network=
 HostName=vaultwarden
 PublishPort=80:80
 
