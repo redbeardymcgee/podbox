@@ -21,9 +21,9 @@ PublishPort=80:8080
 
 Volume=romm-resources:/romm/resources
 Volume=romm-redis-data:/redis-data
-VolumeName=romm-library:/romm/library
-VolumeName=romm-assets:/romm/assets
-VolumeName=romm-config:/romm/config
+Volume=romm-library:/romm/library
+Volume=romm-assets:/romm/assets
+Volume=romm-config:/romm/config
 
 EnvironmentFile=romm.env
 
