@@ -1,0 +1,6 @@
+[Unit]
+Description=OpenObserve network
+
+[Network]
+NetworkName=openobserve
+

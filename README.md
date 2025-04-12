@@ -211,6 +211,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [Notesnook](https://github.com/streetwriters/notesnook-sync-server)
 - [ ] [ntop](https://www.ntop.org/)
 - [ ] [OpenNMS](https://www.opennms.org/)
+- [x] [OpenObserve](https://openobserve.ai)
 - [x] [OpenSpeedTest](https://openspeedtest.com)
 - [x] [PiHole](https://pi-hole.net/)
 - [x] [Pocket ID](https://github.com/stonith404/pocket-id)
