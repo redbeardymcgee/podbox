@@ -151,7 +151,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Audiobookshelf](https://www.audiobookshelf.org/)
 - [ ] [Authelia](https://www.authelia.com/)
 - [ ] [Authentik](https://goauthentik.io/)
-- [ ] [betanin](https://github.com/sentriz/betanin)
+- [x] [betanin](https://github.com/sentriz/betanin)
 - [ ] [Bigcapital](https://bigcapital.app/)
 - [ ] [Bitwarden](https://bitwarden.com/)
 - [x] [Blinko](https://blinko.mintlify.app/introduction)

@@ -1,0 +1,6 @@
+[Unit]
+Description=betanin network
+
+[Network]
+NetworkName=betanin
+
