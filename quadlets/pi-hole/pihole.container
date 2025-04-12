@@ -1,0 +1,45 @@
+[Unit]
+Description=Pi-hole
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/pihole:latest
+ContainerName=pihole
+## WARNING: This should not be enabled unless you have good backups and
+# recovery plans. DNS is a critical piece of you network.
+# AutoUpdate=registry
+
+# DHCP
+# AddCapability=CAP_NET_ADMIN
+# NTP
+# AddCapability=CAP_SYS_TIME
+# Optional
+# AddCapability=CAP_SYS_NICE
+
+Network=pihole.network
+HostName=pihole
+# DNS
+PublishPort=53:53/tcp
+PublishPort=53:53/udp
+# HTTP
+# PublishPort=80:80/tcp
+# HTTPS
+# PublishPort=443:443/tcp
+# DHCP
+# PublishPort=67:67/udp
+# NTP
+# PublishPort=123:123/udp
+
+Volume=pihole-etc:/etc/pihole
+
+Environment=TZ=Etc/UTC
+Environment=FTLCONF_dns_listeningMode=all
+
+Secret=pihole-api-password,type=env,target=FTLCONF_webserver_api_password
+

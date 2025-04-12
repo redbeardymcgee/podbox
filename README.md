@@ -212,7 +212,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [ntop](https://www.ntop.org/)
 - [ ] [OpenNMS](https://www.opennms.org/)
 - [x] [OpenSpeedTest](https://openspeedtest.com)
-- [ ] [PiHole](https://pi-hole.net/)
+- [x] [PiHole](https://pi-hole.net/)
 - [x] [Pocket ID](https://github.com/stonith404/pocket-id)
 - [ ] [Pod Arcade](https://www.pod-arcade.com/)
 - [x] [Postiz](https://postiz.com/)
