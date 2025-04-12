@@ -1,0 +1,19 @@
+[Unit]
+Description=Pocket ID
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/pocket-id/pocket-id
+ContainerName=pocket-id
+AutoUpdate=registry
+
+HostName=pocket-id
+PublishPort=3000:80
+
+Volume=pocket-id-container:/app/backend/data

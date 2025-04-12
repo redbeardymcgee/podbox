@@ -213,7 +213,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [OpenNMS](https://www.opennms.org/)
 - [x] [OpenSpeedTest](https://openspeedtest.com)
 - [ ] [PiHole](https://pi-hole.net/)
-- [ ] [Pocket ID](https://github.com/stonith404/pocket-id)
+- [x] [Pocket ID](https://github.com/stonith404/pocket-id)
 - [ ] [Pod Arcade](https://www.pod-arcade.com/)
 - [x] [Postiz](https://postiz.com/)
 - [x] [Prometheus](https://prometheus.io)
