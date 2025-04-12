@@ -180,7 +180,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [gluetun](https://github.com/qdm12/gluetun)
 - [ ] [Graphite](https://graphiteapp.org/)
 - [x] [Graylog](https://graylog.org)
-- [ ] [Healthchecks](https://healthchecks.io/)
+- [x] [Healthchecks](https://healthchecks.io/)
 - [x] [hoarder](https://hoarder.app/)
 - [x] [Homarr](https://homarr.dev/)
 - [x] [Homepage](https://gethomepage.dev/)

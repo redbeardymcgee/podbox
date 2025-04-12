@@ -1,0 +1,24 @@
+[Unit]
+Description=Healthchecks
+Requires=healthchecks-postgres.service
+After=healthchecks-postgres.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/healthchecks:latest
+ContainerName=healthchecks
+AutoUpdate=registry
+
+Network=healthchecks.network
+HostName=healthchecks
+PublishPort=8000:8000
+
+EnvironmentFile=healthchecks.env
+
+Exec=uwsgi /opt/healthchecks/docker/uwsgi.ini

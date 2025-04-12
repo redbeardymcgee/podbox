@@ -1,0 +1,26 @@
+[Unit]
+Description=Healthchecks postgres
+Requires=healthchecks-postgres.service
+After=healthchecks-postgres.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres:16
+ContainerName=healthchecks-postgres
+AutoUpdate=registry
+
+Network=healthchecks.network
+HostName=healthchecks-postgres
+PublishPort=8000:8000
+
+Volume=healthchecks-postgres:/var/lib/postgresql/data
+
+Environment=POSTGRES_DB=healthchecks
+
+Secret=healthchecks-postgres-password,type=env,target=POSTGRES_PASSWORD

@@ -1,0 +1,6 @@
+[Unit]
+Description=Healthchecks network
+
+[Network]
+NetworkName=healthchecks
+
