@@ -176,7 +176,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Gaseous](https://github.com/gaseous-project/gaseous-server)
 - [x] [Glance](https://github.com/glanceapp/glance)
 - [x] [Glances](https://nicolargo.github.io/glances/)
-- [ ] [glueforward](https://github.com/GeoffreyCoulaud/glueforward)
+- [x] [glueforward](https://github.com/GeoffreyCoulaud/glueforward)
 - [x] [gluetun](https://github.com/qdm12/gluetun)
 - [ ] [Graphite](https://graphiteapp.org/)
 - [x] [Graylog](https://graylog.org)
