@@ -1,0 +1,6 @@
+[Unit]
+Description=n8n network
+
+[Network]
+NetworkName=n8n
+
