@@ -1,0 +1,26 @@
+[Unit]
+Description=Graphite monitoring
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/graphiteapp/graphite-statsd
+ContainerName=graphite
+AutoUpdate=registry
+
+Network=graphite.network
+HostName=graphite
+PublishPort=80:80
+PublishPort=2003-2004:2003-2004
+PublishPort=2023-2024:2023-2024
+PublishPort=8125:8125/udp
+PublishPort=8125:8125
+
+Volume=graphite-conf:/opt/graphite/conf
+
+EnvironmentFile=graphite.env

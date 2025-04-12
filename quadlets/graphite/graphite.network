@@ -1,0 +1,6 @@
+[Unit]
+Description=Graphite network
+
+[Network]
+NetworkName=graphite
+

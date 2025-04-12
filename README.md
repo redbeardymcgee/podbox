@@ -178,7 +178,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Glances](https://nicolargo.github.io/glances/)
 - [x] [glueforward](https://github.com/GeoffreyCoulaud/glueforward)
 - [x] [gluetun](https://github.com/qdm12/gluetun)
-- [ ] [Graphite](https://graphiteapp.org/)
+- [x] [Graphite](https://graphiteapp.org/)
 - [x] [Graylog](https://graylog.org)
 - [x] [Healthchecks](https://healthchecks.io/)
 - [x] [hoarder](https://hoarder.app/)
