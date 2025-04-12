@@ -27,7 +27,7 @@ VolumeName=romm-config:/romm/config
 
 EnvironmentFile=romm.env
 
-Secret=romm-mariad-password,type=env,target=DB_PASSWD
+Secret=romm-mariadb-password,type=env,target=DB_PASSWD
 Secret=romm-auth-secret-key,type=env,target=ROMM_AUTH_SECRET_KEY
 Secret=romm-igdb-client-secret,type=env,target=IGDB_CLIENT_SECRET
 Secret=romm-mobygames-api-key,type=env,target=MOBYGAMES_API_KEY
