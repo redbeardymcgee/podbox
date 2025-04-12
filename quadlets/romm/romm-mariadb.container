@@ -1,0 +1,26 @@
+[Unit]
+Description=ROMM database
+Wants=romm.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/mariadb:latest
+ContainerName=romm-mariadb
+AutoUpdate=registry
+
+Network=romm.network
+HostName=romm-mariadb
+
+Volume=romm-mariadb-data:/var/lib/mysql
+
+Environment=MARIADB_DATABASE=romm
+Environment=MARIADB_USER=romm-user
+
+Secret=romm-mariadb-root-password,type=env,target=MARIADB_ROOT_PASSWORD
+Secret=romm-mariadb-password,type=env,target=MARIADB_PASSWORD
