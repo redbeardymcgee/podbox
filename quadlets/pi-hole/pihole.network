@@ -1,0 +1,6 @@
+[Unit]
+Description=Pi-hole network
+
+[Network]
+NetworkName=pihole
+
