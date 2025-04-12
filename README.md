@@ -183,7 +183,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [Healthchecks](https://healthchecks.io/)
 - [x] [hoarder](https://hoarder.app/)
 - [x] [Homarr](https://homarr.dev/)
-- [ ] [Homepage](https://gethomepage.dev/)
+- [x] [Homepage](https://gethomepage.dev/)
 - [ ] [Immich](https://immich.app/)
 - [x] [IT-Tools](https://it-tools.tech/)
 - [x] [Joplin](https://joplinapp.org/)
