@@ -200,7 +200,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [ ] [Maxun](https://github.com/getmaxun/maxun)
 - [x] [Mealie](https://mealie.io/)
 - [x] [Memos](https://usememos.com)
-- [ ] [Miniflux](https://miniflux.app/)
+- [x] [Miniflux](https://miniflux.app/)
 - [x] [MinIO](https://min.io)
 - [x] [n8n](https://n8n.io/)
 - [x] [Nebula](https://github.com/slackhq/nebula)

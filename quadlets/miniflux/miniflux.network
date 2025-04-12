@@ -1,0 +1,6 @@
+[Unit]
+Description=miniflux network
+
+[Network]
+NetworkName=miniflux
+
