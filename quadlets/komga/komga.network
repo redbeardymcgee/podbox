@@ -1,0 +1,6 @@
+[Unit]
+Description=Komga network
+
+[Network]
+NetworkName=komga
+

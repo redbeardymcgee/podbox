@@ -190,7 +190,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Kavita](https://kavitareader.com)
 - [ ] [Keycloak](https://www.keycloak.org)
 - [x] [Kibitzr](https://kibitzr.github.io/)
-- [ ] [Komga](https://komga.org/)
+- [x] [Komga](https://komga.org/)
 - [x] [LazyLibrarian](https://lazylibrarian.gitlab.io/)
 - [x] [LibreNMS](https://librenms.org)
 - [x] [librespeed](https://librespeed.org)

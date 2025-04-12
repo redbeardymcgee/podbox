@@ -1,0 +1,23 @@
+[Unit]
+Description=Komga comic reader
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/gotson/komga
+ContainerName=komga
+AutoUpdate=registry
+
+Network=komga.network
+HostName=komga
+PublishPort=25600:25600
+
+Volume=komga-config:/config
+Volume=komga-data:/data
+
+Environment=TC=Etc/UTC
