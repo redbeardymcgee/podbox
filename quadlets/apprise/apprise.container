@@ -1,0 +1,25 @@
+[Unit]
+Description=Apprise API
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/caronc/apprise:latest
+ContainerName=apprise
+AutoUpdate=registry
+
+Network=apprise.network
+HostName=apprise
+PublishPort=8000:8000
+
+Volume=apprise-config:/config
+Volume=apprise-plugin:/plugin
+Volume=apprise-attahc:/attahc
+
+Environment=APPRISE_STATEFUL_MODE=simple
+Environment=APPRISE_WORKER_COUNT=1

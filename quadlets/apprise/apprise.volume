@@ -1,0 +1,5 @@
+[Volume]
+VolumeName=apprise-config
+VolumeName=apprise-plugin
+VolumeName=apprise-attach
+

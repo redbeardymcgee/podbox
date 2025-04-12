@@ -1,0 +1,6 @@
+[Unit]
+Description=Apprise network
+
+[Network]
+NetworkName=apprise
+
