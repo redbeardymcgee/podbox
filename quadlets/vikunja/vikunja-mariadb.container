@@ -1,0 +1,27 @@
+[Unit]
+Description=Vikunja mariadb
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/mariadb:10
+ContainerName=vikunja-mariadb
+AutoUpdate=registry
+
+Network=vikunja.network
+HostName=vikunja-mariadb
+
+Volume=vikunja-mariadb:/var/lib/mysql
+
+Environment=MYSQL_USER=vikunja
+Environment=MYSQL_DATABASE=vikunja
+
+Secret=vikunja-mysql-root-password,type=env,taget=MYSQL_ROOT_PASSWORD
+Secret=vikunja-mysql-password,type=env,taget=MYSQL_PASSWORD
+
+Exec=--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

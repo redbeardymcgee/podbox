@@ -1,0 +1,6 @@
+[Unit]
+Description=Vikunja network
+
+[Network]
+NetworkName=vikunja
+
