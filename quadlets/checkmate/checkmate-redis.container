@@ -1,0 +1,20 @@
+[Unit]
+Description=Checkmate Redis
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/bluewaveuptime/uptime_redis:latest
+ContainerName=checkmate-redis
+AutoUpdate=registry
+
+Network=checkmate.network
+HostName=checkmate-redis
+PublishPort=6379:6379
+
+Volume=checkmate-redis:/data

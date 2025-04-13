@@ -1,0 +1,27 @@
+[Unit]
+Description=Checkmate server
+Requires=checkmate-mongodb.service
+Requires=checkmate-redis.service
+After=checkmate-mongodb.service
+After=checkmate-redis.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/bluewaveuptime/uptime_server:latest
+ContainerName=checkmate-server
+AutoUpdate=registry
+
+Network=checkmate.network
+HostName=checkmate-server
+PublishPort=5000:5000
+
+Volume=%t/podman/podman.sock:/run/user/1000/podman/podman.sock:ro
+
+Environment=REDIS_HOST=checkmate-redis
+Environment=DB_CONNECTION_STRING=mongodb://checkmate-mongodb:27017/uptime_db

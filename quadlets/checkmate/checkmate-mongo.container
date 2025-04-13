@@ -1,0 +1,22 @@
+[Unit]
+Description=Checkmate mongodb
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/bluewaveuptime/uptime_database_mongo:latest
+ContainerName=checkmate-mongodb
+AutoUpdate=registry
+
+Network=checkmate.network
+HostName=checkmate-mongodb
+PublishPort=27017:27017
+
+Volume=checkmate-mongodb:/data/db
+
+Exec=mongod --quiet

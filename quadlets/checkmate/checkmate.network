@@ -1,0 +1,6 @@
+[Unit]
+Description=Checkmate network
+
+[Network]
+NetworkName=checkmate
+
