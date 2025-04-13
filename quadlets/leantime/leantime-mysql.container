@@ -1,0 +1,23 @@
+[Unit]
+Description=Leantime MySQL
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=mysql:8.4
+ContainerName=leantime-mysql
+AutoUpdate=registry
+
+Network=leantime.network
+HostName=leantime-mysql
+
+Volume=leantime-mysql:/var/lib/mysql
+
+EnvironmentFile=leantime.env
+
+Exec=--character-set-server=UTF8MB4 --collation-server=UTF8MB4_unicode_ci
