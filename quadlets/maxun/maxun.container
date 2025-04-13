@@ -1,0 +1,22 @@
+[Unit]
+Description=Maxun frontend
+Requires=maxun-backend.service
+After=maxun-backend.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/getmaxun/maxun-frontend:latest
+ContainerName=maxun
+AutoUpdate=registry
+
+Network=maxun.network
+HostName=maxun
+PublishPort=5173:5173
+
+EnvironmentFile=maxun.env

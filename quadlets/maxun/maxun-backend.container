@@ -1,0 +1,31 @@
+[Unit]
+Description=Maxun backend
+Requires=maxun-postgres.service
+Requires=maxun-redis.service
+Requires=maxun-minio.service
+After=maxun-postgres.service
+After=maxun-redis.service
+After=maxun-minio.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/getmaxun/maxun-backend:latest
+ContainerName=maxun-backend
+AutoUpdate=registry
+
+Network=maxun.network
+HostName=maxun-backend
+PublishPort=8080:8080
+
+Volume=/var/run/dbus:/var/run/dbus
+
+EnvironmentFile=maxun.env
+Environment=PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+Environment=PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=0
+Environment=CHROMIUM_FLAGS="--disable-gpu --no-sandbox --headless=new"

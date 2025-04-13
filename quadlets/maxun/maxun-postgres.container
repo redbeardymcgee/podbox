@@ -1,0 +1,20 @@
+[Unit]
+Description=Maxun postgres
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres:13
+ContainerName=maxun-postgres
+AutoUpdate=registry
+
+Network=maxun.network
+HostName=maxun-postgres
+PublishPort=5432:5432
+
+Volume=maxun-postgres:/var/lib/postgresql/data

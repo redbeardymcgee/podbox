@@ -1,0 +1,25 @@
+[Unit]
+Description=Maxun Minio
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/minio
+ContainerName=maxun-minio
+AutoUpdate=registry
+
+Network=maxun.network
+HostName=maxun-minio
+PublishPort=9000:9000
+PublishPort=9001:9001
+
+Volume=maxun-minio:/data
+
+Environment=MINIO_ROOT_USER=minio-root-user
+
+Secret=maxun-minio-root-password,type=env,target=MINIO_ROOT_PASSWORD

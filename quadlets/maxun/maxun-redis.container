@@ -1,0 +1,22 @@
+[Unit]
+Description=Maxun Redis
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/redis:6
+ContainerName=maxun-redis
+AutoUpdate=registry
+
+Network=maxun.network
+HostName=maxun-redis
+PublishPort=6379:6379
+
+Volume=maxun-redis:/data
+
+EnvironmentFile=maxun.env

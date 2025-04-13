@@ -1,0 +1,6 @@
+[Unit]
+Description=Maxun network
+
+[Network]
+NetworkName=maxun
+
