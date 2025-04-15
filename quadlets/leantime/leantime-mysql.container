@@ -9,7 +9,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=mysql:8.4
+Image=docker.io/mysql:8.4
 ContainerName=leantime-mysql
 AutoUpdate=registry
 
@@ -18,10 +18,7 @@ HostName=leantime-mysql
 
 Volume=leantime-mysql:/var/lib/mysql
 
-#Environment=MYSQL_ROOT_PASSWORD=
-Environment=MYSQL_DATABASE=leantime
-Environment=MYSQL_USER=leantime
-#Environment=MYSQL_PASSWORD
+EnvironmentFile=leantime.env
 
 Secret=leantime-db-password,type=env,target=MYSQL_PASSWORD
 Secret=leantime-db-root-password,type=env,target=MYSQL_ROOT_PASSWORD

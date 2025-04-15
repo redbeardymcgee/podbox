@@ -11,7 +11,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=leantime/leantime:latest
+Image=docker.io/leantime/leantime:latest
 ContainerName=leantime
 AutoUpdate=registry
 
@@ -22,7 +22,7 @@ AddCapability=CAP_SETUID
 
 Network=leantime.network
 HostName=leantime
-PublishPort=8080:80
+PublishPort=8080:8080
 
 Volume=leantime-public_userfiles:/var/www/html/public/userfiles
 Volume=leantime-userfiles:/var/www/html/userfiles
