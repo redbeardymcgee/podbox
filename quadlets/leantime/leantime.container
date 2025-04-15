@@ -29,4 +29,11 @@ Volume=leantime-userfiles:/var/www/html/userfiles
 Volume=leantime-plugins:/var/www/html/app/Plugins
 Volume=leantime-logs:/var/www/html/storage/logs
 
-EnvironmentFile=leantime.env
+Environment=LEAN_DB_HOST=leantime-mysql
+Environment=LEAN_DB_USER=leantime
+Environment=LEAN_DB_DATABASE=leantime
+Environment=LEAN_DB_PORT='3306'
+Environment=LEAN_SITENAME='Leantime'
+
+Secret=leantime-session-password,type=env,target=LEAN_SESSION_PASSWORD
+Secret=leantime-db-password,type=env,target=LEAN_DB_PASSWORD

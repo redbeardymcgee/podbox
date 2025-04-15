@@ -18,6 +18,12 @@ HostName=leantime-mysql
 
 Volume=leantime-mysql:/var/lib/mysql
 
-EnvironmentFile=leantime.env
+#Environment=MYSQL_ROOT_PASSWORD=
+Environment=MYSQL_DATABASE=leantime
+Environment=MYSQL_USER=leantime
+#Environment=MYSQL_PASSWORD
+
+Secret=leantime-db-password,type=env,target=MYSQL_PASSWORD
+Secret=leantime-db-root-password,type=env,target=MYSQL_ROOT_PASSWORD
 
 Exec=--character-set-server=UTF8MB4 --collation-server=UTF8MB4_unicode_ci
