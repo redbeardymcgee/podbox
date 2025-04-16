@@ -1,7 +1,6 @@
 [Unit]
 Description=Reverse proxy
 
-
 [Service]
 Restart=on-failure
 
@@ -11,8 +10,9 @@ WantedBy=default.target
 [Container]
 Image=caddy.build
 ContainerName=caddy
-HostName=caddy
 
+Network=reverse-proxy.network
+HostName=caddy
 PublishPort=80:80
 PublishPort=443:443
 PublishPort=443:443/udp
