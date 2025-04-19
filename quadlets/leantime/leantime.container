@@ -24,7 +24,7 @@ Network=leantime.network
 HostName=leantime
 PublishPort=8080:8080
 
-Volume=leantime-public_userfiles:/var/www/html/public/userfiles
+Volume=leantime-public-userfiles:/var/www/html/public/userfiles
 Volume=leantime-userfiles:/var/www/html/userfiles
 Volume=leantime-plugins:/var/www/html/app/Plugins
 Volume=leantime-logs:/var/www/html/storage/logs
