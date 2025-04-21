@@ -11,13 +11,11 @@ WantedBy=default.target
 [Container]
 Image=docker.io/advplyr/audiobookshelf:latest
 ContainerName=audiobookshelf
-HostName=audiobookshelf
 
+Network=audiobookshelf.network
+HostName=audiobookshelf
 PublishPort=13378:80
 
-Volume=audiobookshelf-config:/metadata:z
-Volume=audiobookshelf-metadata:/config:z
-Volume=audiobookshelf-audiobooks:/audiobooks:z
-
-Environment=AUDIOBOOKSHELF_UID=USER_UID_HERE
-Environment=AUDIOBOOKSHELF_GID=USER_GID_HERE
+Volume=audiobookshelf-config:/metadata
+Volume=audiobookshelf-metadata:/config
+Volume=audiobookshelf-audiobooks:/audiobooks

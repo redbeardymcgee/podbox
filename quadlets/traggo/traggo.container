@@ -1,7 +1,6 @@
 [Unit]
 Description=Tag-based time tracking
 
-
 [Service]
 Restart=on-failure
 TimeoutStartSec=900
@@ -12,9 +11,10 @@ WantedBy=default.target
 [Container]
 Image=docker.io/traggo/server:latest
 ContainerName=traggo
-HostName=traggo
+AutoUpdate=registry
 
-Network=
+Network=traggo.network
+HostName=traggo
 
 Volume=/volumes/traggo/opt/traggo/data:/opt/traggo/data
 

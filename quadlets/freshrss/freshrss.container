@@ -1,5 +1,6 @@
 [Unit]
 Description=FreshRSS Quadlet
+Requires=fivefilters.service
 After=fivefilters.service
 
 [Service]
@@ -12,13 +13,11 @@ WantedBy=default.target
 [Container]
 Image=docker.io/linuxserver/freshrss:latest
 ContainerName=freshrss
-HostName=freshrss
 
 Network=freshrss.network
+HostName=freshrss
 PublishPort=4422:80
 
-Volume=freshrss-config:/config:z
+Volume=freshrss-config:/config
 
-Environment=PUID=1001
-Environment=PGID=1001
-Environment=TZ=Europe/London
+Environment=TZ=Etc/UTC

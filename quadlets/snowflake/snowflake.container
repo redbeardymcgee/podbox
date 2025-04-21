@@ -11,4 +11,7 @@ WantedBy=default.target
 [Container]
 Image=docker.io/thetorproject/snowflake-proxy
 ContainerName=snowflake
+AutoUpdate=registry
+
+Network=snowflake.container
 HostName=snowflake

@@ -11,8 +11,10 @@ WantedBy=default.target
 [Container]
 Image=docker.io/nicolargo/glances:$version_tag
 ContainerName=glances
-HostName=glances
 AutoUpdate=registry
+
+Network=glances.network
+HostName=glances
 
 Volume=%t/podman/podman.sock:/run/user/1000/podman/podman.sock:ro
 Volume=/etc/os-release:/etc/os-release:ro

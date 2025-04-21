@@ -1,7 +1,5 @@
 [Unit]
 Description=Speedtest server
-After=gluetun.service
-BindsTo=gluetun.service
 
 [Service]
 Restart=on-failure
@@ -13,10 +11,10 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/librespeed/speedtest:latest
 ContainerName=librespeed
-HostName=librespeed
 AutoUpdate=registry
 
-Network=
+Network=librespeed.network
+HostName=librespeed
 
 Volume=/volumes/librespeed/database:/database
 

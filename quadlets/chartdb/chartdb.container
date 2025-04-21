@@ -12,6 +12,7 @@ WantedBy=default.target
 Image=ghcr.io/chartdb/chartdb
 ContainerName=chartdb
 
+Network=chartdb.network
 HostName=chartdb
 PublishPort=8080:80
 

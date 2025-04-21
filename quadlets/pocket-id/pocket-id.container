@@ -13,6 +13,7 @@ Image=ghcr.io/pocket-id/pocket-id
 ContainerName=pocket-id
 AutoUpdate=registry
 
+Network=pocket-id.network
 HostName=pocket-id
 PublishPort=3000:80
 

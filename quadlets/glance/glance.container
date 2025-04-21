@@ -13,8 +13,9 @@ Image=docker.io/glanceapp/glance
 ContainerName=glance
 AutoUpdate=registry
 
+Network=glance.network
 HostName=glance
-PublishPort=8080
+PublishPort=8080:8080
 
-Volume=./config:/app/config
+Volume=glance-config:/app/config
 

@@ -11,6 +11,7 @@ WantedBy=default.target
 [Container]
 Image=docker.io/corentinth/it-tools:latest
 ContainerName=it-tools
-HostName=it-tools
 
+Network=it-tools.network
+HostName=it-tools
 PublishPort=8088:80

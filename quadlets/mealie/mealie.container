@@ -11,6 +11,8 @@ WantedBy=default.target
 [Container]
 Image=docker.io/hkotel/mealie:latest
 ContainerName=mealie
+
+Network=mealie.network
 HostName=mealie
 
 Volume=mealie-data:/app/data

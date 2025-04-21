@@ -11,8 +11,9 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/lukegus/termix:latest
 ContainerName=termix
+AutoUpdate=registry
 
-Network=
+Network=termix.network
 HostName=termix
 PublishPort=8080:8080
 

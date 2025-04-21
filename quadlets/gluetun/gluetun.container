@@ -11,7 +11,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/qmcgaw/gluetun:$gluetun_version
+Image=docker.io/qmcgaw/gluetun
 ContainerName=gluetun
 HostName=gluetun
 AutoUpdate=registry
@@ -20,7 +20,7 @@ AddDevice=/dev/net/tun:/dev/net/tun
 
 Volume=./config.toml:/gluetun/auth/config.toml
 
-Environment=TZ=$timezone
+Environment=TZ=Etc/UTC
 Environment=UPDATER_PERIOD=24h
 Environment=UPDATER_VPN_SERVICE_PROVIDERS=protonvpn
 Environment=VPN_SERVICE_PROVIDER=protonvpn

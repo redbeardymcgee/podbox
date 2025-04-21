@@ -14,13 +14,15 @@ Image=docker.io/machines/filestash:latest
 ContainerName=filestash
 AutoUpdate=registry
 
+Network=filestash.network
 HostName=filestash
 PublishPort=8334:8334
 
-Environment=APPLICATION_URL=
+Volume=filestash:/app/data/state
+
+Environment=APPLICATION_URL=https://filestash.example.com
 Environment=CANARY=true
 Environment=OFFICE_URL=http://filestash-wopi:9980
 Environment=OFFICE_FILESTASH_URL=http://filestash:8334
 Environment=OFFICE_REWRITE_URL=http://127.0.0.1:9980
 
-Volume=filestash:/app/data/state

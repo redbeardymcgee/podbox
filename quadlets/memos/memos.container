@@ -12,6 +12,7 @@ WantedBy=default.target
 Image=docker.io/neosmemo/memos:stable
 ContainerName=memos
 
+Network=memos.network
 HostName=memos
 PublishPort=5230
 

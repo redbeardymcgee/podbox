@@ -1,7 +1,6 @@
 [Unit]
 Description=Manage indexers
 
-
 [Service]
 Restart=on-failure
 TimeoutStartSec=900
@@ -12,10 +11,12 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/hotio/prowlarr
 ContainerName=prowlarr
+AutoUpdate=registry
+
+Network=prowlarr.network
 HostName=prowlarr
+PublishPort=9696
 
 Volume=prowlarr-config:/config
-Volume=/volumes/video:/data
-
-PublishPort=9696
+Volume=/path/to/video:/data
 

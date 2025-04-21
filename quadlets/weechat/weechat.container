@@ -11,12 +11,15 @@ WantedBy=default.target
 [Container]
 Image=docker.io/weechat/weechat:latest-alpine-slim
 ContainerName=weechat
-HostName=weechat
 AutoUpdate=registry
+
+Network=weechat.network
+HostName=weechat
 
 Volume=/volumes/books/weechat/home/user:/home/user
 
 # FIXME: Better way to attach stdin and tty. Quadlets don't seem to support
-# this, probably because attaching to containers is weirder than `exec sh` into
-# it
+# this well, probably because attaching to containers is weirder than `exec sh`
+# into it. This works the first time, but detaching doesn't work right and
+# reattaching a second time is pretty broken
 PodmanArgs=-a stdin --tty=true

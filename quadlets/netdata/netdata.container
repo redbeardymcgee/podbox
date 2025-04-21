@@ -11,16 +11,17 @@ WantedBy=default.target
 [Container]
 Image=docker.io/netdata/netdata:stable
 ContainerName=netdata
-HostName=netdata
+AutoUpdate=registry
 
 AddCapability=SYS_PTRACE
 AddCapability=SYS_ADMIN
 
 Network=host
+HostName=netdata
 
-Volume=netdataconfig:/etc/netdata
-Volume=netdatalib:/var/lib/netdata
-Volume=netdatacache:/var/cache/netdata
+Volume=netdata-config:/etc/netdata
+Volume=netdata-lib:/var/lib/netdata
+Volume=netdata-cache:/var/cache/netdata
 Volume=/:/host/root:ro,rslave
 Volume=/etc/passwd:/host/etc/passwd:ro
 Volume=/etc/group:/host/etc/group:ro

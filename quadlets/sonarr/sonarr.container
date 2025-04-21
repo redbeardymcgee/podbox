@@ -1,7 +1,6 @@
 [Unit]
 Description=TV show metadata manager
 
-
 [Service]
 Restart=on-failure
 TimeoutStartSec=900
@@ -12,10 +11,10 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/hotio/sonarr
 ContainerName=sonarr
+
+Network=sonarr.network
 HostName=sonarr
+PublishPort=8989
 
 Volume=sonarr-config:/config
 Volume=/volumes/media:/data
-
-PublishPort=8989
-

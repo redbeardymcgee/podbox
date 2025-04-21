@@ -13,13 +13,12 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-# TODO: Is `latest` safe for this container?
 Image=docker.io/myanonamouse/pointspend:latest
 ContainerName=pointspend
-HostName=pointspend
 AutoUpdate=registry
 
-Network=
+Network=container:gluetun
+HostName=pointspend
 
 Environment=BUFFER=1000
 Environment=WEDGEHOURS=0

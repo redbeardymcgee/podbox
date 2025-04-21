@@ -11,9 +11,10 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/thelounge/thelounge:latest
 ContainerName=thelounge
-HostName=thelounge
 AutoUpdate=registry
 
+Network=thelounge.network
+HostName=thelounge
 PublishPort=9000
 
 Volume=thelounge-data:/var/opt/thelounge

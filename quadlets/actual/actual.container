@@ -1,5 +1,5 @@
 [Unit]
-Description=Budget management
+Description=Actual budget management
 
 
 [Service]
@@ -12,6 +12,8 @@ WantedBy=default.target
 [Container]
 Image=docker.io/actualbudget/actual-server:latest
 ContainerName=actual
+
+Network=actual.network
 HostName=actual
 
 Volume=actual-data:/data

@@ -12,6 +12,9 @@ WantedBy=default.target
 [Container]
 Image=docker.io/postgres:16-alpine
 ContainerName=linkwarden-database
+AutoUpdate=registry
+
+Network=linkwarden.network
 HostName=linkwarden-database
 
 Volume=linkwarden-database:/var/lib/postgresql/data

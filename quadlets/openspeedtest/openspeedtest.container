@@ -13,6 +13,7 @@ Image=docker.io/openspeedtest/latest
 ContainerName=openspeedtest
 AutoUpdate=registry
 
+Network=openspeedtest.network
 HostName=openspeedtest
 PublishPort=80:3000
 PublishPort=443:3001

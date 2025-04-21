@@ -12,9 +12,11 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/hoarder-app/hoarder:release
 ContainerName=hoarder
-HostName=hoarder
+AutoUpdate=registry
 
-PublishPort=3000
+Network=hoarder.network
+HostName=hoarder
+PublishPort=3000:3000
 
 Volume=hoarder-data:/data
 

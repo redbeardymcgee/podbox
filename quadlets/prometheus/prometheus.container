@@ -11,7 +11,9 @@ WantedBy=default.target
 [Container]
 Image=quay.io/prometheus/prometheus
 ContainerName=prometheus
+AutoUpdate=registry
 
+Network=prometheus.network
 HostName=prometheus
 PublishPort=9090:9090
 

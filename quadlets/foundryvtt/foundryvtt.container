@@ -11,19 +11,19 @@ WantedBy=default.target
 [Container]
 Image=docker.io/felddy/foundryvtt:release
 ContainerName=foundryvtt
-HostName=foundryvtt
+AutoUpdate=registry
 
+Network=foundryvtt.network
+HostName=foundryvtt
 Volume=foundryvtt-data:/data
 
 PublishPort=30000:30000
 
-Environment=TIMEZONE=
-Environment=FOUNDRY_UID=
-Environment=FOUNDRY_GID=
-Environment=FOUNDRY_PASSWORD=
+Environment=TIMEZONE=Etc/UTC
+Secret=foundry-password,type=env,target=FOUNDRY_PASSWORD
 Environment=FOUNDRY_USERNAME=
-Environment=FOUNDRY_ADMIN_KEY=
-Environment=FOUNDRY_LICENSE_KEY=XXXX-XXXX-XXXX-XXXX-XXXX-XXXX
-Environment=FOUNDRY_HOT_RELOAD=true
+Secret=foundry-admin-key,type=env,target=FOUNDRY_ADMIN_KEY
+Secret=foundry-license-key,type=env,target=FOUNDRY_LICENSE_KEY=XXXX-XXXX-XXXX-XXXX-XXXX-XXXX
+Environment=FOUNDRY_HOT_RELOAD=false
 Environment=CONTAINER_PRESERVE_CONFIG=true
 Environment=CONTAINER_CACHE="/data/container_cache"

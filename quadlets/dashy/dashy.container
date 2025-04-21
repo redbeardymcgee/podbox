@@ -12,10 +12,10 @@ WantedBy=default.target
 [Container]
 Image=docker.io/lissy93/dashy:$dashy_version
 ContainerName=dashy
-HostName=dashy
 AutoUpdate=registry
 
-Network=
+Network=dashy.network
+HostName=dashy
 
 Volume=./user-data:/app/user-data
 

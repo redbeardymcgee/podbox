@@ -1,7 +1,7 @@
 [Unit]
 Description=qbittorrent client
+Requires=gluetun.service
 After=gluetun.service
-BindsTo=gluetun.service
 
 [Service]
 Restart=on-failure
@@ -13,13 +13,15 @@ WantedBy=default.target
 [Container]
 Image=docker.io/qbittorrentofficial/qbittorrent-nox:$qbt_version
 ContainerName=qbittorrent
-HostName=qbittorrent
 AutoUpdate=registry
+
+Network=container:gluetun
+HostName=qbittorrent
 
 Volume=qbittorrent-config:/config
 Volume=qbittorrent-downloads:/downloads
 
 Environment=QBT_LEGAL_NOTICE=confirm
 Environment=QBT_VERSION=$qbt_version
-Environment=TZ=$timezone
+Environment=TZ=Etc/UTC
 

@@ -11,8 +11,10 @@ WantedBy=default.target
 [Container]
 ContainerName=lazylibrarian
 Image=lscr.io/linuxserver/lazylibrarian:latest
-HostName=lazylibrar
+AutoUpdate=registry
 
+Network=lazylibrarian
+HostName=lazylibrarian
 PublishPort=5299
 
 Volume=lazylibrarian-config:/config

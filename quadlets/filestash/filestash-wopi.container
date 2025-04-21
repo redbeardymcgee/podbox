@@ -13,6 +13,7 @@ Image=docker.io/collabora/code:24.04.10.2.1
 ContainerName=filestash-wopi
 AutoUpdate=registry
 
+Network=filestash.network
 HostName=filestash-wopi
 PublishPort=9980:9980
 

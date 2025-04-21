@@ -11,8 +11,10 @@ WantedBy=default.target
 [Container]
 Image=docker.io/b4bz/homer
 ContainerName=homer
-HostName=homer
+AutoUpdate=registry
 
+Network=homer.network
+HostName=homer
 PublishPort=8080:8080
 
 Volume=homer-assets:/www/assets

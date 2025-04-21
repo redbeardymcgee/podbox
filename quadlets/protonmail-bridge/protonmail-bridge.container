@@ -13,7 +13,9 @@ WantedBy=default.target
 [Container]
 Image=docker.io/shenxn/protonmail-bridge
 ContainerName=protonmail-bridge
+AutoUpdate=registry
 
+Network=protonmail-bridge.network
 HostName=protonmail-bridge
 PublishPort=1143:143/tcp
 PublishPort=1025:25/tcp

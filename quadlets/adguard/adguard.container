@@ -11,8 +11,9 @@ WantedBy=default.target
 [Container]
 Image=docker.io/adguard/adguardhome:latest
 ContainerName=adguard
-HostName=adguard
 
+Network=adguard.network
+HostName=adguard
 PublishPort=53:53/tcp
 PublishPort=53:53/udp
 PublishPort=784:784/udp
@@ -21,6 +22,6 @@ PublishPort=3000:3000/tcp
 PublishPort=8844:80/tcp
 PublishPort=8443:443/tcp
 
-Volume=adguard-config:/opt/adguardhome/work:z
-Volume=adguard-work:/opt/adguardhome/conf:z
-Volume=/var/log/AdGuardHome.log:/var/log/AdGuardHome.log:z
+Volume=adguard-config:/opt/adguardhome/work
+Volume=adguard-work:/opt/adguardhome/conf
+Volume=/var/log/AdGuardHome.log:/var/log/AdGuardHome.log

@@ -11,11 +11,13 @@ WantedBy=default.target
 [Container]
 Image=docker.io/nginx
 ContainerName=nginx
-HostName=nginx
+AutoUpdate=registry
 
+Network=nginx.network
+HostName=nginx
 PublishPort=80:80
 PublishPort=443:443
 
-Volume=nginx-html:/usr/share/nginx/html:Z,U
+Volume=nginx-html:/usr/share/nginx/html
 
 Environment=TZ=Etc/UTC

@@ -15,12 +15,15 @@ WantedBy=default.target
 [Container]
 Image=docker.io/vabene1111/recipes
 ContainerName=tandoor
+AutoUpdate=registry
+
+Network=tandoor.network
 HostName=tandoor
+
+EnvironmentFile=tandoor.env
 
 Volume=tandoor-db:/var/lib/postgresql/data
 Volume=tandoor-static:/opt/recipes/staticfiles
 Volume=tandoor-media:/opt/recipes/mediafiles
 Volume=tandoor-external:/opt/recipes/externalfiles
 Volume=tandoor-nginx-config:/opt/recipes/nginx/conf.d
-
-EnvironmentFile=tandoor.env

@@ -11,8 +11,9 @@ WantedBy=default.target
 [Container]
 Image=lscr.io/linuxserver/calibre:latest
 ContainerName=calibre
-HostName=calibre
 
+Network=calibre.network
+HostName=calibre
 PublishPort=8080
 
 Volume=calibre-config:/config

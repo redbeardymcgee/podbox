@@ -13,6 +13,7 @@ WantedBy=default.target
 Image=docker.io/postgres
 ContainerName=blinko-db
 
+Network=blinko.network
 HostName=blinko-db
 PublishPort=5435:5432
 

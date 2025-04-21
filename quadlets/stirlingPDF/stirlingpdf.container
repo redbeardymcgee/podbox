@@ -1,0 +1,23 @@
+[Unit]
+Description=StirlingPDF
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy= default.target
+
+[Container]
+Image=docker.io/frooodle/s-pdf:latest
+ContainerName=stirlingPDF
+AutoUpdate=registry
+
+Network=stirlingpdf.network
+HostName=stirlingPDF
+
+Volume=/volumes/stirlingPDF/usr/share/tesseract-ocr/5/tessdata:/usr/share/tesseract-ocr/5/tessdata
+Volume=/volumes/stirlingPDF/configs:/configs
+Volume=/volumes/stirlingPDF/logs:/logs
+
+PodmanArgs=-e DOCKER_ENABLE_SECURITY=false -e INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false -e LANGS=en_DK

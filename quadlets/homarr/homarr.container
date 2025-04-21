@@ -1,7 +1,6 @@
 [Unit]
 Description=Homarr
 
-
 [Service]
 Restart=on-failure
 TimeoutStartSec=900
@@ -12,6 +11,8 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/ajnart/homarr:latest
 ContainerName=homarr
+
+Network=homarr.network
 HostName=homarr
 
 Volume=homarr-configs:/app/data/configs

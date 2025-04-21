@@ -13,14 +13,12 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-# TODO: Replace this with one that has tags
-# Probably have to repack my own
 Image=docker.io/mjmeli/qbittorrent-port-forward-gluetun-server:latest
 ContainerName=qbittorrent-port-forward-gluetun-server
-HostName=qbittorrent-port-forward-gluetun-server
 AutoUpdate=registry
 
-Network=
+Network=container:gluetun
+HostName=qbittorrent-port-forward-gluetun-server
 
 Environment=QBT_USERNAME=$qbt_user
 Environment=QBT_ADDR=http://localhost:8080

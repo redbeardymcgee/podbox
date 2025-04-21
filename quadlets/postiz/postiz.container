@@ -17,7 +17,7 @@ Image=ghcr.io/gitroomhq/postiz-app:latest
 ContainerName=postiz
 AutoUpdate=registry
 
-Network=
+Network=postiz.network
 HostName=postiz
 PublishPort=5000:5000
 

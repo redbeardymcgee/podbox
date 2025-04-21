@@ -10,11 +10,11 @@ WantedBy=default.target
 
 [Container]
 Image=docker.io/peterdemin/kibitzr:latest
-AutoUpdate=registry
 ContainerName=kibitzr
-HostName=kibitzr
+AutoUpdate=registry
 
-Network=
+Network=kibitzr.network
+HostName=kibitzr
 
 Volume=kibitzr-root:/root
 

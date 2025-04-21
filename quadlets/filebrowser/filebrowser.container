@@ -12,6 +12,9 @@ WantedBy=multi-user.target default.target
 Image=docker.io/hurlenko/filebrowser:latest
 ContainerName=filebrowser
 
+Network=filebrowser.network
+Hostname=filebrowser
+
 Volume=/path/to/what/you/want/to/share:/data:z
 Volume=fb-config:/config:z
 Volume=fb-branding:/branding:z

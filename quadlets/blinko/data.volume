@@ -1,3 +1,4 @@
 [Volume]
 VolumeName=blinko-data
+VolumeName=blinko-db
 

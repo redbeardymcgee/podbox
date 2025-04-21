@@ -10,9 +10,11 @@ WantedBy=default.target
 
 [Container]
 Image=docker.io/joplin/server:latest
-ContainerName=joplin-server
-HostName=joplin-server
+ContainerName=joplin
+AutoUpdate=registry
 
+Network=joplin.network
+HostName=joplin
 PublishPort=22300:22300
 
 Environment=APP_BASE_URL=https://joplin.example.com

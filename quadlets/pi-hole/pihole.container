@@ -12,7 +12,7 @@ WantedBy=default.target
 Image=docker.io/pihole:latest
 ContainerName=pihole
 ## WARNING: This should not be enabled unless you have good backups and
-# recovery plans. DNS is a critical piece of you network.
+# recovery plans. DNS is a critical piece of your network.
 # AutoUpdate=registry
 
 # DHCP

@@ -12,7 +12,9 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/linkwarden/linkwarden:latest
 ContainerName=linkwarden
+AutoUpdate=registry
 
+Network=linkwarden.network
 HostName=linkwarden
 PublishPort=3000
 

@@ -13,7 +13,7 @@ Image=lscr.io/linuxserver/syslog-ng:latest
 ContainerName=syslog-ng
 AutoUpdate=registry
 
-Network=
+Network=syslog-ng.network
 HostName=syslog-ng
 PublishPort=514:5514/udp
 PublishPort=601:6601/tcp

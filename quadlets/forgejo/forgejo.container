@@ -14,7 +14,7 @@ Image=codeberg.org/forgejo/forgejo:10
 ContainerName=forgejo
 AutoUpdate=registry
 
-Network=
+Network=forgejo.network
 HostName=forgejo
 PublishPort=222:22
 PublishPort=3000:3000

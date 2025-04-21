@@ -1,5 +1,6 @@
 [Unit]
-Description=Matrix Synapse Quadlet
+Description=Matrix Synapse DB Quadlet
+WantedBy=matrix.service
 
 [Service]
 Restart=always
@@ -9,16 +10,20 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/matrixdotorg/synapse:latest
-ContainerName=matrix_synapse
-HostName=matrix_synapse
+Image=docker.io/library/postgres:15
+ContainerName=matrix-db
+AutoUpdate=registry
 
-PublishPort=8008:8008
+Network=matrix.network
+HostName=matrix-db
+PublishPort=5432:5432
 
-Volume=matrix-data:/data
+Volume=matrix-db:/var/lib/postgresql/data
 
-Environment=VIRTUAL_HOST=matrix.example.com
-Environment=VIRTUAL_PORT=8008
-Environment=LETSENCRYPT_HOST=matrix.example.com
-Environment=SYNAPSE_SERVER_NAME=matrix.example.com
-Environment=SYNAPSE_REPORT_STATS=no
+Environment=POSTGRES_PASSWORD=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Environment=POSTGRES_USER=synapse_user
+Environment=POSTGRES_DB=synapse
+Environment=LANG=C
+Environment=LC_COLLATE=C
+Environment=LC_CTYPE=C
+Environment=POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C

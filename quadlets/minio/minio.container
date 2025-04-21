@@ -11,7 +11,9 @@ WantedBy=default.target
 [Container]
 ContainerName=minio
 Image=docker.io/minio/minio
+AutoUpdate=registry
 
+Network=minio.network
 HostName=minio
 PublishPort=9000:9000
 PublishPort=9001:9001

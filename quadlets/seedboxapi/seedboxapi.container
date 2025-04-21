@@ -13,13 +13,12 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-# TODO: Is `latest` safe for this container?
 Image=docker.io/myanonamouse/seedboxapi:latest
 ContainerName=seedboxapi
-HostName=seedboxapi
 AutoUpdate=registry
 
-Network=
+Network=container:gluetun
+HostName=seedboxapi
 
 Volume=/volumes/books/seedboxapi/config:/config
 

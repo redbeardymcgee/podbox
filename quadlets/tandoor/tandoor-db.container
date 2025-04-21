@@ -12,6 +12,9 @@ WantedBy=default.target
 [Container]
 Image=docker.io/postgres:16-alpine
 ContainerName=tandoor-db
+AutoUpdate=registry
+
+Network=tandoor.network
 HostName=tandoor-db
 
 Volume=tandoor-db:/var/lib/postgresql/data

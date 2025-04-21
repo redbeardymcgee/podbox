@@ -1,7 +1,6 @@
 [Unit]
 Description=Hoarder requirement
 
-
 [Service]
 Restart=on-failure
 TimeoutStartSec=900
@@ -12,8 +11,11 @@ WantedBy=default.target
 [Container]
 Image=docker.io/getmeili/meilisearch:v1.6
 ContainerName=hoarder-meilisearch
+AutoUpdate=registry
+
+Network=hoarder.network
 HostName=hoarder-meilisearch
 
 EnvironmentFile=hoarder.env
 
-Volume=meilisearch:/meili_data
+Volume=hoarder-meilisearch:/meili_data

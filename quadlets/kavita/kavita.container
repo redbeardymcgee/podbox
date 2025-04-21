@@ -12,13 +12,14 @@ WantedBy=default.target
 [Container]
 Image=ghcr.io/kareadita/kavita:latest
 ContainerName=kavita
-HostName=kavita
 AutoUpdate=registry
 
+Network=kavita.network
+HostName=kavita
 PublishPort=5000
 
 Volume=kavita-config:/kavita/config
 Volume=/volumes/books:/library
 
-Environment=TZ=
+Environment=TZ=Etc/UTC
 

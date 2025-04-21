@@ -13,9 +13,10 @@ WantedBy=default.target
 [Container]
 Image=docker.io/nginx:mainline-alpine
 ContainerName=tandoor-nginx
-HostName=tandoor-nginx
+AutoUpdate=registry
 
-Network=protonvpn.network
+Network=tandoor.network
+HostName=tandoor-nginx
 
 Volume=tandoor-nginx-config:/etc/nginx/conf.d
 Volume=tandoor-static:/static

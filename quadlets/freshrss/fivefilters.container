@@ -11,9 +11,9 @@ WantedBy=default.target
 [Container]
 Image=docker.io/heussd/fivefilters-full-text-rss:latest
 ContainerName=fivefilters
-HostName=fivefilters
 
 Network=freshrss.network
+HostName=fivefilters
 PublishPort=5000:80
 
-Environment=FTR_ADMIN_PASSWORD=XXXXXXXX
+Secret=ftr-admin-password,type=env,target=FTR_ADMIN_PASSWORD
