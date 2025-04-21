@@ -1,0 +1,24 @@
+[Unit]
+Description=Speedtest tracker
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=lscr.io/linuxserver/speedtest-tracker
+ContainerName=speedtest-tracker
+AutoUpdate=registry
+
+Network=speedtest-tracker.network
+HostName=speedtest-tracker
+PublishPort=8080:80
+PublishPort=8443:443
+
+Volume=speedtest-config:/config
+Volume=speedtest-ssl:/config
+
+EnvironmentFile=speedtest-tracker.env
