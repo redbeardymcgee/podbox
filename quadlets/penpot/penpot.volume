@@ -1,0 +1,7 @@
+[Volume]
+VolumeName=penpot-postgres
+VolumeName=penpot-assets
+#VolumeName=penpot-traefik
+#VolumeName=penpot-minio
+
+

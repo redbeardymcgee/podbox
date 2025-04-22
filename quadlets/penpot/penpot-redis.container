@@ -1,0 +1,18 @@
+[Unit]
+Description=Penpot redis
+WantedBy=penpot-backend.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/redis:7.2
+ContainerName=penpot-redis
+AutoUpdate=registry
+
+Network=penpot.network
+HostName=penpot-redis

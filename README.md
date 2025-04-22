@@ -142,7 +142,7 @@ Navigate to `http://localhost:9000` in your browser.
 
 I'm working on new quadlets every day. This is a list of all of the containers
 that I intend to add to this repository. It is still growing, and I welcome
-[pull requests](https://github.com/redbeardymcgee/podbox/pulls).
+[pull requests](https://git.mcgee.red/redbeardymcgee/podbox/pulls).
 
 - [x] [Actual](https://actualbudget.github.io/docs/)
 - [x] [AdGuard](https://adguard.com)
@@ -226,6 +226,7 @@ that I intend to add to this repository. It is still growing, and I welcome
 - [x] [Snowflake](https://snowflake.torproject.org/)
 - [ ] [solidtime](https://docs.solidtime.io/self-hosting/intro)
 - [x] [Sonarr](https://sonarr.tv)
+- [x] [Speedtest Tracker](https://speedtest-tracker.dev)
 - [x] [Stirling PDF](https://stirlingpdf.io)
 - [x] [syslog-ng](https://syslog-ng.github.io/)
 - [x] [Tandoor](https://github.com/TandoorRecipes/recipes)

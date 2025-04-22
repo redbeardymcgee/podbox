@@ -1,0 +1,22 @@
+[Unit]
+Description=Penpot exporter
+Requires=penpot-redis.service
+After=penpot-redis.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/penpotapp/exporter
+ContainerName=penpot-exporter
+AutoUpdate=registry
+
+Network=penpot.network
+HostName=penpot-exporter
+
+EnvironmentFile=penpot.env
+Environment=PENPOT_REDIS_URI=redis://penpot-redis/0

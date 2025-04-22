@@ -1,0 +1,26 @@
+[Unit]
+Description=Penpot MinIO
+WantedBy=penpot-backend.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/minio/minio
+ContainerName=penpot-minio
+AutoUpdate=registry
+
+Network=penpot.network
+HostName=penpot-minio
+PublishPort=9000:9000
+PublishPort=9001:9001
+
+Volume=penpot-minio:/mnt/data
+
+Environment=MINIO_ROOT_USER=minioadmin
+
+Secret=penpot-minio-root-password,type=env,target=MINIO_ROOT_PASSWORD

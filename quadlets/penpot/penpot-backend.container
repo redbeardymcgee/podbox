@@ -1,0 +1,27 @@
+[Unit]
+Description=Penpot backend
+WantedBy=penpot.service
+Requires=penpot-postgres.service
+Requires=penpot-redis.service
+After=penpot-postgres.service
+After=penpot-redis.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/penpotapp/backend
+ContainerName=penpot-backend
+AutoUpdate=registry
+
+Network=penpot.network
+HostName=penpot-backend
+
+Volume=penpot-assets:/opt/data/assets
+
+EnvironmentFile=penpot-backend.env
+EnvironmentFile=penpot.env

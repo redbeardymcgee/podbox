@@ -1,0 +1,25 @@
+[Unit]
+Description=Penpot postgres
+WantedBy=penpot-backend.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres:15
+ContainerName=penpot-postgres
+AutoUpdate=registry
+
+Network=penpot.network
+HostName=penpot-postgres
+
+Volume=penpot-postgres:/var/lib/postgresql/data
+
+Environment=POSTGRES_INITDB_ARGS=--data-checksums
+Environment=POSTGRES_DB=penpot
+Environment=POSTGRES_USER=penpot
+Environment=POSTGRES_PASSWORD=penpot

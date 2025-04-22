@@ -1,0 +1,19 @@
+[Unit]
+Description=Penpot mailcatch
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/sj26/mailcatcher
+ContainerName=penpot-mailcatcher
+AutoUpdate=registry
+
+Network=penpot.network
+HostName=penpot-mailcatcher
+PublishPort=1025:1025
+PublishPort=1080:1080
