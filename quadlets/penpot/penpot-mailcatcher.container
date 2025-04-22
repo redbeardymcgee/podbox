@@ -1,5 +1,5 @@
 [Unit]
-Description=Penpot mailcatch
+Description=Penpot mailcatcher
 
 [Service]
 Restart=on-failure
