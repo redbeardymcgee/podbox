@@ -22,4 +22,5 @@ Volume=penpot-postgres:/var/lib/postgresql/data
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Environment=POSTGRES_DB=penpot
 Environment=POSTGRES_USER=penpot
-Environment=POSTGRES_PASSWORD=penpot
+
+Secret=penpot-postgres-password,type=env,target=POSTGRES_PASSWORD
