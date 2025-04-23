@@ -1,0 +1,22 @@
+[Unit]
+Description=Grocy grocery management
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=lscr.io/linuxserver/grocy
+ContainerName=grocy
+AutoUpdate=registry
+
+Network=grocy.network
+HostName=grocy
+PublishPort=9283:80
+
+Volume=grocy-config:/config
+
+Environment=TZ=Etc/UTC
