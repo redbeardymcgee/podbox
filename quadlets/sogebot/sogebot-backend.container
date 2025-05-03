@@ -1,0 +1,32 @@
+[Unit]
+Description=sogeBot backend
+Wants=sogebot-dashboard.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/sogebot/release
+ContainerName=sogebot-backend
+AutoUpdate=registry
+
+Network=sogebot.network
+HostName=sogebot-backend
+PublishPort=20000:20000
+## For --inspect
+#PublishPort=9229:9229
+
+Volume=sogebot-shared:/app/shared
+Volume=sogebot-logs:/app/logs
+
+EnvironmentFile=sogebot.env
+Environment=LANG=en_US.UTF-8
+## For 4GB RAM
+#Environment=NODE_OPTIONS=--max_old_space=4096
+Environment=LANG=en_US.UTF-8
+## For --inspect
+#Environment=PROFILER=y

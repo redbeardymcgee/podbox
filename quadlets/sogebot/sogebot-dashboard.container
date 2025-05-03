@@ -1,0 +1,20 @@
+[Unit]
+Description=sogeBot frontend
+Requires=sogebot-backend.service
+After=sogebot-backend.service
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/sogebot/dashboard
+ContainerName=sogebot-dashboard
+AutoUpdate=registry
+
+Network=sogebot.network
+HostName=sogebot-dashboard
+PublishPort=12345:80
