@@ -1,0 +1,20 @@
+[Unit]
+Description=Vector observability
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/timberio/vector:latest-alpine
+ContainerName=vector
+AutoUpdate=registry
+
+Network=vector.network
+HostName=vector
+PublishPort=8686:8686
+
+Volume=./vector.yaml:/etc/vector/vector.yamlf:ro
