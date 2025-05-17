@@ -15,9 +15,8 @@ AutoUpdate=registry
 
 Network=anubis.network
 HostName=anubis
-PublishPort=8080
 
-Volume=./botPolicy.yaml:/data/cfg/botPolicy.yaml:ro
+#Volume=./botPolicy.yaml:/data/cfg/botPolicy.yaml:ro
 
 EnvironmentFile=anubis.env
 
