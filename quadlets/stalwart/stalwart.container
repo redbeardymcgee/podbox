@@ -10,11 +10,11 @@ WantedBy=default.target
 
 [Container]
 Image=docker.io/stalwartlabs/mail-server:latest
-ContainerName=stalwart-mail
+ContainerName=stalwart
 AutoUpdate=registry
 
-Network=stalwart-mail.network
-HostName=stalwart-mail
+Network=stalwart.network
+HostName=stalwart
 PublishPort=443:443
 PublishPort=8080:8080
 PublishPort=25:25
@@ -24,4 +24,4 @@ PublishPort=143:143
 PublishPort=993:993
 PublishPort=4190:4190
 
-Volume=stalwart-mail:/opt/stalwart-mail
+Volume=stalwart:/opt/stalwart-mail
