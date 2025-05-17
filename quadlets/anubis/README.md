@@ -5,11 +5,11 @@
 Ensure that `anubis.env` has at least set `REDIRECT_DOMAINS` and `TARGET`. The
 target must be within the same container network as `anubis`, which should be
 in the same network as your reverse-proxy such as `nginx` or `caddy`. You may
-use multiple `Network` keys to achieve this.
+use multiple `Network` keys in `anubis.container` to achieve this.
 
 ## Optional
 
-Create your `botPolicy.yaml` and uncomment `POLICY_FNAME` to supply your own
+Create `botPolicy.yaml` and uncomment `POLICY_FNAME` to supply your own
 custom rules.
 
 ## Note
