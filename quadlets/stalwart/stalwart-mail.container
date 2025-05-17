@@ -1,0 +1,27 @@
+[Unit]
+Description=Stalwart mail server
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/stalwartlabs/mail-server:latest
+ContainerName=stalwart-mail
+AutoUpdate=registry
+
+Network=stalwart-mail.network
+HostName=stalwart-mail
+PublishPort=443:443
+PublishPort=8080:8080
+PublishPort=25:25
+PublishPort=587:587
+PublishPort=465:465
+PublishPort=143:143
+PublishPort=993:993
+PublishPort=4190:4190
+
+Volume=stalwart-mail:/opt/stalwart-mail
