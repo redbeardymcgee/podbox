@@ -1,0 +1,4 @@
+[Volume]
+VolumeName=stirlingpdf-tessdata
+VolumeName=stirlingpdf-config
+VolumeName=stirlingpdf-logs

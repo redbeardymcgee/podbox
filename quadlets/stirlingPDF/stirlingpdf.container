@@ -16,8 +16,8 @@ AutoUpdate=registry
 Network=stirlingpdf.network
 HostName=stirlingPDF
 
-Volume=/volumes/stirlingPDF/usr/share/tesseract-ocr/5/tessdata:/usr/share/tesseract-ocr/5/tessdata
-Volume=/volumes/stirlingPDF/configs:/configs
-Volume=/volumes/stirlingPDF/logs:/logs
+Volume=stirlingpdf-tessdata:/usr/share/tesseract-ocr/5/tessdata
+Volume=stirlingpdf-configs:/configs
+Volume=stirlingpdf-logs:/logs
 
 PodmanArgs=-e DOCKER_ENABLE_SECURITY=false -e INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false -e LANGS=en_DK
