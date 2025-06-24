@@ -1,0 +1,19 @@
+[Unit]
+Description=SearxNG redis
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/valkey/valkey:8-alpine
+ContainerName=searxng-redis
+AutoUpdate=registry
+
+Network=searxng.network
+HostName=searxng-redis
+
+Volume=searxng-redis:/data
