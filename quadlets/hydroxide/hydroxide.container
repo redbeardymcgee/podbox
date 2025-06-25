@@ -1,0 +1,24 @@
+[Unit]
+Description=Hydroxide Proton mail bridge
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=registry.gitlab.com/renner0e/hydroxide-podman
+ContainerName=hydroxide
+AutoUpdate=registry
+
+Network=hydroxide.network
+HostName=hydroxide
+PublishPort=1143:1143
+PublishPort=1025:1025
+PublishPort=8080:8080
+
+Volume=hydroxide:/root/.config/hydroxide
+
+Exec=serve
