@@ -15,7 +15,7 @@ Image=docker.io/librenms/librenms:latest
 ContainerName=librenms-syslogng
 AutoUpdate=registry
 
-Network=
+Network=librenms.network
 HostName=librenms-syslogng
 PublishPort=514:514/tcp
 PublishPort=514:514/udp

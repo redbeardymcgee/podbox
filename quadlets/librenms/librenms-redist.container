@@ -13,7 +13,7 @@ Image=docker.io/redis/redis:7.2-alpine
 ContainerName=librenms-redis
 AutoUpdate=registry
 
-Network=
+Network=librenms.network
 HostName=librenms-redis
 
 EnvironmentFile=tz.env

@@ -15,7 +15,7 @@ Image=docker.io/librenms/librenms:latest
 ContainerName=librenms-dispatcher
 AutoUpdate=registry
 
-Network=
+Network=librenms.network
 HostName=librenms-dispatcher
 
 Volume=librenms-data:/data

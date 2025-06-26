@@ -13,7 +13,7 @@ Image=docker.io/mariadb/mariadb:10
 ContainerName=librenms-db
 AutoUpdate=registry
 
-Network=
+Network=librenms.network
 HostName=librenms-db
 
 Volume=librenms-db:/var/lib/mysql
