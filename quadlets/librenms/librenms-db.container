@@ -9,7 +9,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/mariadb/mariadb:10
+Image=docker.io/mariadb:10
 ContainerName=librenms-db
 AutoUpdate=registry
 
