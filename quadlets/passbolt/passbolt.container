@@ -31,4 +31,4 @@ Environment=DATASOURCES_DEFAULT_DATABASE=passbolt
 Secret=passbolt-datasources-default-password,type=env,target=DATASOURCES_DEFAULT_PASSWORD
 
 Entrypoint=/usr/bin/wait-for.sh
-Exec=-t 0 db:3306 -- /docker-entrypoint.sh
+Exec=-t 0 passbolt-mariadb:3306 -- /docker-entrypoint.sh
