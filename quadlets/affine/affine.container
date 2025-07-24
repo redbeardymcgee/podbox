@@ -26,7 +26,6 @@ PublishPort=3010:3010
 Volume=affine-upload:/root/.affine/storage
 Volume=affine-config:/root/.affine/config
 
-EnvironmentFile=affine.env
 Environment=REDIS_SERVER_HOST=affine-valkey
-Environment=DATABASE_URL=postgresql://affine-postgres:affine-postgres-password:5432/affine
+Environment=DATABASE_URL=postgresql://affine:affine-postgres-password@affine-postgres:5432/affine
 Environment=AFFINE_INDEXER_ENABLED=false

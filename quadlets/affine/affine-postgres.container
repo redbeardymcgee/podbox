@@ -9,7 +9,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=docker.io/pgvector/pgvector:ph16
+Image=docker.io/pgvector/pgvector:pg16
 ContainerName=affine-postgres
 AutoUpdate=registry
 
