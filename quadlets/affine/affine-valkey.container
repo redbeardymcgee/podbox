@@ -1,0 +1,23 @@
+[Unit]
+Description=affine Valkey
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/valkey-io/valkey:8-alpine
+ContainerName=affine-valkey
+AutoUpdate=registry
+
+Network=affine.network
+HostName=affine-valkey
+
+Volume=affine-valkey:/data
+Volume=./valkey.conf:/valkey.conf
+
+Entrypoint=valkey-server
+Exec=/valkey.conf --save 60 1 --loglevel warning

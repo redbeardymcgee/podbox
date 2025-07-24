@@ -1,0 +1,27 @@
+[Unit]
+Description=Affine migration
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/toeverything/affine:stable
+ContainerName=affine-migration
+AutoUpdate=registry
+
+Network=affine.network
+HostName=affine-migration
+
+Volume=affine-upload:/root/.affine/storage
+Volume=affine-config:/root/.affine/config
+
+Environment=REDIS_SERVER_HOST=affine-valkey
+Environment=DATABASE_URL=postgresql://affine:affine-postgres-password:5432/affine
+Environment=AFFINE_INDEXER_ENABLED=false
+
+Entrypoint=sh
+Exec=-c 'node ./scripts/self-host-predeploy.js'

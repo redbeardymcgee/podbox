@@ -1,0 +1,24 @@
+[Unit]
+Description=Affine postgres
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/pgvector/pgvector:ph16
+ContainerName=affine-postgres
+AutoUpdate=registry
+
+Network=affine.network
+HostName=affine-postgres
+
+Volume=affine-postgres:/var/lib/postgresql/data
+
+ENVIRONMENT=POSTGRES_USER=affine
+ENVIRONMENT=POSTGRES_PASSWORD=affine-postgres-password
+ENVIRONMENT=POSTGRES_DB=affine
+ENVIRONMENT=POSTGRES_INITDB_ARGS=--data-checksums
