@@ -17,4 +17,4 @@ Network=vector.network
 HostName=vector
 PublishPort=8686:8686
 
-Volume=./vector.yaml:/etc/vector/vector.yamlf:ro
+Volume=./vector.yaml:/etc/vector/vector.yaml:ro
