@@ -1,0 +1,120 @@
+# The server configuration file version.
+version = "2"
+
+#   The webserver bind address. Requires TLS certificates.
+#   If the port is set to 443 you may require the
+#   NET_BIND_SERVICE capability.
+#   Defaults to "127.0.0.1:8443"
+bindaddress = "[::]:8443"
+#
+#   The read-only ldap server bind address. Requires
+#   TLS certificates. If set to 636 you may require
+#   the NET_BIND_SERVICE capability.
+#   Defaults to "" (disabled)
+# ldapbindaddress = "[::]:3636"
+#
+#   The path to the kanidm database.
+db_path = "/data/kanidm.db"
+#
+#   If you have a known filesystem, kanidm can tune the
+#   database page size to match. Valid choices are:
+#   [zfs, other]
+#   If you are unsure about this leave it as the default
+#   (other). After changing this
+#   value you must run a vacuum task.
+#   - zfs:
+#     * sets database pagesize to 64k. You must set
+#       recordsize=64k on the zfs filesystem.
+#   - other:
+#     * sets database pagesize to 4k, matching most
+#       filesystems block sizes.
+# db_fs_type = "zfs"
+#
+#   The number of entries to store in the in-memory cache.
+#   Minimum value is 256. If unset
+#   an automatic heuristic is used to scale this.
+#   You should only adjust this value if you experience
+#   memory pressure on your system.
+# db_arc_size = 2048
+#
+#   TLS chain and key in pem format. Both must be present.
+#   If the server receives a SIGHUP, these files will be
+#   re-read and reloaded if their content is valid.
+tls_chain = "/data/chain.pem"
+tls_key = "/data/key.pem"
+#
+#   The log level of the server. May be one of info, debug, trace
+#
+#   NOTE: this can be overridden by the environment variable
+#   `KANIDM_LOG_LEVEL` at runtime
+#   Defaults to "info"
+# log_level = "info"
+#
+#   The DNS domain name of the server. This is used in a
+#   number of security-critical contexts
+#   such as webauthn, so it *must* match your DNS
+#   hostname. It is used to create
+#   security principal names such as `william@idm.example.com`
+#   so that in a (future) trust configuration it is possible
+#   to have unique Security Principal Names (spns) throughout
+#   the topology.
+#
+#   ⚠️  WARNING ⚠️
+#
+#   Changing this value WILL break many types of registered
+#   credentials for accounts including but not limited to
+#   webauthn, oauth tokens, and more.
+#   If you change this value you *must* run
+#   `kanidmd domain rename` immediately after.
+domain = "idm.example.com"
+#
+#   The origin for webauthn. This is the url to the server,
+#   with the port included if it is non-standard (any port
+#   except 443). This must match or be a descendent of the
+#   domain name you configure above. If these two items are
+#   not consistent, the server WILL refuse to start!
+#   origin = "https://idm.example.com"
+#   # OR
+#   origin = "https://idm.example.com:8443"
+origin = "https://idm.example.com"
+
+#   HTTPS requests can be reverse proxied by a loadbalancer.
+#   To preserve the original IP of the caller, these systems
+#   will often add a header such as "Forwarded" or
+#   "X-Forwarded-For". Some other proxies can use the PROXY
+#   protocol v2 header.
+#   This setting allows configuration of the list of trusted
+#   IPs or IP ranges which can supply this header information,
+#   and which format the information is provided in.
+#   Defaults to "none" (no trusted sources)
+#   Only one option can be used at a time.
+# [http_client_address_info]
+# proxy-v2 = ["127.0.0.1", "127.0.0.0/8"]
+#   # OR
+# [http_client_address_info]
+# x-forward-for = ["127.0.0.1", "127.0.0.0/8"]
+
+#   LDAPS requests can be reverse proxied by a loadbalancer.
+#   To preserve the original IP of the caller, these systems
+#   can add a header such as the PROXY protocol v2 header.
+#   This setting allows configuration of the list of trusted
+#   IPs or IP ranges which can supply this header information,
+#   and which format the information is provided in.
+#   Defaults to "none" (no trusted sources)
+# [ldap_client_address_info]
+# proxy-v2 = ["127.0.0.1", "127.0.0.0/8"]
+
+[online_backup]
+#   The path to the output folder for online backups
+path = "/data/kanidm/backups/"
+#   The schedule to run online backups (see https://crontab.guru/)
+#   every day at 22:00 UTC (default)
+schedule = "00 22 * * *"
+#    four times a day at 3 minutes past the hour, every 6th hours
+# schedule = "03 */6 * * *"
+#   We also support non standard cron syntax, with the following format:
+#   sec  min   hour   day of month   month   day of week   year
+#   (it's very similar to the standard cron syntax, it just allows to specify the seconds
+#   at the beginning and the year at the end)
+#   Number of backups to keep (default 7)
+# versions = 7

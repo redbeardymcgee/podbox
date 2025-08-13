@@ -1,0 +1,22 @@
+[Unit]
+Description=Kanidm RADIUS
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/kanidm/radius
+ContainerName=kanidm
+AutoUpdate=registry
+
+Network=kanidm.network
+HostName=kanidm-radius
+PublishPort=1812:1812
+PublishPort=1812:1812/udp
+
+Volume=kanidm:/data
+Volume=./radius.toml:/data/kanidm/radius.toml
