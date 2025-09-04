@@ -1,0 +1,27 @@
+[Unit]
+Description=Grist spreadsheet database
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/gristlabs/grist-oss
+ContainerName=grist
+AutoUpdate=registry
+
+Network=grist.network
+HostName=grist
+PublishPort=8484:8484
+
+Volume=grist:/persist
+
+Environment=GRIST_DEFAULT_EMAIL=your-email@example.com
+Environment=GRIST_TELEMETRY_LEVEL=off
+Environment=GRIST_SANDBOX_FLAVOR=gvisor
+Environment=APP_HOME_URL=https://grist.example.com
+
+Secret=grist-session-secret,type=env,target=GRIST_SESSION_SECRET
