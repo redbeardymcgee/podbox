@@ -16,10 +16,9 @@ AutoUpdate=registry
 Network=weechat.network
 HostName=weechat
 
-Volume=/volumes/books/weechat/home/user:/home/user
+Volume=weechat-home:/home/user
 
-# FIXME: Better way to attach stdin and tty. Quadlets don't seem to support
-# this well, probably because attaching to containers is weirder than `exec sh`
-# into it. This works the first time, but detaching doesn't work right and
-# reattaching a second time is pretty broken
-PodmanArgs=-a stdin --tty=true
+# FIXME: Better way to attach stdin and tty.
+# This works with `podman attach weechat`, but may require <ctrl-l>
+# Might work better in other terminals, but I think this is an upstream issue
+PodmanArgs=-a=stdin -a=stdout -a=stderr --tty=true
