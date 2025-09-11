@@ -18,7 +18,7 @@ HostName=weechat
 
 Volume=weechat-home:/home/user
 
-# FIXME: Better way to attach stdin and tty.
+# FIXME: Better way to attach.
 # This works with `podman attach weechat`, but may require <ctrl-l>
 # Might work better in other terminals, but I think this is an upstream issue
-PodmanArgs=-a=stdin -a=stdout -a=stderr --tty=true
+PodmanArgs=--tty=true
