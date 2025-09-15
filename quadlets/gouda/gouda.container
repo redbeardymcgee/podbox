@@ -1,0 +1,24 @@
+[Unit]
+Description=Gouda download manager
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/ra341/gouda
+ContainerName=gouda
+AutoUpdate=registry
+
+Network=gouda.network
+HostName=gouda
+PublishPort=9862:9862
+
+Volume=/path/to/media:/media
+
+EnvironmentFile=gouda.env
+
+Secret=gouda-pass,type=env,target=GOUDA_PASS
