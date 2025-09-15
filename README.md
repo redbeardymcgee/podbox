@@ -138,6 +138,25 @@ Navigate to `http://localhost:9000` in your browser.
 > tcp   LISTEN 0      4096       *:9000           *:*   users:(("rootlessport",pid=913878,fd=10))
 > ```
 
+## Installing with [pq](https://github.com/rgolangh/pq)
+
+`pq` is a tool to help install and manage podman quadlets from a git
+repository. Check the
+[installation](https://github.com/rgolangh/pq#installation) instructions from
+its repository.
+
+```bash
+pq install -s quadlets -r https://git.mcgee.red/redbeardymcgee/podbox thelounge
+```
+
+You may set this repository as the default with the following configuration in
+`~/.config/pq/pq.yaml`
+
+```yaml
+# FIXME
+# Upstream documentation for this is in progress
+```
+
 ## Coming soon
 
 These services are on my radar for implementation. Please suggest your
