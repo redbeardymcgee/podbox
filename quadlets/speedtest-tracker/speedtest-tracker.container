@@ -18,7 +18,7 @@ HostName=speedtest-tracker
 PublishPort=8080:80
 PublishPort=8443:443
 
-Volume=speedtest-config:/config
-Volume=speedtest-ssl:/config
+Volume=speedtest-tracker-config:/config
+Volume=speedtest-tracker-ssl:/config
 
 EnvironmentFile=speedtest-tracker.env

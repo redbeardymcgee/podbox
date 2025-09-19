@@ -20,7 +20,7 @@ AutoUpdate=registry
 Network=container:gluetun
 HostName=seedboxapi
 
-Volume=/volumes/books/seedboxapi/config:/config
+Volume=seedboxapi-config:/config
 
 Environment=DEBUG=1
 Environment=interval=1

@@ -1,6 +1,0 @@
-[Volume]
-VolumeName=postiz-config
-VolumeName=postiz-uploads
-VolumeName=postiz-redis-data
-VolumeName=postiz-db
-

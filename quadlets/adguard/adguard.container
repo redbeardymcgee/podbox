@@ -24,4 +24,4 @@ PublishPort=8443:443/tcp
 
 Volume=adguard-config:/opt/adguardhome/work
 Volume=adguard-work:/opt/adguardhome/conf
-Volume=/var/log/AdGuardHome.log:/var/log/AdGuardHome.log
+Volume=adguard-logs:/var/log/AdGuardHome.log

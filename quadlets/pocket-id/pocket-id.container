@@ -17,4 +17,4 @@ Network=pocket-id.network
 HostName=pocket-id
 PublishPort=3000:80
 
-Volume=pocket-id-container:/app/backend/data
+Volume=pocket-id-data:/app/backend/data

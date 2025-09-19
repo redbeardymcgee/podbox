@@ -1,6 +1,0 @@
-[Volume]
-VolumeName=speedtest-config
-## NOTE: 
-## Enable this if you bring your own cert.crt and cert.key
-#VolumeName=speedtest-ssl
-

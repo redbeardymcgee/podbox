@@ -1,5 +1,0 @@
-[Volume]
-VolumeName=maxun-postgres
-VolumeName=maxun-redis
-VolumeName=maxun-minio
-

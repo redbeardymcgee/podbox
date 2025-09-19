@@ -1,6 +1,0 @@
-[Volume]
-VolumeName=tandoor-static
-VolumeName=tandoor-nginx-config
-VolumeName=tandoor-media
-VolumeName=tandoor-db
-

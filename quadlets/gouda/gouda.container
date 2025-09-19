@@ -18,6 +18,7 @@ HostName=gouda
 PublishPort=9862:9862
 
 Volume=/path/to/media:/media
+Volume=gouda-config:/config
 
 EnvironmentFile=gouda.env
 

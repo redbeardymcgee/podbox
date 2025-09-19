@@ -1,5 +1,0 @@
-[Volume]
-VolumeName=netdata-cache
-VolumeName=netdata-config
-VolumeName=netdata-lib
-
