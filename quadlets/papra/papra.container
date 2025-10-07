@@ -1,0 +1,22 @@
+[Unit]
+Description=Papra document archiver
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/papra-hq/papra
+ContainerName=papra
+AutoUpdate=registry
+
+Network=papra.network
+HostName=papra
+PublishPort=1221:1221
+
+Volume=papra-data:/app/app-data
+
+EnvironmentFile=papra.env
