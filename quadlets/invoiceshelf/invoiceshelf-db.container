@@ -1,0 +1,24 @@
+[Unit]
+Description=InvoiceShelf postgres
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres:15
+ContainerName=invoiceshelf-db
+AutoUpdate=registry
+
+Network=invoiceshelf
+HostName=invoiceshelf-db
+
+Volume=invoiceshelf-db:/var/lib/postgresql/data
+
+Environment=POSTGRES_USER=invoiceshelf
+Environment=POSTGRES_DB=invoiceshelf
+
+Secret=invoiceshelf-db-pw,type=env,target=POSTGRES_PASSWORD
