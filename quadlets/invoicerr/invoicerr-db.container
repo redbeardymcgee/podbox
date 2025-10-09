@@ -1,0 +1,24 @@
+[Unit]
+Description=Invoicerr postgresdb
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/postgres
+ContainerName=invoicerr-db
+AutoUpdate=registry
+
+Network=invoicerr.network
+HostName=invoicerr-db
+
+Volume=invoicerr-db:/var/lib/postgresql/data
+
+Environment=POSTGRES_USER=invoicerr
+Environment=POSTGRES_DB=invoicerr_db
+
+Secret=invoicerr-db-pw,type=env,target=POSTGRES_PASSWORD
