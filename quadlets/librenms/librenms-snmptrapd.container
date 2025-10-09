@@ -1,7 +1,7 @@
 [Unit]
 Description=LibreNMS snmptrapd
-After=librenms.container
-After=librenms-redis.container
+After=librenms.service
+After=librenms-redis.service
 
 [Service]
 Restart=on-failure
