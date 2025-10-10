@@ -1,0 +1,40 @@
+## https://github.com/GraphiteEditor/Graphite/issues/2738#issuecomment-2987910072
+# 1. Builder stage for Rust WASM and frontend build
+FROM node:18-bullseye as frontend-builder
+
+# Install Rust toolchain for wasm build
+RUN apt-get update && apt-get install -y curl build-essential \
+    && curl https://sh.rustup.rs -sSf | sh -s -- -y \
+    && export PATH="$HOME/.cargo/bin:$PATH" \
+    && rustup target add wasm32-unknown-unknown
+
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+WORKDIR /usr/local/app
+
+# Clone the repo
+RUN git clone https://github.com/GraphiteEditor/Graphite.git
+
+WORKDIR /usr/local/app/Graphite/frontend
+
+# Install npm dependencies
+RUN npm install
+
+# Install required cargo tools including cargo-about
+RUN cargo install cargo-watch wasm-pack wasm-bindgen-cli cargo-about
+
+# Build production assets (wasm + vite build)
+RUN npm run build
+
+# 2. Production stage: serve built assets with nginx
+FROM nginx:stable-alpine
+
+# Copy built frontend files from builder stage
+COPY --from=frontend-builder /usr/local/app/Graphite/frontend/dist /usr/share/nginx/html
+
+# Expose port
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
+

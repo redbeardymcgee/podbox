@@ -1,0 +1,18 @@
+[Unit]
+Description=Graphite editor
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=graphite-editor.build
+ContainerName=graphite-editor
+AutoUpdate=registry
+
+Network=graphite-editor.network
+HostName=graphite-editor
+PublishPort=3080:80

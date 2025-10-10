@@ -1,0 +1,4 @@
+[Build]
+ImageTag=localhost/graphite-editor
+SetWorkingDirectory=unit
+
