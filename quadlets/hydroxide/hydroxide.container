@@ -21,4 +21,10 @@ PublishPort=8080:8080
 
 Volume=hydroxide:/root/.config/hydroxide
 
-Exec=serve
+## WARNING:
+# You may want to use `Exec=serve` instead.
+#
+# Without these extra args, `hydroxide` will only listen on localhost.
+# This makes the service unreachable on the LAN and potentially for
+# other containers.
+Exec=--smtp-host 0.0.0.0 --smtp-port 1025 --imap-host 0.0.0.0 --imap-port 1143 --carddav-host 0.0.0.0 --carddav-port 8080 serve
