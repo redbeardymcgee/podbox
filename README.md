@@ -76,7 +76,7 @@ journalctl -e
 
 You should see the following in your journal!
 
-```bash
+```
 Dec 01 08:42:05 perseus systemd[1362]: Started hello world.
 Dec 01 08:42:05 perseus helloworld[1143334]: !... Hello Podman World ...!
 Dec 01 08:42:05 perseus helloworld[1143334]:
