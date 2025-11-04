@@ -1,0 +1,21 @@
+[Unit]
+Description=Invidious companion
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=invidious/invidious-companion
+ContainerName=invidious-companion
+AutoUpdate=registry
+
+Network=invidious.network
+Hostname=invidious-companion
+
+Volume=invidious-companion-cache:/var/tmp/youtubei.js:rw
+
+Secret=invidious-companion-secret-key,type=env,target=SERVER_SECRET_KEY
