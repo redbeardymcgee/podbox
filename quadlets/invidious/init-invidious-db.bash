@@ -15,6 +15,6 @@ podman run \
   -v invidious-db:/var/lib/postgresql/data \
   -e POSTGRES_USER=$pguser \
   -e POSTGRES_DB=$pgdb \
-  --secret=invidious-db-password,type=env,target=POSTGRES_PASSWORD \
+  --secret=invidious-db-pw,type=env,target=POSTGRES_PASSWORD \
   docker.io/library/postgres:14 \
   sh -c 'for initdb in channels videos channel_videos users session_ids nonces annotations playlists playlist_videos; do curl -s https://raw.githubusercontent.com/iv-org/invidious/refs/heads/master/config/sql/$initdb.sql | psql postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@localhost/$POSTGRES_DB'
