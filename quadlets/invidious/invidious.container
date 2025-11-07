@@ -13,7 +13,7 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=invidious/invidious
+Image=quay.io/invidious/invidious:latest
 ContainerName=invidious
 AutoUpdate=registry
 

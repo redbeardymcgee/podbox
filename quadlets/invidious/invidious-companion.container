@@ -9,12 +9,12 @@ TimeoutStartSec=900
 WantedBy=default.target
 
 [Container]
-Image=invidious/invidious-companion
+Image=quay.io/invidious/invidious-companion:latest
 ContainerName=invidious-companion
 AutoUpdate=registry
 
 Network=invidious.network
-Hostname=invidious-companion
+HostName=invidious-companion
 
 Volume=invidious-companion-cache:/var/tmp/youtubei.js:rw
 
