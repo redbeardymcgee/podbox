@@ -20,5 +20,7 @@ Volume=invidious-db:/var/lib/postgresql/data
 
 Environment=POSTGRES_DB=invidious
 Environment=POSTGRES_USER=kemal
+Environment=POSTGRES_PASSWORD=kemal
 
-Secret=invidious-db-pw,type=env,target=POSTGRES_PASSWORD
+# NOTE: Alternatively, set password as a podman secret
+# Secret=invidious-db-pw,type=env,target=POSTGRES_PASSWORD
