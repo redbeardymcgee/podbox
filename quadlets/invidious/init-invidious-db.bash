@@ -2,10 +2,9 @@
 
 set -eou pipefail
 
-## NOTE: Depends on podman secret `invidious-db-pw`
 systemctl --user start invidious-db
 
-podman exec invidious-db
+podman exec invidious-db \
   sh -c '
         apt-get update
         apt-get install --assume-yes --no-install-recommends curl
