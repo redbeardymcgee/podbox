@@ -1,7 +1,7 @@
 {
-        acme_dns $provider $api_key
+        acme_dns njalla <api key>
 }
 
-qb.$domain.$tld {
-        reverse_proxy localhost:8080
+example.com {
+        respond "Hello, world!"
 }

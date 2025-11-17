@@ -17,8 +17,8 @@ PublishPort=80:80
 PublishPort=443:443
 PublishPort=443:443/udp
 
-Volume=caddy-config:/config
-Volume=caddy-data:/data
+Volume=caddy-config:/config:z
+Volume=caddy-data:/data:z
 
-Volume=./Caddyfile:/etc/caddy/Caddyfile
+Volume=./Caddyfile:/etc/caddy/Caddyfile:z
 
